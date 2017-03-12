@@ -1,0 +1,174 @@
+* {
+  z-index: 2;
+}
+ html {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+body {
+  font-family: "Roboto Slab", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  webkit-tap-highlight-color: #fed136;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+.nav-opacity {
+	background: rgba(0, 15, 3, 0.6);
+}
+.nav-li-txt .nav li a {
+  font-family: Cambria, Georgia, serif;
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 2px;
+  color: #ff9700;
+  opacity: 0.8;
+  font-size: 12px;
+}
+.login {
+  font-family: Cambria, Georgia, serif;
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 2px;
+  color: #ff9700;
+  opacity: 0.8;
+  font-size: 12px;
+}
+.nav-li-txt .nav li a:hover,
+.nav-li-txt .nav li a:focus {
+  background: rgba(10, 30, 0, 0.5);
+}
+.text-color {
+    cursor: pointer;
+    color: #ff9700;
+    font-size: 4vh;
+	background-image: -webkit-linear-gradient(left, #ffb732, #7f5200, #003300); /* For Chrome and Safari */
+    background-image:    -moz-linear-gradient(left, #ffb732, #7f5200, #003300); /* For old Fx (3.6 to 15) */
+    background-image:     -ms-linear-gradient(left, #ffb732, #7f5200, #003300); /* For pre-releases of IE 10*/
+    background-image:      -o-linear-gradient(left, #ffb732, #7f5200, #003300); /* For old Opera (11.1 to 12.0) */
+    background-image:         linear-gradient(to right, #ffb732, #7f5200, #003300); /* Standard syntax; must be last */
+    color:transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+	font-family: Impact, Charcoal, sans-serif;
+	background-color: #e8e8e8; text-shadow: rgba(255,255,255,.1) -1px -1px 1px,rgba(0,0,0,.5) 1px 1px 1px;
+}
+.text-color:hover {
+	background-image: -webkit-linear-gradient(left, #003300, #006600, #009900); /* For Chrome and Safari */
+    background-image:    -moz-linear-gradient(left, #003300, #006600, #009900); /* For old Fx (3.6 to 15) */
+    background-image:     -ms-linear-gradient(left, #003300, #006600, #009900); /* For pre-releases of IE 10*/
+    background-image:      -o-linear-gradient(left, #003300, #006600, #009900); /* For old Opera (11.1 to 12.0) */
+    background-image:         linear-gradient(to right, #003300, #006600, #009900); /* Standard syntax; must be last */
+    color:transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+	font-family: Impact, Charcoal, sans-serif;
+	background-color: #e8e8e8; text-shadow: rgba(255,255,255,.1) -1px -1px 1px,rgba(0,0,0,.5) 1px 1px 1px;
+}
+.background-image {
+  background-image: url('../img/mycornerstore.jpg');
+  background-size: cover;
+  display: flex;
+  filter: blur(5px);
+  -webkit-filter: blur(5px);
+  height: 100%;
+  left: 0;
+  position: fixed;
+  right: 0;
+  z-index: -1;
+}
+.background-blur {
+  background-size: cover;
+  display: flex;
+  background: rgba(0, 90, 50, 0.26);
+  height: 100%;
+  left: 0;
+  position: fixed;
+  right: 0;
+  z-index: 1;
+}
+.search_box {
+    padding: 2% 2% 2% 2%;
+	margin: 20px 0;
+	display: inline-block;
+	max-width: 45%;
+	border-radius: 5px;
+	background: rgba(0, 0, 0, 0.5);
+	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+}
+.search_container {
+	text-align:center;
+}
+.address-box, .search {
+	display:inline-block;
+	width: 70%;
+}
+.scrollable-menu {
+    height: auto;
+    max-height: 150px;
+	max-width: 150px;
+    overflow-x: hidden;
+}
+.scrollable-menu::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 4px;        
+}    
+.scrollable-menu::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background-color: lightgray;
+    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.75);        
+}
+
+.intro-heading {
+  padding-bottom: 4.3%;
+  padding-top: 200px;
+  text-transform: uppercase;
+  font-family: "Arial Black", Gadget, sans-serif;
+  ccfont-family: Cambria, Georgia, serif, Allerta Stencil;
+  text-align: center;
+  font-weight: 100;
+  font-size: 8vh;
+  color: #2c2c2c;
+  
+  letter-spacing: .05em;
+    text-shadow: 
+      4px 4px 0px rgba(0, 10, 0, 0), 
+      7px 7px 0px rgba(30, 50, 0, 0.22);
+}
+hr.green-fade {
+    border: 0;
+    height: 3px;
+	width: 60%;
+    background-image: linear-gradient(to right, rgba(30, 60, 0, 0), rgba(30, 60, 0, 0.85), rgba(60, 80, 0, 0));
+}
+
+section {
+  padding: 100px 0;
+}
+section#contact {
+  background-color: #222222;
+  color: white;
+  background-image: url('../img/map-image.png');
+  background-position: center;
+  background-repeat: no-repeat;
+}
+section h2.section-heading {
+  font-size: 40px;
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+section h3.section-subheading {
+  font-size: 16px;
+  font-family: Cambria, Georgia, serif;
+  text-transform: none;
+  font-style: italic;
+  font-weight: 400;
+  margin-bottom: 75px;
+}
+@media (min-width: 768px) {
+  section {
+    padding: 150px 0;
+  }
+}
