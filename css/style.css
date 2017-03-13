@@ -1,3 +1,11 @@
+.store-address {
+  float: right;
+}
+.ratings-count {
+  font-size: 12px;
+  float: bottom;
+}
+
 .star-ratings-css {
   unicode-bidi: bidi-override;
   color: #c5c5c5;
