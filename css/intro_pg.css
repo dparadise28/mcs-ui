@@ -15,8 +15,12 @@ body {
   padding: 0;
   margin: 0;
 }
+.corner-store {
+  max-width: 50px;
+  max-height: 50px;
+}
 .nav-opacity {
-	background: rgba(0, 15, 3, 0.6);
+	background: rgba(0, 15, 0, 0.8);
 }
 .nav-li-txt .nav li a {
   font-family: Cambria, Georgia, serif;
@@ -40,33 +44,6 @@ body {
 .nav-li-txt .nav li a:focus {
   background: rgba(10, 30, 0, 0.5);
 }
-.text-color {
-    cursor: pointer;
-    color: #ff9700;
-    font-size: 4vh;
-	background-image: -webkit-linear-gradient(left, #ffb732, #7f5200, #003300); /* For Chrome and Safari */
-    background-image:    -moz-linear-gradient(left, #ffb732, #7f5200, #003300); /* For old Fx (3.6 to 15) */
-    background-image:     -ms-linear-gradient(left, #ffb732, #7f5200, #003300); /* For pre-releases of IE 10*/
-    background-image:      -o-linear-gradient(left, #ffb732, #7f5200, #003300); /* For old Opera (11.1 to 12.0) */
-    background-image:         linear-gradient(to right, #ffb732, #7f5200, #003300); /* Standard syntax; must be last */
-    color:transparent;
-    -webkit-background-clip: text;
-    background-clip: text;
-	font-family: Impact, Charcoal, sans-serif;
-	background-color: #e8e8e8; text-shadow: rgba(255,255,255,.1) -1px -1px 1px,rgba(0,0,0,.5) 1px 1px 1px;
-}
-.text-color:hover {
-	background-image: -webkit-linear-gradient(left, #003300, #006600, #009900); /* For Chrome and Safari */
-    background-image:    -moz-linear-gradient(left, #003300, #006600, #009900); /* For old Fx (3.6 to 15) */
-    background-image:     -ms-linear-gradient(left, #003300, #006600, #009900); /* For pre-releases of IE 10*/
-    background-image:      -o-linear-gradient(left, #003300, #006600, #009900); /* For old Opera (11.1 to 12.0) */
-    background-image:         linear-gradient(to right, #003300, #006600, #009900); /* Standard syntax; must be last */
-    color:transparent;
-    -webkit-background-clip: text;
-    background-clip: text;
-	font-family: Impact, Charcoal, sans-serif;
-	background-color: #e8e8e8; text-shadow: rgba(255,255,255,.1) -1px -1px 1px,rgba(0,0,0,.5) 1px 1px 1px;
-}
 .background-image {
   background-image: url('../img/mycornerstore.jpg');
   background-size: cover;
@@ -82,7 +59,7 @@ body {
 .background-blur {
   background-size: cover;
   display: flex;
-  background: rgba(0, 90, 50, 0.26);
+  background: rgba(0, 90, 20, 0.23);
   height: 100%;
   left: 0;
   position: fixed;
@@ -90,20 +67,22 @@ body {
   z-index: 1;
 }
 .search_box {
-    padding: 2% 2% 2% 2%;
+  padding: 1.5% 1.5% 1.5% 1.5%;
 	margin: 20px 0;
+  horizontal-align:center;
+  text-align: center;
 	display: inline-block;
-	max-width: 45%;
+	max-width: 65%;
 	border-radius: 5px;
-	background: rgba(0, 0, 0, 0.5);
-	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+	background: rgba(0, 0, 0, 0.6);
+	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.6);
 }
 .search_container {
 	text-align:center;
 }
 .address-box, .search {
 	display:inline-block;
-	width: 70%;
+	width: 100%;
 }
 .scrollable-menu {
     height: auto;
@@ -113,29 +92,38 @@ body {
 }
 .scrollable-menu::-webkit-scrollbar {
     -webkit-appearance: none;
-    width: 4px;        
-}    
+    width: 4px;
+}
 .scrollable-menu::-webkit-scrollbar-thumb {
     border-radius: 3px;
     background-color: lightgray;
-    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.75);        
+    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.75);
+}
+
+h2 {
+  color: rgba(227, 61, 0, .82);
+  font-size: 50px;
+  font-weight: 500;
+  letter-spacing: .05em;
+  font-family: Cambria, Georgia, serif;
+  text-shadow:
+    1px 1px 0px rgba(0, 8, 0, 0),
+    2px 2px 0px rgba(10, 30, 0, 0.52);
 }
 
 .intro-heading {
   padding-bottom: 4.3%;
   padding-top: 200px;
-  text-transform: uppercase;
-  font-family: "Arial Black", Gadget, sans-serif;
-  ccfont-family: Cambria, Georgia, serif, Allerta Stencil;
   text-align: center;
-  font-weight: 100;
-  font-size: 8vh;
-  color: #2c2c2c;
-  
+  font-weight: 500;
+  font-size: 100px;
+  color: rgba(227, 61, 0, .82);
+  font-family: Cambria, Georgia, serif;
+
   letter-spacing: .05em;
-    text-shadow: 
-      4px 4px 0px rgba(0, 10, 0, 0), 
-      7px 7px 0px rgba(30, 50, 0, 0.22);
+    text-shadow:
+      3px 3px 0px rgba(0, 8, 0, 0),
+      4px 3px 0px rgba(10, 30, 0, 0.52);
 }
 hr.green-fade {
     border: 0;

@@ -1,16 +1,9 @@
-.submit_button_container {
-	display:inline-block;
-}
 .submit_button_container button {
-	float: right;
-    padding: 4px 7px 9px 5px;
     cursor: pointer;
     color: #FFFFFF;
-    border-radius: 4px;
-	width: 100%;
+    border-radius: 2px;
     border: 1px solid #C00712;
-    font-size: 2vh;
-	white-space: nowrap;
+		white-space: nowrap;
     font-weight: bold;
     text-shadow: 0 -1px rgba(0,0,0,0.75);
     background: #ff9700; /* Old browsers */

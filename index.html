@@ -13,19 +13,20 @@
 
     <!-- Bootstrap Core CSS -->
     <!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="shortcut icon" href="img/favicon2.ico">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	
+
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 	<!-- Theme CSS -->
-    <link href="css/intro_pg.css" rel="stylesheet">
+  <link href="css/intro_pg.css" rel="stylesheet">
 	<link href="css/login-modal.css" rel="stylesheet">
-    <link href="css/orange_gradient_button.css" rel="stylesheet">
+  <link href="css/orange_gradient_button.css" rel="stylesheet">
 
 	<body id="page-top" class="index">
-	   
+
 		<!-- Navigation -->
 		<nav id="mainNav" class="navbar navbar-fixed-top nav-opacity nav-li-txt">
 			<div class="container-fluid">
@@ -33,7 +34,7 @@
 					<button type="button" class="navbar-toggle login" data-toggle="collapse" data-target="#myNavbar">
 						<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
 					</button>
-					<a class="navbar-brand page-scroll text-color" href="#page-top"><strong>MC</strong></a>
+					<a href="#"><img class="corner-store" src="img/favicon.ico" alt="ALT NAME"></a>
 				</div>
 
 				<!-- Collect the nav links, forms, and other content for toggling -->
@@ -53,7 +54,7 @@
 						</li>
 						<li>
 							<a class="page-scroll" href="#contact">Contact</a>
-						</li>		
+						</li>
 						<li>
 							<a data-toggle="modal" href="#myModal"><span class="glyphicon glyphicon-log-in"></span> Login</a>
 						</li>
@@ -97,7 +98,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<!-----------Set background------------------>
 		<div class="background-image"></div>
 		<div class="background-blur"></div>
@@ -105,45 +106,25 @@
 		<!-----------Search box---------------------->
 		<div class="search_container">
 			<div class="intro-heading">
-				Step Outside
+        <strong>
+          My Corner
+        </strong>
 			</div>
+      <h2>Step Outside</h2>
 			<hr class="green-fade">
 			<div class="search_box">
 				<div class="input-group address-box">
 					<div class="input-group">
 						<input type="text" class="form-control" placeholder="Where to?">
-						<span class="input-group-btn">
-							<button class="btn btn-default dropdown-toggle" type="button" id="Categories" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-								<span class="glyphicon glyphicon-triangle-bottom"></span>
+            <span class="input-group-btn submit_button_container">
+              <button class="btn btn-default dropdown-toggle" type="button" a-action="Find Stores!" ua-label="" onclick="location.href = 'pages/stores.html';">
+                <span class="glyphicon glyphicon-map-marker"></span>
 							</button>
-							<ul class="dropdown-menu scrollable-menu" aria-labelledby="dropdownMenu1">
-								<li><a class="text-center" href="#"><strong>ALL</strong></a></li>
-								<li role="separator" class="divider"></li>
-								<li class="dropdown-header">Food</li>
-									<li><a class="text-center" href="#">Grocery</a></li>
-									<li><a class="text-center" href="#">Dairy</a></li>
-									<li><a class="text-center" href="#">Produce</a></li>
-									<li><a class="text-center" href="#">Bakery</a></li>
-									<li><a class="text-center" href="#">Deli</a></li>
-									<li><a class="text-center" herf="#">Seafood</a></li>
-									<li><a class="text-center" herf="#">Restaurants</a></li>
-									<li><a class="text-center" herf="#">Beverage</a></li>
-									<li><a class="text-center" herf="#">All</a></li>
-								<li role="separator" class="divider"></li>
-								<li class="dropdown-header">Entertainment</li>
-									<li><a class="text-center" herf="#">Books</a></li>
-									<li><a class="text-center" herf="#">Movies</a></li>
-									<li><a class="text-center" herf="#">All</a></li>
-								<li role="separator" class="divider"></li>
-								<li class="dropdown-header">Tech</li>
-									<li><a class="text-center" herf="#">Something else here</a></li>
-								<li role="separator" class="divider"></li>
-							</ul>
+              <button class="btn btn-default dropdown-toggle" type="button" a-action="Find Stores!" ua-label="" onclick="location.href = 'pages/stores.html';">
+                  Find a store!
+							</button>
 						</span>
 					</div>
-				</div>
-				<div class="submit_button_container input-group">
-					<button ua-action="Find Stores!" ua-label="" onclick="location.href = 'pages/stores.html';">Find Stores!</button>
 				</div>
 			</div>
 		</div>
