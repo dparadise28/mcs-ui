@@ -16,8 +16,9 @@ body {
   margin: 0;
 }
 .corner-store {
-  max-width: 50px;
-  max-height: 50px;
+  max-width: 43px;
+  max-height: 43px;
+  padding: 6px 4px 4px 4px;
 }
 .nav-opacity {
 	background: rgba(0, 15, 0, 0.8);
@@ -48,8 +49,8 @@ body {
   background-image: url('../img/mycornerstore.jpg');
   background-size: cover;
   display: flex;
-  filter: blur(5px);
-  -webkit-filter: blur(5px);
+  filter: blur(4px);
+  -webkit-filter: blur(2px);
   height: 100%;
   left: 0;
   position: fixed;
