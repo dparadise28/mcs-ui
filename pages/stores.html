@@ -1,8 +1,6 @@
-
 <!DOCTYPE html>
 <html class="no-js">
 	<head>
-
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>MyCornerStore</title>
@@ -50,6 +48,9 @@
 					<li>
 						<a class="page-scroll" href="#contact">Contact</a>
 					</li>
+					<li class="dropdown">
+	          <a href="../pages/cart.html"> <span class="glyphicon glyphicon-shopping-cart"></span> 3 - Items</a>
+	        </li>
 					<li>
 						<a data-toggle="modal" href="#myModal"><span class="glyphicon glyphicon-log-in"></span> Login</a>
 					</li>
@@ -59,6 +60,43 @@
 		</div>
 		<!-- /.container-fluid -->
 	</nav>
+
+	<div class="cart-container" id="shopping_cart">
+	  <div class="shopping-cart collapse">
+	    <div class="shopping-cart-header">
+	      <i class="fa fa-shopping-cart cart-icon"></i><span class="badge">3</span>
+	      <div class="shopping-cart-total">
+	        <span class="lighter-text">Total:</span>
+	        <span class="main-color-text">$2,229.97</span>
+	      </div>
+	    </div> <!--end shopping-cart-header -->
+
+	    <ul class="shopping-cart-items">
+	      <li class="clearfix">
+	        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/cart-item1.jpg" alt="item1" />
+	        <span class="item-name">Sony DSC-RX100M III</span>
+	        <span class="item-price">$849.99</span>
+	        <span class="item-quantity">Quantity: 01</span>
+	      </li>
+
+	      <li class="clearfix">
+	        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/cart-item2.jpg" alt="item1" />
+	        <span class="item-name">KS Automatic Mechanic...</span>
+	        <span class="item-price">$1,249.99</span>
+	        <span class="item-quantity">Quantity: 01</span>
+	      </li>
+
+	      <li class="clearfix">
+	        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/cart-item3.jpg" alt="item1" />
+	        <span class="item-name">Kindle, 6" Glare-Free To...</span>
+	        <span class="item-price">$129.99</span>
+	        <span class="item-quantity">Quantity: 01</span>
+	      </li>
+	    </ul>
+
+	    <a href="#" class="button">Checkout</a>
+	  </div> <!--end shopping-cart -->
+	</div> <!--end container -->
 
 	<!-----------Login Modal--------------------->
 	<div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="lbOnoff">
@@ -94,14 +132,13 @@
 		</div>
 	</div>
 
-	<div class="container-fluid">
+	<div class="container">
 		<div class="row store-row">
-
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 item-block">
 				<div class="fh5co-property">
 					<div class="fh5co-property-innter"
-						 onclick="redirectTo('store.html');"
-						 style="background-image: linear-gradient(
+							 onclick="redirectTo('store.html');"
+							 style="background-image: linear-gradient(
 												rgba(8, 30, 8, 0.8),
 												rgba(0, 10, 0, 0.6)
 											), url('../img/hardware_store.jpg');
@@ -113,19 +150,16 @@
 							<div class="row">
 								<div class="col-md-6 col-sm-6 col-xs-6">
 									<div class="star-ratings-css">
-										<div class="star-ratings-css-top" style="width: 84%">
-											<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-										<div class="star-ratings-css-bottom">
-											<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-										<p class="ratings-count">291 ratings
-										<p>
+									  <div class="star-ratings-css-top" style="width: 84%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+									  <div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+										<p class="ratings-count">291 ratings<p>
 									</div>
 								</div>
 								<div class="store-address col-md-6 col-sm-6 col-xs-6">
 									<p>
 										6969 abc town <br>
 										New York, NY 66666 <br>
-									<h5>Distance: 1.2 miles</h5>
+										<h5>Distance: 1.2 miles</h5>
 									</p>
 								</div>
 							</div>
@@ -140,25 +174,26 @@
 						<span class="glyphicon glyphicon-fire" aria-hidden="true">
 							<a class="content_list_option_btn btn2" href="#">
 								<strong>Featured</span>
-						</a>
+							</a>
 						</span>
 						<span class="glyphicon glyphicon-heart-empty" aria-hidden="true">
 							<a class="content_list_option_btn btn3" href="#">
 								<strong>Like</span>
-						</a>
+							</a>
 						</span>
 						<span class="glyphicon glyphicon-earphone" aria-hidden="true">
 							<a class="content_list_option_btn btn4" href="#">
 								<strong>Call</span>
-						</a>
+							</a>
 						</span>
 					</p>
 				</div>
-
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 item-block">
 				<div class="fh5co-property">
 					<div class="fh5co-property-innter"
-						 onclick="redirectTo('#');"
-						 style="background-image: linear-gradient(
+							 onclick="redirectTo('#');"
+							 style="background-image: linear-gradient(
 												rgba(8, 30, 8, 0.8),
 												rgba(0, 10, 0, 0.6)
 											), url('../img/mycornerstore.jpg');
@@ -170,19 +205,16 @@
 							<div class="row">
 								<div class="col-md-6 col-sm-6 col-xs-6">
 									<div class="star-ratings-css">
-										<div class="star-ratings-css-top" style="width: 84%">
-											<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-										<div class="star-ratings-css-bottom">
-											<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-										<p class="ratings-count">291 ratings
-										<p>
+										<div class="star-ratings-css-top" style="width: 84%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+										<div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+										<p class="ratings-count">291 ratings<p>
 									</div>
 								</div>
 								<div class="store-address col-md-6 col-sm-6 col-xs-6">
 									<p>
 										6969 abc town <br>
 										New York, NY 66666 <br>
-									<h5>Distance: 1.2 miles</h5>
+										<h5>Distance: 1.2 miles</h5>
 									</p>
 								</div>
 							</div>
@@ -197,22 +229,21 @@
 						<span class="glyphicon glyphicon-fire" aria-hidden="true">
 							<a class="content_list_option_btn btn2" href="#">
 								<strong>Featured</span>
-						</a>
+							</a>
 						</span>
 						<span class="glyphicon glyphicon-heart-empty" aria-hidden="true">
 							<a class="content_list_option_btn btn3" href="#">
 								<strong>Like</span>
-						</a>
+							</a>
 						</span>
 						<span class="glyphicon glyphicon-earphone" aria-hidden="true">
 							<a class="content_list_option_btn btn4" href="#">
 								<strong>Call</span>
-						</a>
+							</a>
 						</span>
 					</p>
 				</div>
 			</div>
-
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 item-block">
 				<div class="fh5co-property">
 					<div class="fh5co-property-innter"
@@ -268,9 +299,7 @@
 					</p>
 				</div>
 			</div>
-
 		</div>
-
 		<div class="row">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 item-block">
 				<div class="fh5co-property">
@@ -327,7 +356,6 @@
 					</p>
 				</div>
 			</div>
-
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 item-block">
 				<div class="fh5co-property">
 					<div class="fh5co-property-innter"
@@ -384,7 +412,6 @@
 				</div>
 			</div>
 		</div>
-
 	</div>
 
 
@@ -393,6 +420,7 @@
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	<!-- jQuery -->
+	<script src="../js/cart.js"></script>
 
 	</body>
 </html>
