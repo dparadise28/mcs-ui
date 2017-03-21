@@ -84,7 +84,7 @@ header {
 }
 
 #logo {
-  padding-top: 5px;
+  padding-top: 2px;
   /* delete this property if you don't want your logo to scale down on mobile devices */
   -webkit-transform: scale(0.8);
   -moz-transform: scale(0.8);
@@ -94,7 +94,7 @@ header {
 }
 @media only screen and (min-width: 1200px) {
   #logo {
-    padding-top: 20px;
+    padding-top: 10px;
     position: absolute;
     /* logo left margin on Dekstop */
     left: 2.4em;
@@ -190,6 +190,17 @@ header {
   padding: 0 1em;
   border-bottom: 1px solid #e0e6ef;
 }
+
+#main-nav ul a:hover {
+  display: block;
+  height: 50px;
+  line-height: 50px;
+  padding: 0 1em;
+  border-bottom: 1px solid #e0e6ef;
+  color: #21ce99;
+  text-decoration: none;
+  font-weight: bold;
+}
 #main-nav ul .current {
   box-shadow: inset 3px 0 #435779;
 }
@@ -213,6 +224,20 @@ header {
     display: inline-block;
     margin-left: 1em;
   }
+  #main-nav li:hover{
+    display: inline-block;
+    margin-left: 1em;
+    color: #21ce99;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  #main-nav li a:hover{
+    display: inline-block;
+    margin-left: 1em;
+    color: #21ce99;
+    text-decoration: none;
+    font-weight: bold;
+  }
   #main-nav ul a {
     display: inline-block;
     height: auto;
@@ -225,11 +250,15 @@ header {
   #main-nav ul a.current {
     box-shadow: none;
     background: #435779;
-    color: #FFF;
+    color: #21ce99;
+    text-decoration: none;
+    font-weight: bold;
   }
   .no-touch #main-nav ul a:hover {
     background: #435779;
-    color: #FFF;
+    color: #21ce99;
+    text-decoration: none;
+    font-weight: bold;
   }
 }
 .no-js #main-nav {
@@ -309,12 +338,12 @@ header {
   width: 100%;
   height: 60px;
   line-height: 60px;
-  background: #7dcf85;
+  background: #21ce99;
   color: #FFF;
   text-align: center;
 }
 .no-touch #cd-cart .checkout-btn:hover {
-  background: #a2dda8;
+  background: #21ce99;
 }
 #cd-cart .cd-go-to-cart {
   text-align: center;
