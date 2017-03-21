@@ -8,12 +8,12 @@ nginx -t
 service nginx restart
 mv /usr/share/nginx/html /usr/share/nginx/nginx_html
 mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.backup
-mv setup/nginx.conf /etc/nginx/nginx.conf
-mv mcs-ui/ /usr/share/nginx/html
-
-sudo service nginx reload
 
 yum install -y httpd-tools
 htpasswd -c /etc/nginx/.htpasswd admin
 
+mv mcs-ui/ /usr/share/nginx/html
 cd /usr/share/nginx/html
+mv setup/nginx.conf /etc/nginx/nginx.conf
+
+sudo service nginx reload
