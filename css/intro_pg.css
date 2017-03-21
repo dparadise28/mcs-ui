@@ -21,15 +21,15 @@ body {
   padding: 6px 4px 4px 4px;
 }
 .nav-opacity {
-	background: rgba(0, 15, 0, 0.8);
+	background: rgba(23, 25, 25, 0.8);
 }
 .nav-li-txt .nav li a {
   font-family: Cambria, Georgia, serif;
   text-transform: uppercase;
   font-weight: 400;
   letter-spacing: 2px;
-  color: #ff9700;
-  opacity: 0.8;
+  color: #21ce99;
+  opacity: 1;
   font-size: 12px;
 }
 .login {
@@ -37,7 +37,7 @@ body {
   text-transform: uppercase;
   font-weight: 400;
   letter-spacing: 2px;
-  color: #ff9700;
+  color: #21ce99;
   opacity: 0.8;
   font-size: 12px;
 }
@@ -102,7 +102,7 @@ body {
 }
 
 h2 {
-  color: rgba(227, 61, 0, .82);
+  color: rgba(33, 206, 153, 0.82);
   font-size: 200%;
   font-weight: 500;
   letter-spacing: .05em;
@@ -118,7 +118,7 @@ h2 {
   text-align: center;
   font-weight: 500;
   font-size: 400%;
-  color: rgba(227, 61, 0, .82);
+  color: rgba(33, 206, 153, 0.82);
   font-family: Cambria, Georgia, serif;
 
   letter-spacing: .05em;
