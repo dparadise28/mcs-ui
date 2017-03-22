@@ -9,6 +9,7 @@ document.body.innerHTML += `
 	<nav id="main-nav">
 		<ul>
 			<li class="hidden"><a href="#page-top"></a></li>
+			<li><a class="page-scroll" href="../index.html">Home</a></li>
 			<li><a class="page-scroll" href="#portfolio">Trending</a></li>
 			<li><a class="page-scroll" href="#team">Are You a Local Business</a></li>
 			<li><a class="page-scroll" href="#about">About</a></li>
@@ -53,8 +54,8 @@ document.body.innerHTML += `
 
 		<a href="#0" class="checkout-btn">Checkout</a>
 
-		<p class="cd-go-to-cart"><a href="#0">Go to cart page</a></p>
-	</div> <!-- cd-cart -->
+		<p class="cd-go-to-cart"><a href="cart.html">Go to cart page</a></p>
+	</div>
 	<script src="../side-shopping-cart/js/main.js"></script>
 
 
