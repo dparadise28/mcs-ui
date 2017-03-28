@@ -1,423 +1,313 @@
 <!DOCTYPE html>
-<html class="no-js">
+<html lang="en" class="no-js">
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="description" content="">
 		<meta name="author" content="">
-		<link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
-
-		<link rel="stylesheet" href="../side-shopping-cart/css/reset.css">
-		<link rel="stylesheet" href="../side-shopping-cart/css/style.css">
 
 		<title>MyCornerStore</title>
-		<script src="../side-shopping-cart/js/modernizr.js"></script>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-		<link href="../css/intro_pg.css" rel="stylesheet">
-		<link href="../css/login-modal.css" rel="stylesheet">
-		<!--<link href="css/orange_gradient_button.css" rel="stylesheet">-->
-		<!-- Latest compiled and minified JavaScript -->
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
+		<script src="../js/generic_head.js"></script>
+		<link rel="stylesheet" href="../css/cart.css">
+		<link rel="stylesheet" href="../css/store_list_style.css">
 
 	</head>
 	<body>
-	<script type="text/javascript">
-        function redirectTo(sUrl) {
-            window.location = sUrl
-        }
-	</script>
-	<header>
 
-		<a href="#"><div id="logo"><img src="../img/myCornerlogo.jpg" alt="Homepage" height="50" width="50"></div></a>
+		<!----------------------------------set navbar------------------------------------------------->
+		<!--::TODO:: set padding using dom or fix cs to move jq load to end for quicker response time-->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script src="../js/generic_navbar.js"></script>
+		<!-- jQuery -->
+		<script src="../js/cart.js"></script>
+		<script src="../side-shopping-cart/js/main.js"></script>
+		<script type="text/javascript">
+			function redirectTo(sUrl) {
+				window.location = sUrl
+			}
+		</script>
 
-		<div id="cd-hamburger-menu"><a class="cd-img-replace" href="#0">Menu</a></div>
-		<div id="cd-cart-trigger"><a class="cd-img-replace" href="#0">Cart</a></div>
-	</header>
-	<!-- Navigation -->
-	<nav id="main-nav">
-		<!--<div class="container-fluid">-->
-		<!--<div class="navbar-header">-->
-
-		<ul>
-			<li class="hidden"><a href="#page-top"></a></li>
-			<li><a class="page-scroll" href="#portfolio">Trending</a></li>
-			<li><a class="page-scroll" href="#team">Are You a Local Business</a></li>
-			<li><a class="page-scroll" href="#about">About</a></li>
-			<li><a class="page-scroll" href="#contact">Contact</a></li>
-			<li><a data-toggle="modal" href="#myModal"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-		</ul>
-		<button type="button" class="navbar-toggle login" data-toggle="collapse" data-target="#myNavbar">
-			<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
-		</button>
-
-
-		<!--</div>-->
-
-
-		<!--</div>-->
-	</nav>
-
-	<div id="cd-shadow-layer"></div>
-	<div id="cd-cart">
-		<h2>Cart</h2>
-		<ul class="cd-cart-items">
-			<li>
-				<span class="cd-qty">1x</span> Product Name
-				<div class="cd-price">$9.99</div>
-				<a href="#0" class="cd-item-remove cd-img-replace">Remove</a>
-			</li>
-
-			<li>
-				<span class="cd-qty">2x</span> Product Name
-				<div class="cd-price">$19.98</div>
-				<a href="#0" class="cd-item-remove cd-img-replace">Remove</a>
-			</li>
-
-			<li>
-				<span class="cd-qty">1x</span> Product Name
-				<div class="cd-price">$9.99</div>
-				<a href="#0" class="cd-item-remove cd-img-replace">Remove</a>
-			</li>
-		</ul> <!-- cd-cart-items -->
-
-		<div class="cd-cart-total">
-			<p>Total <span>$39.96</span></p>
-		</div> <!-- cd-cart-total -->
-
-		<a href="#0" class="checkout-btn">Checkout</a>
-
-		<p class="cd-go-to-cart"><a href="#0">Go to cart page</a></p>
-	</div> <!-- cd-cart -->
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-	<script src="../side-shopping-cart/js/main.js"></script>
-
-
-	<!-----------Login Modal--------------------->
-	<div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="lbOnoff">
-		<div class="modal-dialog modal-lg" role="document">
-			<div class="modal-content">
-				<div class="modal-header" style="padding:35px 50px;">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4><span class="glyphicon glyphicon-lock"></span> Login</h4>
+		<div class="container">
+			<div class="row store-row">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 item-block">
+					<div class="fh5co-property">
+						<div class="fh5co-property-innter"
+								 onclick="redirectTo('store.html');"
+								 style="background-image: linear-gradient(
+													rgba(8, 30, 8, 0.8),
+													rgba(0, 10, 0, 0.6)
+												), url('../img/hardware_store.jpg');
+												z-index: 1;
+												background-size: cover !important;">
+							<h2><strong>Mah bitchin store</strong></h2>
+							<br><br><br><br>
+							<div class="price-status">
+								<div class="row">
+									<div class="col-md-6 col-sm-6 col-xs-6">
+										<div class="star-ratings-css">
+										  <div class="star-ratings-css-top" style="width: 84%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+										  <div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+											<p class="ratings-count">291 ratings<p>
+										</div>
+									</div>
+									<div class="store-address col-md-6 col-sm-6 col-xs-6">
+										<p>
+											6969 abc town <br>
+											New York, NY 66666 <br>
+											<h5>Distance: 1.2 miles</h5>
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<p class="fh5co-property-specification">
+							<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true">
+								<a class="content_list_option_btn btn1" href="#">
+									<strong>Menu</strong>
+								</a>
+							</span>
+							<span class="glyphicon glyphicon-fire" aria-hidden="true">
+								<a class="content_list_option_btn btn2" href="#">
+									<strong>Featured</span>
+								</a>
+							</span>
+							<span class="glyphicon glyphicon-heart-empty" aria-hidden="true">
+								<a class="content_list_option_btn btn3" href="#">
+									<strong>Like</span>
+								</a>
+							</span>
+							<span class="glyphicon glyphicon-earphone" aria-hidden="true">
+								<a class="content_list_option_btn btn4" href="#">
+									<strong>Call</span>
+								</a>
+							</span>
+						</p>
+					</div>
 				</div>
-				<div class="modal-body" style="padding:40px 50px;">
-					<form role="form">
-						<div class="form-group">
-							<label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
-							<input type="text" class="form-control" id="usrname" placeholder="Enter email">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 item-block">
+					<div class="fh5co-property">
+						<div class="fh5co-property-innter"
+								 onclick="redirectTo('#');"
+								 style="background-image: linear-gradient(
+													rgba(8, 30, 8, 0.8),
+													rgba(0, 10, 0, 0.6)
+												), url('../img/mycornerstore.jpg');
+												z-index: 1;
+												background-size: cover !important;">
+							<h2><strong>Mah bitchin store</strong></h2>
+							<br><br><br><br>
+							<div class="price-status">
+								<div class="row">
+									<div class="col-md-6 col-sm-6 col-xs-6">
+										<div class="star-ratings-css">
+											<div class="star-ratings-css-top" style="width: 84%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+											<div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+											<p class="ratings-count">291 ratings<p>
+										</div>
+									</div>
+									<div class="store-address col-md-6 col-sm-6 col-xs-6">
+										<p>
+											6969 abc town <br>
+											New York, NY 66666 <br>
+											<h5>Distance: 1.2 miles</h5>
+										</p>
+									</div>
+								</div>
+							</div>
 						</div>
-						<div class="form-group">
-							<label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
-							<input type="text" class="form-control" id="psw" placeholder="Enter password">
-						</div>
-						<div class="checkbox">
-							<label><input type="checkbox" value="" checked>Remember me</label>
-						</div>
-						<button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Login</button>
-					</form>
+						<p class="fh5co-property-specification">
+							<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true">
+								<a class="content_list_option_btn btn1" href="#">
+									<strong>Menu</strong>
+								</a>
+							</span>
+							<span class="glyphicon glyphicon-fire" aria-hidden="true">
+								<a class="content_list_option_btn btn2" href="#">
+									<strong>Featured</span>
+								</a>
+							</span>
+							<span class="glyphicon glyphicon-heart-empty" aria-hidden="true">
+								<a class="content_list_option_btn btn3" href="#">
+									<strong>Like</span>
+								</a>
+							</span>
+							<span class="glyphicon glyphicon-earphone" aria-hidden="true">
+								<a class="content_list_option_btn btn4" href="#">
+									<strong>Call</span>
+								</a>
+							</span>
+						</p>
+					</div>
 				</div>
-				<div class="modal-footer">
-					<button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">
-					<span class="glyphicon glyphicon-remove"></span>Cancel</button>
-					<p>Not a member? <a href="#">Sign Up</a></p>
-					<p>Forgot <a href="#">Password?</a></p>
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 item-block">
+					<div class="fh5co-property">
+						<div class="fh5co-property-innter"
+								 onclick="redirectTo('#');"
+								 style="background-image: linear-gradient(
+													rgba(8, 30, 8, 0.8),
+													rgba(0, 10, 0, 0.6)
+												), url('../img/sample_store.jpg');
+												z-index: 1;
+												background-size: cover !important;">
+							<h2><strong>Mah bitchin store</strong></h2>
+							<br><br><br><br>
+							<div class="price-status">
+								<div class="row">
+									<div class="col-md-6 col-sm-6 col-xs-6">
+										<div class="star-ratings-css">
+											<div class="star-ratings-css-top" style="width: 84%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+											<div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+											<p class="ratings-count">291 ratings<p>
+										</div>
+									</div>
+									<div class="store-address col-md-6 col-sm-6 col-xs-6">
+										<p>
+											6969 abc town <br>
+											New York, NY 66666 <br>
+											<h5>Distance: 1.2 miles</h5>
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<p class="fh5co-property-specification">
+							<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true">
+								<a class="content_list_option_btn btn1" href="#">
+									<strong>Menu</strong>
+								</a>
+							</span>
+							<span class="glyphicon glyphicon-fire" aria-hidden="true">
+								<a class="content_list_option_btn btn2" href="#">
+									<strong>Featured</span>
+								</a>
+							</span>
+							<span class="glyphicon glyphicon-heart-empty" aria-hidden="true">
+								<a class="content_list_option_btn btn3" href="#">
+									<strong>Like</span>
+								</a>
+							</span>
+							<span class="glyphicon glyphicon-earphone" aria-hidden="true">
+								<a class="content_list_option_btn btn4" href="#">
+									<strong>Call</span>
+								</a>
+							</span>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 item-block">
+					<div class="fh5co-property">
+						<div class="fh5co-property-innter"
+								 onclick="redirectTo('#');"
+								 style="background-image: linear-gradient(
+													rgba(8, 30, 8, 0.8),
+													rgba(0, 10, 0, 0.6)
+												), url('../img/sample_store.jpg');
+												z-index: 1;
+												background-size: cover !important;">
+							<h2><strong>Mah bitchin store</strong></h2>
+							<br><br><br><br>
+							<div class="price-status">
+								<div class="row">
+									<div class="col-md-6 col-sm-6 col-xs-6">
+										<div class="star-ratings-css">
+											<div class="star-ratings-css-top" style="width: 84%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+											<div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+											<p class="ratings-count">291 ratings<p>
+										</div>
+									</div>
+									<div class="store-address col-md-6 col-sm-6 col-xs-6">
+										<p>
+											6969 abc town <br>
+											New York, NY 66666 <br>
+											<h5>Distance: 1.2 miles</h5>
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<p class="fh5co-property-specification">
+							<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true">
+								<a class="content_list_option_btn btn1" href="#">
+									<strong>Menu</strong>
+								</a>
+							</span>
+							<span class="glyphicon glyphicon-fire" aria-hidden="true">
+								<a class="content_list_option_btn btn2" href="#">
+									<strong>Featured</span>
+								</a>
+							</span>
+							<span class="glyphicon glyphicon-heart-empty" aria-hidden="true">
+								<a class="content_list_option_btn btn3" href="#">
+									<strong>Like</span>
+								</a>
+							</span>
+							<span class="glyphicon glyphicon-earphone" aria-hidden="true">
+								<a class="content_list_option_btn btn4" href="#">
+									<strong>Call</span>
+								</a>
+							</span>
+						</p>
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 item-block">
+					<div class="fh5co-property">
+						<div class="fh5co-property-innter"
+								 onclick="redirectTo('#');"
+								 style="background-image: linear-gradient(
+													rgba(8, 30, 8, 0.8),
+													rgba(0, 10, 0, 0.6)
+												), url('../img/bakery.jpg');
+												z-index: 1;
+												background-size: cover !important;">
+							<h2><strong>Mah bitchin store</strong></h2>
+							<br><br><br><br>
+							<div class="price-status">
+								<div class="row">
+									<div class="col-md-6 col-sm-6 col-xs-6">
+										<div class="star-ratings-css">
+											<div class="star-ratings-css-top" style="width: 84%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+											<div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+											<p class="ratings-count">291 ratings<p>
+										</div>
+									</div>
+									<div class="store-address col-md-6 col-sm-6 col-xs-6">
+										<p>
+											6969 abc town <br>
+											New York, NY 66666 <br>
+											<h5>Distance: 1.2 miles</h5>
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<p class="fh5co-property-specification">
+							<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true">
+								<a class="content_list_option_btn btn1" href="#">
+									<strong>Menu</strong>
+								</a>
+							</span>
+							<span class="glyphicon glyphicon-fire" aria-hidden="true">
+								<a class="content_list_option_btn btn2" href="#">
+									<strong>Featured</span>
+								</a>
+							</span>
+							<span class="glyphicon glyphicon-heart-empty" aria-hidden="true">
+								<a class="content_list_option_btn btn3" href="#">
+									<strong>Like</span>
+								</a>
+							</span>
+							<span class="glyphicon glyphicon-earphone" aria-hidden="true">
+								<a class="content_list_option_btn btn4" href="#">
+									<strong>Call</span>
+								</a>
+							</span>
+						</p>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-
-	<div class="container">
-		<div class="row store-row">
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 item-block">
-				<div class="fh5co-property">
-					<div class="fh5co-property-innter"
-							 onclick="redirectTo('store.html');"
-							 style="background-image: linear-gradient(
-												rgba(8, 30, 8, 0.8),
-												rgba(0, 10, 0, 0.6)
-											), url('../img/hardware_store.jpg');
-											z-index: 1;
-											background-size: cover !important;">
-						<h2><strong>Mah bitchin store</strong></h2>
-						<br><br><br><br>
-						<div class="price-status">
-							<div class="row">
-								<div class="col-md-6 col-sm-6 col-xs-6">
-									<div class="star-ratings-css">
-									  <div class="star-ratings-css-top" style="width: 84%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-									  <div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-										<p class="ratings-count">291 ratings<p>
-									</div>
-								</div>
-								<div class="store-address col-md-6 col-sm-6 col-xs-6">
-									<p>
-										6969 abc town <br>
-										New York, NY 66666 <br>
-										<h5>Distance: 1.2 miles</h5>
-									</p>
-								</div>
-							</div>
-						</div>
-					</div>
-					<p class="fh5co-property-specification">
-						<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true">
-							<a class="content_list_option_btn btn1" href="#">
-								<strong>Menu</strong>
-							</a>
-						</span>
-						<span class="glyphicon glyphicon-fire" aria-hidden="true">
-							<a class="content_list_option_btn btn2" href="#">
-								<strong>Featured</span>
-							</a>
-						</span>
-						<span class="glyphicon glyphicon-heart-empty" aria-hidden="true">
-							<a class="content_list_option_btn btn3" href="#">
-								<strong>Like</span>
-							</a>
-						</span>
-						<span class="glyphicon glyphicon-earphone" aria-hidden="true">
-							<a class="content_list_option_btn btn4" href="#">
-								<strong>Call</span>
-							</a>
-						</span>
-					</p>
-				</div>
-			</div>
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 item-block">
-				<div class="fh5co-property">
-					<div class="fh5co-property-innter"
-							 onclick="redirectTo('#');"
-							 style="background-image: linear-gradient(
-												rgba(8, 30, 8, 0.8),
-												rgba(0, 10, 0, 0.6)
-											), url('../img/mycornerstore.jpg');
-											z-index: 1;
-											background-size: cover !important;">
-						<h2><strong>Mah bitchin store</strong></h2>
-						<br><br><br><br>
-						<div class="price-status">
-							<div class="row">
-								<div class="col-md-6 col-sm-6 col-xs-6">
-									<div class="star-ratings-css">
-										<div class="star-ratings-css-top" style="width: 84%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-										<div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-										<p class="ratings-count">291 ratings<p>
-									</div>
-								</div>
-								<div class="store-address col-md-6 col-sm-6 col-xs-6">
-									<p>
-										6969 abc town <br>
-										New York, NY 66666 <br>
-										<h5>Distance: 1.2 miles</h5>
-									</p>
-								</div>
-							</div>
-						</div>
-					</div>
-					<p class="fh5co-property-specification">
-						<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true">
-							<a class="content_list_option_btn btn1" href="#">
-								<strong>Menu</strong>
-							</a>
-						</span>
-						<span class="glyphicon glyphicon-fire" aria-hidden="true">
-							<a class="content_list_option_btn btn2" href="#">
-								<strong>Featured</span>
-							</a>
-						</span>
-						<span class="glyphicon glyphicon-heart-empty" aria-hidden="true">
-							<a class="content_list_option_btn btn3" href="#">
-								<strong>Like</span>
-							</a>
-						</span>
-						<span class="glyphicon glyphicon-earphone" aria-hidden="true">
-							<a class="content_list_option_btn btn4" href="#">
-								<strong>Call</span>
-							</a>
-						</span>
-					</p>
-				</div>
-			</div>
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 item-block">
-				<div class="fh5co-property">
-					<div class="fh5co-property-innter"
-							 onclick="redirectTo('#');"
-							 style="background-image: linear-gradient(
-												rgba(8, 30, 8, 0.8),
-												rgba(0, 10, 0, 0.6)
-											), url('../img/sample_store.jpg');
-											z-index: 1;
-											background-size: cover !important;">
-						<h2><strong>Mah bitchin store</strong></h2>
-						<br><br><br><br>
-						<div class="price-status">
-							<div class="row">
-								<div class="col-md-6 col-sm-6 col-xs-6">
-									<div class="star-ratings-css">
-										<div class="star-ratings-css-top" style="width: 84%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-										<div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-										<p class="ratings-count">291 ratings<p>
-									</div>
-								</div>
-								<div class="store-address col-md-6 col-sm-6 col-xs-6">
-									<p>
-										6969 abc town <br>
-										New York, NY 66666 <br>
-										<h5>Distance: 1.2 miles</h5>
-									</p>
-								</div>
-							</div>
-						</div>
-					</div>
-					<p class="fh5co-property-specification">
-						<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true">
-							<a class="content_list_option_btn btn1" href="#">
-								<strong>Menu</strong>
-							</a>
-						</span>
-						<span class="glyphicon glyphicon-fire" aria-hidden="true">
-							<a class="content_list_option_btn btn2" href="#">
-								<strong>Featured</span>
-							</a>
-						</span>
-						<span class="glyphicon glyphicon-heart-empty" aria-hidden="true">
-							<a class="content_list_option_btn btn3" href="#">
-								<strong>Like</span>
-							</a>
-						</span>
-						<span class="glyphicon glyphicon-earphone" aria-hidden="true">
-							<a class="content_list_option_btn btn4" href="#">
-								<strong>Call</span>
-							</a>
-						</span>
-					</p>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 item-block">
-				<div class="fh5co-property">
-					<div class="fh5co-property-innter"
-							 onclick="redirectTo('#');"
-							 style="background-image: linear-gradient(
-												rgba(8, 30, 8, 0.8),
-												rgba(0, 10, 0, 0.6)
-											), url('../img/sample_store.jpg');
-											z-index: 1;
-											background-size: cover !important;">
-						<h2><strong>Mah bitchin store</strong></h2>
-						<br><br><br><br>
-						<div class="price-status">
-							<div class="row">
-								<div class="col-md-6 col-sm-6 col-xs-6">
-									<div class="star-ratings-css">
-										<div class="star-ratings-css-top" style="width: 84%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-										<div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-										<p class="ratings-count">291 ratings<p>
-									</div>
-								</div>
-								<div class="store-address col-md-6 col-sm-6 col-xs-6">
-									<p>
-										6969 abc town <br>
-										New York, NY 66666 <br>
-										<h5>Distance: 1.2 miles</h5>
-									</p>
-								</div>
-							</div>
-						</div>
-					</div>
-					<p class="fh5co-property-specification">
-						<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true">
-							<a class="content_list_option_btn btn1" href="#">
-								<strong>Menu</strong>
-							</a>
-						</span>
-						<span class="glyphicon glyphicon-fire" aria-hidden="true">
-							<a class="content_list_option_btn btn2" href="#">
-								<strong>Featured</span>
-							</a>
-						</span>
-						<span class="glyphicon glyphicon-heart-empty" aria-hidden="true">
-							<a class="content_list_option_btn btn3" href="#">
-								<strong>Like</span>
-							</a>
-						</span>
-						<span class="glyphicon glyphicon-earphone" aria-hidden="true">
-							<a class="content_list_option_btn btn4" href="#">
-								<strong>Call</span>
-							</a>
-						</span>
-					</p>
-				</div>
-			</div>
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 item-block">
-				<div class="fh5co-property">
-					<div class="fh5co-property-innter"
-							 onclick="redirectTo('#');"
-							 style="background-image: linear-gradient(
-												rgba(8, 30, 8, 0.8),
-												rgba(0, 10, 0, 0.6)
-											), url('../img/bakery.jpg');
-											z-index: 1;
-											background-size: cover !important;">
-						<h2><strong>Mah bitchin store</strong></h2>
-						<br><br><br><br>
-						<div class="price-status">
-							<div class="row">
-								<div class="col-md-6 col-sm-6 col-xs-6">
-									<div class="star-ratings-css">
-										<div class="star-ratings-css-top" style="width: 84%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-										<div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-										<p class="ratings-count">291 ratings<p>
-									</div>
-								</div>
-								<div class="store-address col-md-6 col-sm-6 col-xs-6">
-									<p>
-										6969 abc town <br>
-										New York, NY 66666 <br>
-										<h5>Distance: 1.2 miles</h5>
-									</p>
-								</div>
-							</div>
-						</div>
-					</div>
-					<p class="fh5co-property-specification">
-						<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true">
-							<a class="content_list_option_btn btn1" href="#">
-								<strong>Menu</strong>
-							</a>
-						</span>
-						<span class="glyphicon glyphicon-fire" aria-hidden="true">
-							<a class="content_list_option_btn btn2" href="#">
-								<strong>Featured</span>
-							</a>
-						</span>
-						<span class="glyphicon glyphicon-heart-empty" aria-hidden="true">
-							<a class="content_list_option_btn btn3" href="#">
-								<strong>Like</span>
-							</a>
-						</span>
-						<span class="glyphicon glyphicon-earphone" aria-hidden="true">
-							<a class="content_list_option_btn btn4" href="#">
-								<strong>Call</span>
-							</a>
-						</span>
-					</p>
-				</div>
-			</div>
-		</div>
-	</div>
-
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
-	<!-- Latest compiled and minified JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-	<!-- jQuery -->
-	<script src="../js/cart.js"></script>
-
 	</body>
 </html>
