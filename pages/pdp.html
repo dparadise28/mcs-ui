@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <!--- Product Diplay Page------->
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="../js/generic_head.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js"></script>
+    <link rel="stylesheet" href="../css/pdp.css">
+    <script src="../js/product_option_populator.js"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <style>
+      .mySlides {display:none}
+      .demo {cursor:pointer}
+    </style>
+  </head>
+
+  <body ng-app="myApp">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  	<script src="../js/generic_navbar.js"></script>
+
+    <div class="row product_container">
+      <div class="product_image_container col-xs-12 col-md-6 col-lg-6">
+        <h2>Dell XPS 13"</h2>
+
+        <img class="mySlides" src="../img/laptop1.jpg" style="width:100%">
+        <img class="mySlides" src="../img/laptop2.jpg" style="width:100%">
+        <img class="mySlides" src="../img/laptop3.jpg" style="width:100%">
+        <img class="mySlides" src="../img/laptop4.jpg" style="width:100%">
+        <img class="mySlides" src="../img/laptop5.jpg" style="width:100%">
+        <img class="mySlides" src="../img/laptop6.jpg" style="width:100%">
+        <img class="mySlides" src="../img/laptop7.jpg" style="width:100%">
+
+        <div class="w3-row-padding w3-section">
+          <div class="w3-col s4">
+            <img class="demo w3-opacity w3-hover-opacity-off" src="../img/laptop1.jpg" style="width:100%" onclick="currentDiv(1)">
+          </div>
+          <div class="w3-col s4">
+            <img class="demo w3-opacity w3-hover-opacity-off" src="../img/laptop2.jpg" style="width:100%" onclick="currentDiv(2)">
+          </div>
+          <div class="w3-col s4">
+            <img class="demo w3-opacity w3-hover-opacity-off" src="../img/laptop3.jpg" style="width:100%" onclick="currentDiv(3)">
+          </div>
+          <div class="w3-col s4">
+            <img class="demo w3-opacity w3-hover-opacity-off" src="../img/laptop4.jpg" style="width:100%" onclick="currentDiv(4)">
+          </div>
+          <div class="w3-col s4">
+            <img class="demo w3-opacity w3-hover-opacity-off" src="../img/laptop5.jpg" style="width:100%" onclick="currentDiv(5)">
+          </div>
+          <div class="w3-col s4">
+            <img class="demo w3-opacity w3-hover-opacity-off" src="../img/laptop6.jpg" style="width:100%" onclick="currentDiv(6)">
+          </div>
+          <div class="w3-col s4">
+            <img class="demo w3-opacity w3-hover-opacity-off" src="../img/laptop7.jpg" style="width:100%" onclick="currentDiv(7)">
+          </div>
+        </div>
+      </div>
+
+
+      <div class="options_container col-xs-12 col-md-6 col-lg-6" ng-controller="MyCtrl as vm">
+        <div class="row">
+
+          <div style="margin-top:10%"
+               class="col-xs-6 col-md-6 col-lg-6"
+               ng-repeat="(key, item) in vm.data">
+
+            <span>{{key}}</span>
+            <!--span>{{item.selectedOption}}</span-->
+            <select class="form-control"
+                    ng-model="item.selectedOption"
+                    ng-options="
+                      option.value
+                        for
+                      option
+                        in
+                      (item.availableOptions |
+                       optionFilter:vm.data[item.parent]:item
+                      ) track by option.id">
+            </select>
+
+          </div>
+
+        </div>
+        <!--span class="col-xs-9 col-md-9 col-lg-9">
+          <form id='myform' method='POST' action='#' class="quantity_picker">
+            <input type='button' value='-' class='qtyminus' field='quantity' />
+            <input type='text' name='quantity' value='0' class='qty' />
+            <input type='button' value='+' class='qtyplus' field='quantity' />
+          </form>
+        </span-->
+        <h2 class="col-xs-3 col-md-3 col-lg-3" id="price_display_container">
+        </h2>
+      </div>
+    </div>
+    <script src="../js/cart.js"></script>
+    <script src="../js/pdp_img_layout.js"></script>
+    <script src="../js/quantity_picker.js"></script>
+    <script src="../side-shopping-cart/js/main.js"></script>
+  </body>
+</html>

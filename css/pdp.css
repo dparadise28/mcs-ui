@@ -1,0 +1,25 @@
+.product_container {
+  max-width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+}
+#myform {
+    text-align: center;
+    padding: 5px;
+    border: 1px dotted #ccc;
+    margin: 2%;
+}
+.qty {
+    width: 20px;
+    height: 25px;
+    text-align: center;
+}
+.options_container {
+  padding-left: 100px;
+  padding-bottom: 20px;
+}
+.quantity_picker {
+     display:inline;
+     margin:0px;
+     padding:0px;
+}
