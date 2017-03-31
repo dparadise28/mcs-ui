@@ -5,9 +5,9 @@
 	<head>
 		<style>
 			img {
-				opacity: 0.7;
-				filter: alpha(opacity=50); /* For IE8 and earlier */
-			}
+						opacity: 0.7;
+						filter: alpha(opacity=50); /* For IE8 and earlier */
+					}
             .navbar {
                 margin-bottom: 0;
                 border-radius: 0;
@@ -39,245 +39,156 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>MyCornerStore</title>
 
-	<<link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
-	<link rel="shortcut icon" href="../img/favicon2.ico">
 
-	<link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src="https://www.w3schools.com/lib/w3data.js"></script>
-	<link rel="stylesheet" href="../css/style2.css">
+
+	<script src="../js/generic_head.js"></script>
+  	<script src="https://www.w3schools.com/lib/w3data.js"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
+
 
 	</head>
-	<<body>
+	<body>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="../js/generic_navbar.js"></script>
+        <!-- jQuery -->
+        <script src="../js/cart.js"></script>
+        <script src="../side-shopping-cart/js/main.js"></script>
 
-	<script type="text/javascript">
-		function redirectTo(sUrl) {
-			window.location = sUrl
-		}
-	</script>
-
-	<!-- Navigation -->
-	<nav id="mainNav" class="navbar navbar-fixed-top nav-opacity nav-li-txt">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle login" data-toggle="collapse" data-target="#myNavbar">
-					<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
-				</button>
-				<a href="../index.html"><img class="corner-store" src="../img/favicon2.ico" alt="ALT NAME"></a>
-			</div>
-
-			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse" id="myNavbar">
-				<ul class="nav navbar-nav navbar-right">
-					<li class="hidden">
-						<a href="#page-top"></a>
-					</li>
-					<li>
-						<a class="page-scroll" href="#portfolio">Trending</a>
-					</li>
-					<li>
-						<a class="page-scroll" href="#team">Are You a Local Business</a>
-					</li>
-					<li>
-						<a class="page-scroll" href="#about">About</a>
-					</li>
-					<li>
-						<a class="page-scroll" href="#contact">Contact</a>
-					</li>
-					<li class="dropdown">
-	          <a href="../pages/cart.html"> <span class="glyphicon glyphicon-shopping-cart"></span> 3 - Items</a>
-	        </li>
-					<li>
-						<a data-toggle="modal" href="#myModal"><span class="glyphicon glyphicon-log-in"></span> Login</a>
-					</li>
-				</ul>
-			</div>
-			<!-- /.navbar-collapse -->
-		</div>
-		<!-- /.container-fluid -->
-	</nav>
-
-	<!-----------Login Modal--------------------->
-	<div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="lbOnoff">
-		<div class="modal-dialog modal-lg" role="document">
-			<div class="modal-content">
-				<div class="modal-header" style="padding:35px 50px;">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4><span class="glyphicon glyphicon-lock"></span> Login</h4>
-				</div>
-				<div class="modal-body" style="padding:40px 50px;">
-					<form role="form">
-						<div class="form-group">
-							<label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
-							<input type="text" class="form-control" id="usrname" placeholder="Enter email">
-						</div>
-						<div class="form-group">
-							<label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
-							<input type="text" class="form-control" id="psw" placeholder="Enter password">
-						</div>
-						<div class="checkbox">
-							<label><input type="checkbox" value="" checked>Remember me</label>
-						</div>
-						<button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Login</button>
-					</form>
-				</div>
-				<div class="modal-footer">
-					<button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">
-					<span class="glyphicon glyphicon-remove"></span>Cancel</button>
-					<p>Not a member? <a href="#">Sign Up</a></p>
-					<p>Forgot <a href="#">Password?</a></p>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="container" >
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-			<div class="fh5co-property">
-				<div class="fh5co-property-innter"
-
-					 onclick="redirectTo('store.html');"
-					 style="background-image: linear-gradient(
-												rgba(8, 30, 8, 0.8),
-												rgba(0, 10, 0, 0.6)
-											), url('../img/hardware_store.jpg');
-											z-index: 1;
-											background-size: cover !important;">
-					<h2><strong>Mah bitchin store</strong></h2>
-						<div class="row">
-							<div class="col-md-6 col-md-offset 2">
-								<div class="star-ratings-css">
-									<div class="star-ratings-css-top" style="width: 84%">
-										<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-									<div class="star-ratings-css-bottom">
-										<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-									<p class="ratings-count">291 ratings
-									<p>
-								</div>
-							</div>
-							<div class="store-address col-md-6 col-sm-6 col-xs-6 col-md-offset-4">
-								<p>
-									6969 abc town <br>
-									New York, NY 66666 <br>
-								<h5>Distance: 1.2 miles</h5>
-								</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	</div>
-    <script>
-        var myObject = {"Products":[
-            {"ProductName":"Cucamber","Price":9.99},
-            {"ProductName":"Spinach","Price":9.99},
-            {"ProductName":"Carrots","Price":9.99},
-            {"ProductName":"Potatos","Price":9.99},
-            {"ProductName":"Broccoli","Price":9.99},
-            {"ProductName":"Tomatos","Price":9.99},
-            {"ProductName":"Cabbage","Price":9.99},
-            {"ProductName":"Lettuce","Price":9.99},
-            {"ProductName":"Asparagus","Price":9.99},
-            {"ProductName":"Kale","Price":9.99},
-            {"ProductName":"Brussel Sprouts","Price":9.99}
-        ]};
-    </script>
-
-	<div class = "w3-container">
-
-		<div class="row">
+        <script type="text/javascript">
+            function redirectTo(sUrl) {
+                window.location = sUrl
+            }
+        </script>
 
 
-
-
-
-		</div>
-		<div class="col-md-8 col-md-offset-2">
-			<iv class="row">
-                <div class="w3-bar w3-black">
-                    <button class="w3-bar-item w3-button w3-padding" onclick="openCity('Vegetables')">Vegetables</button>
-                    <button class="w3-bar-item w3-button w3-padding" onclick="openCity('Dairy')">Dairy</button>
-                    <button class="w3-bar-item w3-button w3-padding" onclick="openCity('Meats')">Meats</button>
+        <div class="container" >
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="fh5co-property">
+                        <div class="fh5co-property-innter"
+                             onclick="redirectTo('store.html');"
+                             style="background-image: linear-gradient(
+                                                    rgba(8, 30, 8, 0.8),
+                                                    rgba(0, 10, 0, 0.6)
+                                                ), url('../img/hardware_store.jpg');
+                                                z-index: 1;
+                                                background-size: cover !important;">
+                            <h2><strong>Mah bitchin store</strong></h2>
+                            <div class="row">
+                                <div class="col-md-6 col-md-offset 2">
+                                    <div class="star-ratings-css">
+                                        <div class="star-ratings-css-top" style="width: 84%">
+                                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                                        <div class="star-ratings-css-bottom">
+                                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                                        <p class="ratings-count">291 ratings
+                                        <p>
+                                    </div>
+                                </div>
+                                <div class="store-address col-md-6 col-sm-6 col-xs-6 col-md-offset-4">
+                                    <p>
+                                        6969 abc town <br>
+                                        New York, NY 66666 <br>
+                                    <h5>Distance: 1.2 miles</h5>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-			<div id="Vegetables" class="w3-container city" style="display:none">
-				 <span onclick="this.parentElement.style.display='none'"
-					   class="w3-button w3-large w3-display-topright">&times;</span>
-				<input class="w3-input w3-border w3-padding" type="text" placeholder="Search for names.." id="myInput" onkeyup="myFunction()">
-
-				<h2>Vegetables</h2>
-				<ul id="id01" class="w3-ul w3-hoverable">
-					<li w3-repeat="Products" class="w3-display-container">
-
-						<div class="w3-display-container">
-
-							<h3><b><div class= "w3-cell" id="productImage">{{ProductName}}</div></b></h3>
-							<div class = "w3-display-bottomright">${{Price}}</div>
-							<p>Description Description bla bla.</p>
-
-						</div>
-					</li>
-
-				</ul>
-			</div>
-				<div id="Dairy" class="w3-container w3-display-container city" style="display:none">
-  <span onclick="this.parentElement.style.display='none'"
-		class="w3-button w3-large w3-display-topright">&times;</span>
-					<span onclick="this.parentElement.style.display='none'"
-					class="w3-button w3-large w3-display-topright">&times;</span>
-					<h2>Dairy</h2>
-					<p>Paris is the capital of France.</p>
-			</div>
+            </div>
         </div>
-	</div>
-	<script>
-        var myElement = document.getElementById("productImage");
-        document.getElementById("ImageSource").src ="../img/products/" + myElement.innerHTML +".jpg";
-	</script>
-    <script>
-        w3DisplayData("id01", myObject);
-    </script>
-    <script>
-    function myFunction() {
-        var input, filter, ul, li, a, i;
-        input = document.getElementById("myInput");
-        filter = input.value.toUpperCase();
-        ul = document.getElementById("id01");
-        li = ul.getElementsByTagName("li");
-        for (i = 0; i < li.length; i++) {
-            if (li[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
-                li[i].style.display = "";
-            } else {
-                li[i].style.display = "none";
-            }
-        }
-    }
-</script>
+        </div>
+        <script>
+            var myObject = {"Products":[
+                {"ProductName":"Cucamber","Price":9.99},
+                {"ProductName":"Spinach","Price":9.99},
+                {"ProductName":"Carrots","Price":9.99},
+                {"ProductName":"Potatos","Price":9.99},
+                {"ProductName":"Broccoli","Price":9.99},
+                {"ProductName":"Tomatos","Price":9.99},
+                {"ProductName":"Cabbage","Price":9.99},
+                {"ProductName":"Lettuce","Price":9.99},
+                {"ProductName":"Asparagus","Price":9.99},
+                {"ProductName":"Kale","Price":9.99},
+                {"ProductName":"Brussel Sprouts","Price":9.99}
+            ]};
+        </script>
+        <div class = "w3-container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
 
-    <script>
-        function openCity(cityName) {
-            var i;
-            var x = document.getElementsByClassName("city");
-            for (i = 0; i < x.length; i++) {
-                x[i].style.display = "none";
+                    <div class="w3-bar w3-black">
+                        <button class="w3-bar-item w3-button w3-padding" onclick="openCity('Vegetables')">Vegetables</button>
+                        <button class="w3-bar-item w3-button w3-padding" onclick="openCity('Dairy')">Dairy</button>
+                        <button class="w3-bar-item w3-button w3-padding" onclick="openCity('Meats')">Meats</button>
+                    </div>
+                    <div id="Vegetables" class="w3-container city" style="display:none">
+                        <span onclick="this.parentElement.style.display='none'" class="w3-button w3-large w3-display-topright">&times;</span>
+                        <input class="w3-input w3-border w3-padding" type="text" placeholder="Search for names.." id="myInput" onkeyup="myFunction()">
+                        <h2>Vegetables</h2>
+                        <ul id="storeItems" class="w3-ul w3-hoverable">
+                            <li w3-repeat="Products" class="w3-display-container">
+                                <div class="w3-display-container">
+                                    <h3><b><div class= "w3-cell" id="productImage">{{ProductName}}</div></b></h3>
+                                    <div class = "w3-display-bottomright">${{Price}}</div>
+                                    <p>Description Description bla bla.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="Dairy" class="w3-container w3-display-container city" style="display:none">
+                        <span onclick="this.parentElement.style.display='none'" class="w3-button w3-large w3-display-topright">&times;</span>
+                        <h2>Dairy</h2>
+                        <p>Paris is the capital of France.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            var myElement = document.getElementById("productImage");
+            document.getElementById("ImageSource").src ="../img/products/" + myElement.innerHTML +".jpg";
+        </script>
+        <script>
+            w3DisplayData("storeItems", myObject);
+        </script>
+        <script>
+            function myFunction() {
+                var input, filter, ul, li, a, i;
+                input = document.getElementById("myInput");
+                filter = input.value.toUpperCase();
+                ul = document.getElementById("storeItems");
+                li = ul.getElementsByTagName("li");
+                for (i = 0; i < li.length; i++) {
+                    if (li[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
+                        li[i].style.display = "";
+                    } else {
+                        li[i].style.display = "none";
+                    }
+                }
             }
-            document.getElementById(cityName).style.display = "block";
-        }
-    </script>
-    <script>
-        function myFunction(id) {
-            var x = document.getElementById(id);
-            if (x.className.indexOf("w3-show") == -1) {
-                x.className += " w3-show";
-                x.previousElementSibling.className += " w3-red";
-            } else {
-                x.className = x.className.replace(" w3-show", "");
-                x.previousElementSibling.className =
-                    x.previousElementSibling.className.replace(" w3-red", "");
+        </script>
+        <script>
+            function openCity(cityName) {
+                var i;
+                var x = document.getElementsByClassName("city");
+                for (i = 0; i < x.length; i++) {
+                    x[i].style.display = "none";
+                }
+                document.getElementById(cityName).style.display = "block";
             }
-        }
-    </script>
-</body>
+
+            function myFunction(id) {
+                var x = document.getElementById(id);
+                if (x.className.indexOf("w3-show") == -1) {
+                    x.className += " w3-show";
+                    x.previousElementSibling.className += " w3-red";
+                } else {
+                    x.className = x.className.replace(" w3-show", "");
+                    x.previousElementSibling.className =
+                        x.previousElementSibling.className.replace(" w3-red", "");
+                }
+            }
+        </script>
+	</body>
 </html>
