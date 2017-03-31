@@ -15,7 +15,8 @@ document.body.innerHTML += `
 			<li><a class="page-scroll" href="#about">About</a></li>
 			<li><a class="page-scroll" href="#contact">Contact</a></li>
 			<li>
-				<a onclick="document.getElementById('id01').style.display='block'" style="width:auto;">
+				<a onclick="document.getElementById('id02').style.display='block'" style="width:auto;">
+				
 					<span class="glyphicon glyphicon-log-in"></span>&nbsp &nbsp Login
 				</a>
 			</li>
@@ -59,10 +60,10 @@ document.body.innerHTML += `
 	<script src="../side-shopping-cart/js/main.js"></script>
 
 
-	<div id="id01" class="login_modal">
+	<div id="id02" class="login_modal">
 	  <form class="login_modal_content login_modal_animate" action="cart.html">
 	    <div class="login_modal_imgcontainer">
-	      <span onclick="document.getElementById('id01').style.display='none'" class="login_modal_close" title="Close Modal">&times;</span>
+	      <span onclick="document.getElementById('id02').style.display='none'" class="login_modal_close" title="Close Modal">&times;</span>
 	      <h3 style="color: darkgreen;"><span class="glyphicon glyphicon-lock"></span> Login<h3>
 	    </div>
 
@@ -82,8 +83,8 @@ document.body.innerHTML += `
 	    </div>
 
 			<div class="modal-footer">
-				<button type="login_modal_button" class="btn btn-danger btn-default pull-left" data-dismiss="modal" onclick="document.getElementById('id01').style.display='none'" class="login_modal_cancelbtn">
-				<span class="glyphicon glyphicon-remove" onclick="document.getElementById('id01').style.display='none'" class="login_modal_cancelbtn"></span>Cancel</button>
+				<button type="login_modal_button" class="btn btn-danger btn-default pull-left" data-dismiss="modal" onclick="document.getElementById('id02').style.display='none'" class="login_modal_cancelbtn">
+				<span class="glyphicon glyphicon-remove" onclick="document.getElementById('id02').style.display='none'" class="login_modal_cancelbtn"></span>Cancel</button>
 				<p>Not a member? <a href="#">Sign Up</a></p>
 				<p>Forgot <a href="#">Password?</a></p>
 			</div>
