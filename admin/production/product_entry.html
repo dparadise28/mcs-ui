@@ -19,13 +19,26 @@
     <!-- Custom Theme Style -->
     <link href="../build/css/custom.min.css" rel="stylesheet">
     <style>
-      .list-complete-item {
-        transition: all .5s;
-      }
+		.list-complete-item {
+			transition: all .5s;
+		}
 
-      .list-complete-enter, .list-complete-leave-active {
-        opacity: 0;
-      }
+		.list-complete-enter, .list-complete-leave-active {
+			opacity: 0;
+		}
+		.trash {
+			color:rgb(209, 91, 71);
+		}
+		.panel-body {
+			padding:0px;
+		}
+		.list-group-item:hover, a.list-group-item:focus {
+			text-decoration: none;
+			background-color: rgb(245, 245, 245);
+		}
+		.list-group {
+			margin-bottom:0px;
+		}
     </style>
 </head>
 
@@ -171,20 +184,60 @@
 
                             <h2 class="StepTitle">Enter Your Product Variants</h2>
                             <div id="productEntry" class="row">
-                              <div class="col-lg-3 col-md-4 col-sm-6" v-for="variant in variants">
-                                <div class="container-fluid machine-contents">
-                                  <draggable v-model="variant.options">
-                                    <transition-group name="list-complete">
-                                      <div v-for="(option, index) in variant.options"
+                              <div class="col-lg-3 col-md-4 col-sm-6"
+								   v-for="(variant, v_index) in product.variants">
+								<div class="panel panel-primary">
+                                      
+
+											<div class="panel-heading">
+												<span class="glyphicon glyphicon-list"></span>{{variant.name}}
+												<div>
+													<input></input>
+													<div class="pull-right action-buttons">
+														<div class="btn-group pull-right">
+															<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+																<span class="glyphicon glyphicon-plus" style="margin-right: 0px;"></span>
+															</button>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="panel-body">
+												<ul class="list-group">
+                                  					<draggable v-model="variant.options">
+                                    					<transition-group name="list-complete">
+															<li class="list-group-item list-complete-item"
+																v-for="(option, o_index) in variant.options"
+																v-bind:key="option.option_name"
+																class="list-complete-item list-group">
+																	{{ option.option_name }}
+																<div class="pull-right action-buttons">
+																	<a v-on:click="removeOption(v_index, o_index)" class="trash">
+																		<span class="glyphicon glyphicon-trash"></span>
+																	</a>
+																</div>
+															</li>
+														</transition-group>
+												  	</draggable>
+												</ul>
+											</div>
+
+									  <!--div v-for="(option, o_index) in variant.options"
                                            v-bind:key="option.option_name"
-                                           class="list-complete-item well">
-                                        <div>
+                                           class="list-complete-item list-group"
+										   role="group">
+                                        <div class="list-group-item">
                                           {{ option.option_name }}
-                                          <button v-on:click="removeOption(variant.id, option.option_name, variants.options, index)">Remove</button>
+                                          <button class="btn-sm btn-danger pull-right" 
+										  		  v-on:click="removeOption(v_index,
+												  						   o_index)">
+											<span class="glyphicon glyphicon-remove"
+												  aria-hidden="true"></span>
+										  </button>
                                         </div>
-                                      </div>
-                                    </transition-group>
-                                  </draggable>
+                                      </div-->
+
+
                                 </div>
                               </div>
                             </div>
