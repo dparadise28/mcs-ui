@@ -39,7 +39,36 @@ fixed_sidenav = `
 					<ul class="nav side-menu">
 						<li>
 							<a>
-								<i class="fa fa-home"></i> Inventory
+								<i class="fa fa-barcode"></i> Products
+								<span class="fa fa-chevron-down"></span>
+							</a>
+							<ul class="nav child_menu">
+								<li>
+									<a href="product_entry.html">Add Product</a>
+								</li>
+								<li>
+									<a href="admin_landing_page.html">Edit Products</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+					<ul class="nav side-menu">
+						<li>
+							<a>
+								<i class="fa fa-list"></i> Inventory
+								<span class="fa fa-chevron-down"></span>
+							</a>
+							<ul class="nav child_menu">
+								<li>
+									<a href="#">Dashboards</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+					<ul class="nav side-menu">
+						<li>
+							<a>
+								<i class="fa fa-money"></i> Orders
 								<span class="fa fa-chevron-down"></span>
 							</a>
 							<ul class="nav child_menu">

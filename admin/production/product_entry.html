@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>MyCorner</title>
+    <title>MyCorner</title>
     <!-- Bootstrap -->
     <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -101,7 +101,7 @@
                                 <span class="step_no">1</span>
                                 <span class="step_descr">
                                     Step 1<br />
-                                    <small>Step 1 description</small>
+                                    <small>Start Creating a Product</small>
                                 </span>
                               </a>
                             </li>
@@ -110,7 +110,7 @@
                                 <span class="step_no">2</span>
                                 <span class="step_descr">
                                     Step 2<br />
-                                    <small>Step 2 description</small>
+                                    <small>Add Variants</small>
                                 </span>
                               </a>
                             </li>
@@ -119,7 +119,7 @@
                                 <span class="step_no">3</span>
                                 <span class="step_descr">
                                     Step 3<br />
-                                    <small>Step 3 description</small>
+                                    <small>Add Images</small>
                                 </span>
                               </a>
                             </li>
@@ -134,110 +134,111 @@
                             </li>
                           </ul>
                           <div id="step-1">
-                            <form class="form-horizontal form-label-left">
-
-                              <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">First Name <span class="required">*</span>
-                                </label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                  <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
-                                </div>
-                              </div>
-                              <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Last Name <span class="required">*</span>
-                                </label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                  <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
-                                </div>
-                              </div>
-                              <div class="form-group">
-                                <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Middle Name / Initial</label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                  <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name">
-                                </div>
-                              </div>
-                              <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Gender</label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                  <div id="gender" class="btn-group" data-toggle="buttons">
-                                    <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                      <input type="radio" name="gender" value="male"> &nbsp; Male &nbsp;
-                                    </label>
-                                    <label class="btn btn-primary" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                      <input type="radio" name="gender" value="female"> Female
-                                    </label>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Date Of Birth <span class="required">*</span>
-                                </label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                  <input id="birthday" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">
-                                </div>
-                              </div>
-
-                            </form>
+                            <br><br><br>
+                            <div class="text-center">
+                              <button class="btn btn-primary btn-sx" type="button">New Product</button>
+                              <button class="btn btn-primary btn-sx" type="button">Use Product Templates</button>
+                            </div>
 
                           </div>
                           <div id="step-2">
 
                             <h2 class="StepTitle">Enter Your Product Variants</h2>
+
                             <div id="productEntry" class="row">
-                              <div class="col-lg-3 col-md-4 col-sm-6"
-								   v-for="(variant, v_index) in product.variants">
-								<div class="panel panel-primary">
-                                      
+                              <div class="col-lg-12 col-md-12 col-sm-12">
+                                <div class="panel panel-primary">
+                                  <div class="panel-heading">
+                                    <div>
+                                      <span class="glyphicon glyphicon-list"></span>Add Variants
+                                    </div>
 
-											<div class="panel-heading">
-												<span class="glyphicon glyphicon-list"></span>{{variant.name}}
-												<div>
-													<input></input>
-													<div class="pull-right action-buttons">
-														<div class="btn-group pull-right">
-															<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-																<span class="glyphicon glyphicon-plus" style="margin-right: 0px;"></span>
-															</button>
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="panel-body">
-												<ul class="list-group">
-                                  					<draggable v-model="variant.options">
-                                    					<transition-group name="list-complete">
-															<li class="list-group-item list-complete-item"
-																v-for="(option, o_index) in variant.options"
-																v-bind:key="option.option_name"
-																class="list-complete-item list-group">
-																	{{ option.option_name }}
-																<div class="pull-right action-buttons">
-																	<a v-on:click="removeOption(v_index, o_index)" class="trash">
-																		<span class="glyphicon glyphicon-trash"></span>
-																	</a>
-																</div>
-															</li>
-														</transition-group>
-												  	</draggable>
-												</ul>
-											</div>
-
-									  <!--div v-for="(option, o_index) in variant.options"
-                                           v-bind:key="option.option_name"
-                                           class="list-complete-item list-group"
-										   role="group">
-                                        <div class="list-group-item">
-                                          {{ option.option_name }}
-                                          <button class="btn-sm btn-danger pull-right" 
-										  		  v-on:click="removeOption(v_index,
-												  						   o_index)">
-											<span class="glyphicon glyphicon-remove"
-												  aria-hidden="true"></span>
-										  </button>
+                                    <div class="input-group">
+                                        <input type="text"
+                                               v-model="product.new_variant_name"
+                                               @keyup.enter="addVariant()"
+                                               placeholder="Variant Name"
+                                               id="addVariant"
+                                               class="form-control"></input>
+                                        <div class="input-group-btn">
+                                          <button type="button"
+                                                  class="btn btn-default"
+                                                  @click="addVariant()">
+                                            <span class="glyphicon glyphicon-plus"></span>
+                                          </button>
                                         </div>
-                                      </div-->
+                                      </div>
+                                    </div>
 
+                                  <div v-if="product.variants.length > 0" class="panel-body">
+                                    <ul class="list-group">
+                                      <draggable v-model="product.variants">
+                                        <transition-group name="list-complete">
+                                          <li class="list-group-item list-complete-item"
+                                              v-for="(variant, v_index) in product.variants"
+                                              v-bind:key="variant.name"
+                                              class="list-complete-item list-group">
+                                              {{ variant.name }}
+                                            <div class="pull-right action-buttons">
+                                              <div v-on:click="removeVariant(v_index)"
+                                                   class="trash">
+                                                <span class="glyphicon glyphicon-trash"></span>
+                                              </div>
+                                            </div>
+                                          </li>
+                                        </transition-group>
+                                      </draggable>
+                                    </ul>
+                                  </div>
+                                </div>
+                              </div>
 
+                              <div class="col-lg-3 col-md-3 col-sm-3"
+                								   v-for="(variant, v_index) in product.variants">
+                								<div class="panel panel-primary">
+            											<div class="panel-heading">
+            												<div>
+                                      <span class="glyphicon glyphicon-list"></span>Add {{variant.name}}'s
+                                    </div>
+
+            												<div class="input-group">
+                                        <input type="text"
+                                               v-model="variant.new_option_name"
+                                               placeholder="Option Name"
+                                               @keyup.enter="addOption(v_index)"
+                                               id="addOption"
+                                               class="form-control"></input>
+                                        <div class="input-group-btn">
+            															<button type="button"
+                                                  class="btn btn-default"
+                                                  @click="addOption(v_index)"
+                                                  @keyup.enter="addOption(v_index)">
+            																<span class="glyphicon glyphicon-plus"></span>
+            															</button>
+                                        </div>
+            												  </div>
+            											  </div>
+
+            											<div class="panel-body">
+            												<ul class="list-group">
+                            					<draggable v-model="variant.options">
+                              					<transition-group name="list-complete">
+            															<li class="list-group-item list-complete-item"
+              																v-for="(option, o_index) in variant.options"
+              																v-bind:key="option.option_name"
+              																class="list-complete-item list-group">
+            																	{{ option.option_name }}
+            																<div class="pull-right action-buttons">
+            																	<div v-on:click="removeOption(v_index, o_index)"
+                                                 class="trash">
+            																		<span class="glyphicon glyphicon-trash"></span>
+            																	</div>
+            																</div>
+            															</li>
+            														</transition-group>
+            											  	</draggable>
+            												</ul>
+            											</div>
                                 </div>
                               </div>
                             </div>

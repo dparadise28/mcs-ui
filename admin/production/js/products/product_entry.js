@@ -3,31 +3,35 @@ var vm = new Vue({
 	name: 'mfgActivity',
 	data: {
 		product: {
+			new_variant_name: "",
 			variants: [
-				{
-					name: "color",
-					id: 1,
-					options: [
-						{option_name: "black"},
-						{option_name: "green"},
-						{option_name: "blue "}
-					]
-				}, {
-					name: "size",
-					id: 2,
-					options: [
-						{option_name: "11   "},
-						{option_name: "13   "},
-						{option_name: "15   "}
-					]
-				}
 			]
 		}
 	},
 	methods: {
+		removeVariant: function(v_index) {
+			// Remove job from GUI
+			this.product.variants.splice(v_index, 1);
+		},
 		removeOption: function(v_index, o_index) {
 			// Remove job from GUI
-			this.variants[v_index].options.splice(o_index, 1);
-		}
+			this.product.variants[v_index].options.splice(o_index, 1);
+		},
+		addVariant: function() {
+			this.product.variants.push({
+				name: this.product.new_variant_name,
+				id: this.product.variants.length+1,
+				new_option_name: "",
+				options: [
+				]
+			});
+			this.product.variants.new_variant_name = "";
+		},
+		addOption: function(v_index) {
+      this.product.variants[v_index].options.push({
+				option_name: this.product.variants[v_index].new_option_name
+			});
+			this.product.variants[v_index].new_option_name = "";
+    }
 	}
 })
