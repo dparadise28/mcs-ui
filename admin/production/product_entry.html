@@ -19,253 +19,257 @@
     <!-- Custom Theme Style -->
     <link href="../build/css/custom.min.css" rel="stylesheet">
     <style>
-		.list-complete-item {
-			transition: all .5s;
-		}
+        .list-complete-item {
+            transition: all .5s;
+        }
 
-		.list-complete-enter, .list-complete-leave-active {
-			opacity: 0;
-		}
-		.trash {
-			color:rgb(209, 91, 71);
-		}
-		.panel-body {
-			padding:0px;
-		}
-		.list-group-item:hover, a.list-group-item:focus {
-			text-decoration: none;
-			background-color: rgb(245, 245, 245);
-		}
-		.list-group {
-			margin-bottom:0px;
-		}
+        .list-complete-enter,
+        .list-complete-leave-active {
+            opacity: 0;
+        }
+
+        .trash {
+            color: rgb(209, 91, 71);
+        }
+
+        .panel-body {
+            padding: 0px;
+        }
+
+        .list-group-item:hover,
+        a.list-group-item:focus {
+            text-decoration: none;
+            background-color: rgb(245, 245, 245);
+        }
+
+        .list-group {
+            margin-bottom: 0px;
+        }
     </style>
 </head>
 
 <body class="nav-md">
-    <div class="container body">
+    <div class="container body" id="productEntry">
         <div class="main_container" id="main_content_container">
             <!-- page content -->
             <div class="right_col" role="main">
-              <div class="">
-                <div class="page-title">
-                  <div class="title_left">
-                    <h3>Product Creation</h3>
-                  </div>
-
-                  <div class="title_right">
-                    <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-                      <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search for...">
-                        <span class="input-group-btn">
-                            <button class="btn btn-default" type="button">Go!</button>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="clearfix"></div>
-
-                <div class="row">
-
-                  <div class="col-md-12 col-sm-12 col-xs-12">
-                    <div class="x_panel">
-                      <div class="x_title">
-                        <h2>Form Wizards <small>Sessions</small></h2>
-                        <ul class="nav navbar-right panel_toolbox">
-                          <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                          </li>
-                          <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                            <ul class="dropdown-menu" role="menu">
-                              <li><a href="#">Settings 1</a>
-                              </li>
-                              <li><a href="#">Settings 2</a>
-                              </li>
-                            </ul>
-                          </li>
-                          <li><a class="close-link"><i class="fa fa-close"></i></a>
-                          </li>
-                        </ul>
-                        <div class="clearfix"></div>
-                      </div>
-                      <div class="x_content">
-
-
-                        <!-- Smart Wizard -->
-                        <p>This is a basic form wizard example that inherits the colors from the selected scheme.</p>
-                        <div id="wizard" class="form_wizard wizard_horizontal">
-                          <ul class="wizard_steps">
-                            <li>
-                              <a href="#step-1">
-                                <span class="step_no">1</span>
-                                <span class="step_descr">
-                                    Step 1<br />
-                                    <small>Start Creating a Product</small>
-                                </span>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#step-2">
-                                <span class="step_no">2</span>
-                                <span class="step_descr">
-                                    Step 2<br />
-                                    <small>Add Variants</small>
-                                </span>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#step-3">
-                                <span class="step_no">3</span>
-                                <span class="step_descr">
-                                    Step 3<br />
-                                    <small>Add Images</small>
-                                </span>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#step-4">
-                                <span class="step_no">4</span>
-                                <span class="step_descr">
-                                    Step 4<br />
-                                    <small>Step 4 description</small>
-                                </span>
-                              </a>
-                            </li>
-                          </ul>
-                          <div id="step-1">
-                            <br><br><br>
-                            <div class="text-center">
-                              <button class="btn btn-primary btn-sx" type="button">New Product</button>
-                              <button class="btn btn-primary btn-sx" type="button">Use Product Templates</button>
-                            </div>
-
-                          </div>
-                          <div id="step-2">
-
-                            <h2 class="StepTitle">Enter Your Product Variants</h2>
-
-                            <div id="productEntry" class="row">
-                              <div class="col-lg-12 col-md-12 col-sm-12">
-                                <div class="panel panel-primary">
-                                  <div class="panel-heading">
-                                    <div>
-                                      <span class="glyphicon glyphicon-list"></span>Add Variants
-                                    </div>
-
-                                    <div class="input-group">
-                                        <input type="text"
-                                               v-model="product.new_variant_name"
-                                               @keyup.enter="addVariant()"
-                                               placeholder="Variant Name"
-                                               id="addVariant"
-                                               class="form-control"></input>
-                                        <div class="input-group-btn">
-                                          <button type="button"
-                                                  class="btn btn-default"
-                                                  @click="addVariant()">
-                                            <span class="glyphicon glyphicon-plus"></span>
-                                          </button>
-                                        </div>
-                                      </div>
-                                    </div>
-
-                                  <div v-if="product.variants.length > 0" class="panel-body">
-                                    <ul class="list-group">
-                                      <draggable v-model="product.variants">
-                                        <transition-group name="list-complete">
-                                          <li class="list-group-item list-complete-item"
-                                              v-for="(variant, v_index) in product.variants"
-                                              v-bind:key="variant.name"
-                                              class="list-complete-item list-group">
-                                              {{ variant.name }}
-                                            <div class="pull-right action-buttons">
-                                              <div v-on:click="removeVariant(v_index)"
-                                                   class="trash">
-                                                <span class="glyphicon glyphicon-trash"></span>
-                                              </div>
-                                            </div>
-                                          </li>
-                                        </transition-group>
-                                      </draggable>
-                                    </ul>
-                                  </div>
-                                </div>
-                              </div>
-
-                              <div class="col-lg-3 col-md-3 col-sm-3"
-                								   v-for="(variant, v_index) in product.variants">
-                								<div class="panel panel-primary">
-            											<div class="panel-heading">
-            												<div>
-                                      <span class="glyphicon glyphicon-list"></span>Add {{variant.name}}'s
-                                    </div>
-
-            												<div class="input-group">
-                                        <input type="text"
-                                               v-model="variant.new_option_name"
-                                               placeholder="Option Name"
-                                               @keyup.enter="addOption(v_index)"
-                                               id="addOption"
-                                               class="form-control"></input>
-                                        <div class="input-group-btn">
-            															<button type="button"
-                                                  class="btn btn-default"
-                                                  @click="addOption(v_index)"
-                                                  @keyup.enter="addOption(v_index)">
-            																<span class="glyphicon glyphicon-plus"></span>
-            															</button>
-                                        </div>
-            												  </div>
-            											  </div>
-
-            											<div class="panel-body">
-            												<ul class="list-group">
-                            					<draggable v-model="variant.options">
-                              					<transition-group name="list-complete">
-            															<li class="list-group-item list-complete-item"
-              																v-for="(option, o_index) in variant.options"
-              																v-bind:key="option.option_name"
-              																class="list-complete-item list-group">
-            																	{{ option.option_name }}
-            																<div class="pull-right action-buttons">
-            																	<div v-on:click="removeOption(v_index, o_index)"
-                                                 class="trash">
-            																		<span class="glyphicon glyphicon-trash"></span>
-            																	</div>
-            																</div>
-            															</li>
-            														</transition-group>
-            											  	</draggable>
-            												</ul>
-            											</div>
-                                </div>
-                              </div>
-                            </div>
-
-                          </div>
-                          <div id="step-3">
-                            <h2 class="StepTitle">Step 3 Content</h2>
-                          </div>
-                          <div id="step-4">
-                            <h2 class="StepTitle">Step 4 Content</h2>
-                          </div>
-
+                <div class="">
+                    <div class="page-title">
+                        <div class="title_left">
+                            <h3>Product Creation</h3>
                         </div>
 
-                      </div>
+                        <div class="title_right">
+                            <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Search for...">
+                                    <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">Go!</button>
+                        </span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                  </div>
+                    <div class="clearfix"></div>
+
+                    <div class="row">
+
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h2>Form Wizards <small>Sessions</small></h2>
+                                    <ul class="nav navbar-right panel_toolbox">
+                                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li><a href="#">Settings 1</a>
+                                                </li>
+                                                <li><a href="#">Settings 2</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li><a class="close-link"><i class="fa fa-close"></i></a>
+                                        </li>
+                                    </ul>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+
+
+                                    <!-- Smart Wizard -->
+                                    <p>This is a basic form wizard example that inherits the colors from the selected scheme.</p>
+                                    <div id="wizard" class="form_wizard wizard_horizontal">
+                                        <ul class="wizard_steps">
+                                            <li>
+                                                <a href="#step-1">
+                                                    <span class="step_no">1</span>
+                                                    <span class="step_descr">
+                                                        Step 1<br />
+                                                        <small>Start Creating a Product</small>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#step-2">
+                                                    <span class="step_no">2</span>
+                                                    <span class="step_descr">
+                                                        Step 2<br />
+                                                        <small>Add Variants</small>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#step-3">
+                                                    <span class="step_no">3</span>
+                                                    <span class="step_descr">
+                                                        Step 3<br />
+                                                        <small>Add Images</small>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#step-4">
+                                                    <span class="step_no">4</span>
+                                                    <span class="step_descr">
+                                                        Step 4<br />
+                                                        <small>Step 4 description</small>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <div id="step-1">
+                                            <br><br><br>
+                                            <div class="text-center">
+                                                <button class="btn btn-primary btn-sx" type="button">New Product</button>
+                                                <button class="btn btn-primary btn-sx" type="button">Use Product Templates</button>
+                                            </div>
+
+                                        </div>
+                                        <div id="step-2">
+
+                                            <h2 class="StepTitle">Enter Your Product Variants</h2>
+                                            <pre>{{ c_prod }}</pre>
+                                            <div class="row">
+                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    <div class="panel panel-primary">
+                                                        <div class="panel-heading">
+                                                            <div>
+                                                                <span class="glyphicon glyphicon-list"></span>Add Variants
+                                                            </div>
+
+                                                            <div class="input-group">
+                                                                <input type="text"
+                                                                       v-model="product.new_variant_name"
+                                                                       placeholder="Variant Name"
+                                                                       @keyup.enter="addVariant()"
+                                                                       id="addVariant"
+                                                                       class="form-control"></input>
+                                                                <div class="input-group-btn">
+                                                                    <button type="button"
+                                                                            class="btn btn-default"
+                                                                            @click="addVariant()"
+                                                                            @keyup.enter="addVariant()">
+                                                                      <span class="glyphicon glyphicon-plus"></span>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div v-if="product.variants.length > 0" class="panel-body">
+                                                            <ul class="list-group">
+                                                                <draggable v-model="product.variants">
+                                                                    <transition-group name="list-complete">
+                                                                        <li class="list-group-item list-complete-item"
+                                                                            v-for="(variant, v_index) in product.variants"
+                                                                            v-bind:key="variant.name"
+                                                                            class="list-complete-item list-group">
+                                                                            {{ variant.name }}
+                                                                            <div class="pull-right action-buttons">
+                                                                                <div v-on:click="removeVariant(v_index)" class="trash">
+                                                                                    <span class="glyphicon glyphicon-trash"></span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </li>
+                                                                    </transition-group>
+                                                                </draggable>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-3 col-md-3 col-sm-3" v-for="(variant, v_index) in product.variants">
+                                                    <div class="panel panel-primary">
+                                                        <div class="panel-heading">
+                                                            <div>
+                                                                <span class="glyphicon glyphicon-list"></span>Add {{variant.name}}'s
+                                                            </div>
+
+                                                            <div class="input-group">
+                                                                <input type="text"
+                                                                       v-model="variant.new_option_name"
+                                                                       placeholder="Option Name"
+                                                                       @keyup.enter="addOption(v_index)"
+                                                                       id="addOption"
+                                                                       class="form-control"></input>
+                                                                <div class="input-group-btn">
+                                                                    <button type="button"
+                                                                            class="btn btn-default"
+                                                                            @click="addOption(v_index)"
+                                                                            @keyup.enter="addOption(v_index)">
+                                      																<span class="glyphicon glyphicon-plus"></span>
+                                      															</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="panel-body">
+                                                            <ul class="list-group">
+                                                                <draggable v-model="variant.options">
+                                                                    <transition-group name="list-complete">
+                                                                        <li class="list-group-item list-complete-item"
+                                                                            v-for="(option, o_index) in variant.options"
+                                                                            v-bind:key="option.option_name"
+                                                                            class="list-complete-item list-group">
+                                                                            {{ option.option_name }}
+                                                                            <div class="pull-right action-buttons">
+                                                                                <div v-on:click="removeOption(v_index, o_index)" class="trash">
+                                                                                    <span class="glyphicon glyphicon-trash"></span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </li>
+                                                                    </transition-group>
+                                                                </draggable>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div id="step-3">
+                                            <h2 class="StepTitle">Step 3 Content</h2>
+                                        </div>
+                                        <div id="step-4">
+                                            <h2 class="StepTitle">Step 4 Content</h2>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
 
             </div>
             <!-- /page content -->
 
         </div>
     </div>
-  	<!--Fixed Side Navbar-->
-  	<script src="js/navbars/generic_admin_fixed_sidenav.js"></script>
+    <!--Fixed Side Navbar-->
+    <script src="js/navbars/generic_admin_fixed_sidenav.js"></script>
     <!-- jQuery -->
     <script src="../vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
