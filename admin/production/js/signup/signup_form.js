@@ -52,6 +52,15 @@ Vue.component('step-controls', {
 
     computed: {
         active: function() {
+            if (this.currentstep == 1){
+                console.log('listening');
+                document.getElementById('store_locator_map').style.visibility = "visible";
+                document.getElementById("store_locator_map").style.height = "240px";
+            } else {
+                console.log('listening');
+                document.getElementById('store_locator_map').style.visibility = "hidden";
+                document.getElementById("store_locator_map").style.height = "20px";
+            };
             return (this.step.id == this.currentstep)
         },
         firststep: function() {
@@ -75,63 +84,6 @@ Vue.component('step-controls', {
         }
     }
 });
-
-var user = {
-    email: "",
-    username: "",
-    password: "",
-    allow_next_step: false,
-    store_categories: [],
-    all_store_categories: [
-        // TODO decide on categories and start populating some sample data for
-        // later use in auto complete
-        "Food",
-        "Clothing",
-        "Technology",
-        "Entertainment",
-        "Hardware",
-        "Other"
-    ],
-    password_rules: `
-        <div class="text-left">
-            Password must have: <br>
-            * at least 1 digit<br>
-            * at least 1 special characters<br>
-            * at least 1 alphabetic character<br>
-            * no blank space<br>
-            * 8-30 characters
-        </div>`,
-};
-var store = {
-    name: "",
-    phone_number: "1-234-234-2341",
-    location: "1234 w 112 ny, NY 10011",
-    image: '',
-    hovering:false,
-    working_hours: [
-        {sunday: ""}
-    ],
-    tax_rate: ""
-    /*
-        other things to put in place:
-
-        keywords (auto filled in and add more if you like)
-            description (not required but nice to have)
-            in store
-                reserve
-                pickup
-            delivery (y/n; required yes or no but no by default; :( would love a yes by default)
-                delivery radius?
-                minimum delivery amount (money)
-                delivery fee*/
-};
-var product = {};
-var category = {
-    name: "",
-    products: []
-};
-var categories = [];
-var payment = {};
 
 var store = new Vue({
     el: '#storeCreateApp',
@@ -204,7 +156,28 @@ var store = new Vue({
         },
         removeImage: function (e) {
             this.data_models.store.image = '';
-        }
+        },
+        ////////////////////////
+        /*addNewDate: function (day) {
+            var elementIdFrom = "datepicker_from_" + day;
+            var elementIdTo = "datepicker_to_" + day;
+            this.initClocl(elementIdFrom);
+            this.initClocl(elementIdTo);
+            return {
+                day: day,
+                from: '09:00',
+                to: '17:00',
+            };
+        },*/
+        removeThisDate: function(index){
+            this.dates.splice(index, 1);
+        },
+        /*initClocl: function(id){
+            setTimeout(function(){
+                $('#'+id).clockpicker('minutes');
+            },500);
+        }*/
+        //////////////////////
     },
 
     computed: {
@@ -216,6 +189,8 @@ var store = new Vue({
 
         // store validation
         store_name_format_check: function() {return username_format_check(this.data_models.store.name);},
+        store_address_format_check: function() {return store_address_format_check(this.data_models.store);},
+        store_phone_number: function() {$("#phone_number").mask("(999) 999-9999");},
 
         allow_next_step: function(){
             // TODO fix so next button disabling works when validating if all fields are filled out properly
@@ -231,28 +206,19 @@ var store = new Vue({
 });
 
 
-// took out of computed for flexibility (maybe abstract them out to centralize all validation and pull in on page load)
-function email_format_check(store) {
-    const emailRegExp = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return emailRegExp.test(store.data_models.user.email);
+/*function addNewDate(day) {
+    var elementIdFrom = "datepicker_from_" + day;
+    var elementIdTo = "datepicker_to_" + day;
+    this.initClocl(elementIdFrom);
+    this.initClocl(elementIdTo);
+    return {
+        day: day,
+        from: '09:00',
+        to: '17:00',
+    };
 };
-function username_format_check(data) {
-    const usernameRegexp = /^[a-zA-Z0-9]+$/;
-    return usernameRegexp.test(data);
-};
-function password_format_check(store) {
-    /**
-          * (?=.*\d)         should contain at least 1 digit
-          * (?=(.*\W))       should contain at least 1 special characters
-          * (?=.*[a-zA-Z])   should contain at least 1 alphabetic character
-          * (?!.*\s)         should not contain any blank space
-          * {8,30}           8 <= pw length <= 30
-    */
-    const pwRegexp = /^(?=.*\d)(?=(.*\W))(?=.*[a-zA-Z])(?!.*\s).{8,30}$/;
-    return pwRegexp.test(store.data_models.user.password);
-};
-function categories_format_check(store) {
-    if (store.data_models.user.store_categories.length > 0) {
-      return true;
-    }; return false
-};
+function initClocl(id){
+    setTimeout(function(){
+        $('#'+id).clockpicker('minutes');
+    },500);
+};*/
