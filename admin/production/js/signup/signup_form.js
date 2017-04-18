@@ -172,6 +172,12 @@ var store = new Vue({
         removeThisDate: function(index){
             this.dates.splice(index, 1);
         },
+        pickup_offered: function() {
+            this.data_models.store.pickup.service_offered = !this.data_models.store.pickup.service_offered
+        },
+        delivery_offered: function() {
+            this.data_models.store.delivery.service_offered = !this.data_models.store.delivery.service_offered
+        },
         /*initClocl: function(id){
             setTimeout(function(){
                 $('#'+id).clockpicker('minutes');
