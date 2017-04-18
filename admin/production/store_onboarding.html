@@ -20,6 +20,9 @@
     <!-- Custom Theme Style -->
     <link href="../build/css/custom.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+    <!-- Include Quill stylesheet -->
+    <link href="https://cdn.quilljs.com/1.0.0/quill.snow.css" rel="stylesheet">
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.0/css/bootstrap-toggle.min.css" rel="stylesheet">
 </head>
 
 <body class="nav-md">
@@ -44,8 +47,8 @@
                   <div v-if="currentstep == 1">
                       <br><h1 class="text-center">Sign Up</h1><br>
                       <div class="row">
-                          <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1"></div>
-                          <div class="col-xs-8 col-sm-8 col-md-9 col-lg-9">
+                          <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+                          <div class="col-xs-10 col-sm-10 col-md-9 col-lg-9">
                               <form class="form-horizontal form-label-left">
 
                               <div class="form-group">
@@ -108,7 +111,7 @@
 
                             </form>
                           </div>
-                          <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"></div>
+                          <div class="col-xs-1 col-sm-1 col-md-2 col-lg-2"></div>
                       </div>
                   </div>
 
@@ -116,8 +119,9 @@
                       <br>
                       <h1 class="text-center">Enter Store Info</h1><br><br>
                       <div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                           <div class="col-md-12 col-sm-6 col-xs-12 input-group">
+                            <br>
                             <input class="form-control center" placeholder="Business Name" v-model="data_models.store.name">
                             <span class="bg-white input-group-addon">
                               <span v-show="!store_name_format_check" class="red">*</span>
@@ -142,31 +146,107 @@
                             <img :src="data_models.store.image" /><br><br>
                             <button @click="removeImage" v-if="data_models.store.image">Remove</button>
                           </div>
+
                         </div>
-                        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
-                            <h2 class="text-center">Enter Your Working Hours</h2>
-                            <div v-for="day_hours in data_models.store.working_hours">
-                                <div class="row">
-                                    <div class="text-right col-xs-3 col-sm-3 col-md-3 col-lg-3">{{day_hours.day}}</div>
-                                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><input type=time v-model="day_hours.from"></div>
-                                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><input type=time v-model="day_hours.from"></div>
-                                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><button type="button" name="button">Closed</button></div>
-                                </div>
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <div id="editor-container" style="height: 185px;"></div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <template id="bs-modal">
+                                  <!-- Modal -->
+                                <div class="modal fade" id="myModal"
+                                     tabindex="-1"
+                                     role="dialog"
+                                     aria-labelledby="myModalLabel"
+                                     aria-hidden="true">
+                                 <div class="modal-dialog">
+                                   <div class="modal-content">
+                                     <div class="modal-header">
+                                       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                       <h2>We're Open At These Times</h2>
+                                     </div>
+                                     <div class="modal-body">
+                                       <div v-for="day_hours in data_models.store.working_hours">
+                                           <div class="form-group dateTime">
+                                               <label class="day control-label text-center col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                                                   {{day_hours.day.substring(0, 3)}}
+                                               </label>
+                                               <div class="input-group col-lg-9 col-md-9 col-sm-10 col-xs-12">
+                                                   <input class="input-sm time form-control" type=time v-model="day_hours.from">
+                                                   <span class="input-group-addon">-</span>
+                                                   <input class="input-sm form-control" type=time v-model="day_hours.to">
+                                                   <span class="input-group-btn">
+                                                       <button class="btn btn-sm" type="button">Closed</button>
+                                                   </span>
+                                               </div>
+                                           </div>
+                                       </div>
+                                     </div>
+                                     <div class="modal-footer">
+                                       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                     </div>
+                                   </div><!-- /.modal-content -->
+                                 </div><!-- /.modal-dialog -->
+                                </div><!-- /.modal -->
+                            </template>
+                            <br>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 drop-shadow">
+                              <h2 class="text-center">Enter Your Working Hours</h2><br>
+                              <div class="dateTime" v-for="day_hours in data_models.store.working_hours">
+                                <div class="day">{{day_hours.day}}</div>
+                                <div class="time">{{day_hours.from}} - {{day_hours.to}}</div>
+                                <br>
+                              </div>
+                              <button type="button" class="viewOpen" data-toggle="modal" data-target="#myModal">
+                                Edit Hours&nbsp;&nbsp;<i class="fa fa-clock-o"></i>
+                              </button>
+                              <br>
                             </div>
+
+                            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 drop-shadow">
+                              <h2 class="text-center">Additional Information</h2><br>
+                              <label class="control-label col-md-3 col-sm-3 col-xs-12">Sales Tax</label>
+                              <div class="col-md-9 col-sm-9 col-xs-12 input-group">
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="fa fa-percent dark green" aria-hidden="true"></i></span>
+                                  <input class="form-control center"v-model="formatted_phone_number">
+                                  <span class="bg-white input-group-addon">
+                                    <span v-show="!check_phone_number" class="red">*</span>
+                                    <span v-show="check_phone_number" class="small glyphicon glyphicon-ok green"></span>
+                                  </span>
+                                </div>
+                              </div>
+
+                              <label class="control-label col-md-3 col-sm-3 col-xs-12">Phone Number</label>
+                              <div class="col-md-9 col-sm-9 col-xs-12 input-group">
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="fa fa-phone dark green" aria-hidden="true"></i></span>
+                                  <input class="form-control center"v-model="formatted_phone_number">
+                                  <span class="bg-white input-group-addon">
+                                    <span v-show="!check_phone_number" class="red">*</span>
+                                    <span v-show="check_phone_number" class="small glyphicon glyphicon-ok green"></span>
+                                  </span>
+                                </div>
+                              </div>
+
+                              <br>
+                              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                  <label>Pickup?</label>
+                                  <input type="checkbox" id="pickup" class="cbx hidden"/>
+                                  <label for="pickup" class="lbl"></label>
+                              </div>
+                              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                  <label>Delivery?</label>
+                                  <input type="checkbox" id="delivery" class="cbx hidden"/>
+                                  <label for="delivery" class="lbl"></label>
+                                   <!--data_models.store.phone_number.pickup.service_offered-->
+                              </div>
+                            </div>
+
+
                         </div>
                       </div>
-                      <!--div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-3">Phone mask</label>
-                        <div class="col-md-9 col-sm-9 col-xs-9">
-                          <input type="text" class="form-control" data-inputmask="'mask' : '(999) 999-9999'" v-model="data_models.store.phone_number">
-                          <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
-                        </div>
-                        <span class="bg-white input-group-addon">
-                          <span v-show="!username_format_check" class="red">*</span>
-                          <span v-show="username_format_check" class="glyphicon glyphicon-ok green"></span>
-                        </span>
-                      </div-->
-
 
                   </div>
 
@@ -204,6 +284,25 @@
       </div>
     </div>
 
+    <!-- Include the Quill library -->
+    <script src="https://cdn.quilljs.com/1.0.0/quill.js"></script>
+
+    <!-- Initialize Quill editor -->
+    <script>
+        var quill = new Quill('#editor-container', {
+            modules: {
+                toolbar: [
+                    [{ header: [1, 2, false] }],
+                    ['bold', 'italic', 'underline'],
+                    ['image', 'code-block']
+                ]
+            },
+            placeholder: 'Compose an epic...',
+            theme: 'snow'  // or 'bubble'
+        });
+    </script>
+
+
     <!-- jQuery -->
     <script src="../vendors/jquery/dist/jquery.min.js"></script>
     <!-- jquery.inputmask -->
@@ -229,6 +328,7 @@
     <!--maps-->
     <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
     <script src="js/maps/geo_search.js"></script>
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.0/js/bootstrap-toggle.min.js"></script>
 
     <!--product entry-->
     <!--script src="js/products/product_entry.js"></script-->

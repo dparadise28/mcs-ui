@@ -28,7 +28,7 @@ var user = {
 
 var store = {
     name: "",
-    phone_number: "1-234-234-2341",
+    phone_number: "",
     address: "",
 
     image: '',

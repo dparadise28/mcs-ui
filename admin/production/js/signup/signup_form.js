@@ -190,7 +190,7 @@ var store = new Vue({
         // store validation
         store_name_format_check: function() {return username_format_check(this.data_models.store.name);},
         store_address_format_check: function() {return store_address_format_check(this.data_models.store);},
-        store_phone_number: function() {$("#phone_number").mask("(999) 999-9999");},
+        check_phone_number: function() {return check_phone_number(this.data_models.store.phone_number);},
 
         allow_next_step: function(){
             // TODO fix so next button disabling works when validating if all fields are filled out properly
@@ -201,6 +201,24 @@ var store = new Vue({
                 }
             });
             this.allow_next_step = true;
+        },
+
+        formatted_phone_number: {
+          	get () {
+                fmatted_number = String(this.data_models.store.phone_number).replace(/\D/g,'');
+                if (fmatted_number.length > 0) {
+                    fmatted_number = '(' + fmatted_number.substring(0, 3) + ')' +
+                                     ' ' + fmatted_number.substring(3, 6) + ' -' +
+                                     ' ' + fmatted_number.substring(6, 10);
+                }
+                return fmatted_number;
+            },
+
+            set (value) {
+                if (String(value).replace(/\D/g,'').length < 11) {
+                    this.data_models.store.phone_number = String(value).replace(/\D/g,'');
+                };
+            }
         }
     }
 });
