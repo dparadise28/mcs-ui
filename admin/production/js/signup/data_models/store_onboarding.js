@@ -48,7 +48,8 @@ var store = {
     description: "",
     pickup: {
         service_offered: false,
-        minimum_time_to_pickup: 30*60,
+        minimum_time_to_pickup: 30,
+        maximum_time_to_pickup: 90,
     },
     delivery: {
         service_offered: false,

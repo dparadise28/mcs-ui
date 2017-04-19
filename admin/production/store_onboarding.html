@@ -210,10 +210,10 @@
                               <div class="col-md-9 col-sm-9 col-xs-12 input-group">
                                 <div class="input-group">
                                   <span class="input-group-addon"><i class="fa fa-percent dark green" aria-hidden="true"></i></span>
-                                  <input class="form-control center"v-model="formatted_phone_number">
+                                  <input class="form-control center" type="number" min="0" max="100" step="0.001" v-model="data_models.store.tax_rate">
                                   <span class="bg-white input-group-addon">
-                                    <span v-show="!check_phone_number" class="red">*</span>
-                                    <span v-show="check_phone_number" class="small glyphicon glyphicon-ok green"></span>
+                                    <span v-show="!(data_models.store.tax_rate > 0)" class="red">*</span>
+                                    <span v-show="data_models.store.tax_rate > 0" class="small glyphicon glyphicon-ok green"></span>
                                   </span>
                                 </div>
                               </div>
@@ -254,8 +254,12 @@
 
                           <div class="col-md-6 col-sm-6 col-xs-6">
                             <label class="control-label">Pickup May Contain Between:
-                              <span v-show="!check_phone_number" class="red">*</span>
-                              <span v-show="check_phone_number" class="small glyphicon glyphicon-ok green"></span>
+                              <span v-show="!(data_models.store.pickup.item_minimum > 0 &&
+                                              data_models.store.pickup.item_minimum <= data_models.store.pickup.item_limit)"
+                                    class="red">*</span>
+                              <span v-show="data_models.store.pickup.item_minimum > 0 &&
+                                            data_models.store.pickup.item_minimum <= data_models.store.pickup.item_limit"
+                                    class="small glyphicon glyphicon-ok green"></span>
                             </label>
                               <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-shopping-cart dark green" aria-hidden="true"></i></span>
@@ -268,14 +272,18 @@
 
                           <div class="col-md-6 col-sm-6 col-xs-6">
                             <label class="control-label">Pickup Will be Ready in:
-                              <span v-show="!check_phone_number" class="red">*</span>
-                              <span v-show="check_phone_number" class="small glyphicon glyphicon-ok green"></span>
+                              <span v-show="!(data_models.store.pickup.minimum_time_to_pickup > 0 &&
+                                              data_models.store.pickup.minimum_time_to_pickup <= data_models.store.pickup.maximum_time_to_pickup)"
+                                    class="red">*</span>
+                              <span v-show="data_models.store.pickup.minimum_time_to_pickup > 0 &&
+                                            data_models.store.pickup.minimum_time_to_pickup <= data_models.store.pickup.maximum_time_to_pickup"
+                                    class="small glyphicon glyphicon-ok green"></span>
                             </label>
                               <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-clock-o dark green" aria-hidden="true"></i></span>
-                                <input class="form-control center" type="number" min="0" v-model="data_models.store.pickup.item_minimum">
+                                <input class="form-control center" type="number" min="0" v-model="data_models.store.pickup.minimum_time_to_pickup">
                                 <span class="input-group-addon">-</span>
-                                <input class="form-control center" type="number" min="0" v-model="data_models.store.pickup.item_limit">
+                                <input class="form-control center" type="number" min="0" v-model="data_models.store.pickup.maximum_time_to_pickup">
                                 <span class="input-group-addon bg-white">mins</span>
                               </div>
                           </div>
