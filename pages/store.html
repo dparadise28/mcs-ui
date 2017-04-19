@@ -1,91 +1,194 @@
-<!doctype html>
-<html lang="en" class="no-js">
-<head>
-	<meta charset="UTF-8">
+
+<!DOCTYPE html>
+<!--suppress HtmlUnknownAttribute -->
+<html class="no-js">
+	<head>
+		<style>
+			img {
+						opacity: 0.7;
+						filter: alpha(opacity=50); /* For IE8 and earlier */
+					}
+            .navbar {
+                margin-bottom: 0;
+                border-radius: 0;
+            }
+
+            /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+            .row.content {height: 450px}
+
+            /* Set gray background color and 100% height */
+            .sidenav {
+                padding-top: 20px;
+                background-color: #f1f1f1;
+                height: 100%;
+            }
+
+            .product{
+                background-color: #f1f1f1;
+                height: 100%;
+            }
+
+            .product {
+                background: white;
+                color: orange;
+                font-family: sherif;
+            }
+        </style>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-
-	<link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,700' rel='stylesheet' type='text/css'>
-
-	<link rel="shortcut icon" href="img/favicon2.ico">
-	<link rel="stylesheet" href="../css/reset.css"> <!-- CSS reset -->
-	<link rel="stylesheet" href="../css/store_style.css"> <!-- Resource style -->
-	<script src="../js/modernizr.js"></script> <!-- Modernizr -->
-
 	<title>MyCornerStore</title>
-</head>
-<body>
-	<nav id="cd-vertical-nav">
-		<ul>
-			<li>
-				<a href="#section1" data-number="1">
-					<span class="cd-dot"></span>
-					<span class="cd-label">Intro</span>
-				</a>
-			</li>
-			<li>
-				<a href="#section2" data-number="2">
-					<span class="cd-dot"></span>
-					<span class="cd-label">About</span>
-				</a>
-			</li>
-			<li>
-				<a href="#section3" data-number="3">
-					<span class="cd-dot"></span>
-					<span class="cd-label">Features</span>
-				</a>
-			</li>
-			<li>
-				<a href="#section4" data-number="4">
-					<span class="cd-dot"></span>
-					<span class="cd-label">Portfolio</span>
-				</a>
-			</li>
-			<li>
-				<a href="#section5" data-number="5">
-					<span class="cd-dot"></span>
-					<span class="cd-label">Pricing</span>
-				</a>
-			</li>
-			<li>
-				<a href="#section6" data-number="6">
-					<span class="cd-dot"></span>
-					<span class="cd-label">Contact</span>
-				</a>
-			</li>
-		</ul>
-	</nav>
-	<a class="cd-nav-trigger cd-img-replace">Open navigation<span></span></a>
 
-	<section id="section1" class="cd-section">
-		<h1>words words words words words</h1>
-		<a href="#section2" class="cd-scroll-down cd-img-replace">scroll down</a>
-	</section><!-- cd-section -->
 
-	<section id="section2" class="cd-section">
-		<p>words words words words words</p>
-		<a href="#section3" class="cd-scroll-down cd-img-replace">scroll down</a>
-	</section><!-- cd-section -->
 
-	<section id="section3" class="cd-section">
-		<p>words words words words words</p>
-		<a href="#section4" class="cd-scroll-down cd-img-replace">scroll down</a>
-	</section><!-- cd-section -->
+	<script src="../js/generic_head.js"></script>
+  	<script src="https://www.w3schools.com/lib/w3data.js"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
 
-	<section id="section4" class="cd-section">
-		<p>words words words words words</p>
-		<a href="#section5" class="cd-scroll-down cd-img-replace">scroll down</a>
-	</section><!-- cd-section -->
 
-	<section id="section5" class="cd-section">
-		<p>words words words words words</p>
-		<a href="#section6" class="cd-scroll-down cd-img-replace">scroll down</a>
-	</section><!-- cd-section -->
+	</head>
+	<body>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="../js/generic_navbar.js"></script>
+        <!-- jQuery -->
+        <script src="../js/cart.js"></script>
+        <script src="../side-shopping-cart/js/main.js"></script>
 
-	<section id="section6" class="cd-section">
-		<p>words words words words words</p>
-	</section><!-- cd-section -->
+        <script type="text/javascript">
+            function redirectTo(sUrl) {
+                window.location = sUrl
+            }
+        </script>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script src="../js/main.js"></script> <!-- Resource jQuery -->
-</body>
+
+        <div class="container" >
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="fh5co-property">
+                        <div class="fh5co-property-innter"
+                             onclick="redirectTo('store.html');"
+                             style="background-image: linear-gradient(
+                                                    rgba(8, 30, 8, 0.8),
+                                                    rgba(0, 10, 0, 0.6)
+                                                ), url('../img/hardware_store.jpg');
+                                                z-index: 1;
+                                                background-size: cover !important;">
+                            <h2><strong>Mah bitchin store</strong></h2>
+                            <div class="row">
+                                <div class="col-md-6 col-md-offset 2">
+                                    <div class="star-ratings-css">
+                                        <div class="star-ratings-css-top" style="width: 84%">
+                                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                                        <div class="star-ratings-css-bottom">
+                                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                                        <p class="ratings-count">291 ratings
+                                        <p>
+                                    </div>
+                                </div>
+                                <div class="store-address col-md-6 col-sm-6 col-xs-6 col-md-offset-4">
+                                    <p>
+                                        6969 abc town <br>
+                                        New York, NY 66666 <br>
+                                    <h5>Distance: 1.2 miles</h5>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <script>
+            var myObject = {"Products":[
+                {"ProductName":"Cucamber","Price":9.99},
+                {"ProductName":"Spinach","Price":9.99},
+                {"ProductName":"Carrots","Price":9.99},
+                {"ProductName":"Potatos","Price":9.99},
+                {"ProductName":"Broccoli","Price":9.99},
+                {"ProductName":"Tomatos","Price":9.99},
+                {"ProductName":"Cabbage","Price":9.99},
+                {"ProductName":"Lettuce","Price":9.99},
+                {"ProductName":"Asparagus","Price":9.99},
+                {"ProductName":"Kale","Price":9.99},
+                {"ProductName":"Brussel Sprouts","Price":9.99}
+            ]};
+        </script>
+        <div class = "w3-container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+
+                    <div class="w3-bar w3-black">
+                        <button class="w3-bar-item w3-button w3-padding" onclick="openCity('Vegetables')">Vegetables</button>
+                        <button class="w3-bar-item w3-button w3-padding" onclick="openCity('Dairy')">Dairy</button>
+                        <button class="w3-bar-item w3-button w3-padding" onclick="openCity('Meats')">Meats</button>
+                    </div>
+                    <div id="Vegetables" class="w3-container city" style="display:none">
+                        <span onclick="this.parentElement.style.display='none'" class="w3-button w3-large w3-display-topright">&times;</span>
+                        <input class="w3-input w3-border w3-padding" type="text" placeholder="Search for names.." id="myInput" onkeyup="myFunction()">
+                        <h2>Vegetables</h2>
+                        <ul id="storeItems" class="w3-ul w3-hoverable">
+                            <li w3-repeat="Products" class="w3-display-container">
+                                <div class="w3-display-container">
+                                    <h3><b><div class= "w3-cell" id="productImage">{{ProductName}}</div></b></h3>
+                                    <div class = "w3-display-bottomright">${{Price}}</div>
+                                    <p>Description Description bla bla.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="Dairy" class="w3-container w3-display-container city" style="display:none">
+                        <span onclick="this.parentElement.style.display='none'" class="w3-button w3-large w3-display-topright">&times;</span>
+                        <h2>Dairy</h2>
+                        <p>Paris is the capital of France.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            var myElement = document.getElementById("productImage");
+            document.getElementById("ImageSource").src ="../img/products/" + myElement.innerHTML +".jpg";
+        </script>
+        <script>
+            w3DisplayData("storeItems", myObject);
+        </script>
+        <script>
+            function myFunction() {
+                var input, filter, ul, li, a, i;
+                input = document.getElementById("myInput");
+                filter = input.value.toUpperCase();
+                ul = document.getElementById("storeItems");
+                li = ul.getElementsByTagName("li");
+                for (i = 0; i < li.length; i++) {
+                    if (li[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
+                        li[i].style.display = "";
+                    } else {
+                        li[i].style.display = "none";
+                    }
+                }
+            }
+        </script>
+        <script>
+            function openCity(cityName) {
+                var i;
+                var x = document.getElementsByClassName("city");
+                for (i = 0; i < x.length; i++) {
+                    x[i].style.display = "none";
+                }
+                document.getElementById(cityName).style.display = "block";
+            }
+
+            function myFunction(id) {
+                var x = document.getElementById(id);
+                if (x.className.indexOf("w3-show") == -1) {
+                    x.className += " w3-show";
+                    x.previousElementSibling.className += " w3-red";
+                } else {
+                    x.className = x.className.replace(" w3-show", "");
+                    x.previousElementSibling.className =
+                        x.previousElementSibling.className.replace(" w3-red", "");
+                }
+            }
+        </script>
+	</body>
 </html>
