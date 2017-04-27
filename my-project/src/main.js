@@ -8,6 +8,7 @@ import { sync } from 'vuex-router-sync'
 
 import BootstrapVue from 'bootstrap-vue';
 Vue.component('cart-page', require('./components/CartPage.vue'));
+Vue.component('log-in', require('./components/LogInModal/Login.vue'));
 
 sync(store, router)
 
