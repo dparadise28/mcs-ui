@@ -15,6 +15,7 @@
     <!-- Font Awesome -->
     <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="css/onboarding/onboarding_login_panel.css" rel="stylesheet">
+    <link href="css/onboarding/category_creation.css" rel="stylesheet">
     <link href="css/onboarding/store_image.css" rel="stylesheet">
     <link href="css/onboarding/geo_map.css" rel="stylesheet">
     <!-- Custom Theme Style -->
@@ -365,12 +366,86 @@
 
                   <div v-if="currentstep == 3">
                       <h1 class="text-center">Add Categories</h1>
-                      <p>Content here 3</p>
+                      <br><br>
+
+                      <div class="col-lg-12 col-md-12 col-sm-12">
+                          <div class="panel panel-default" style="box-shadow: 6px 6px 5px grey;">
+                              <div class="panel-heading categories_header">
+                                  <div style="color: grey;">
+                                      <span class="glyphicon glyphicon-list"></span>&nbsp;Add Categories
+                                  </div>
+
+                                  <div class="input-group">
+                                      <input type="text"
+                                             v-model="new_category_name"
+                                             placeholder="Category Name"
+                                             @keyup.enter="addCategory()"
+                                             id="addCategory"
+                                             class="form-control"></input>
+                                      <div class="input-group-btn">
+                                          <button type="button"
+                                                  class="btn btn-default"
+                                                  @click="addCategory()"
+                                                  @keyup.enter="addCategory()">
+                                            <span class="glyphicon glyphicon-plus"></span>
+                                          </button>
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <div v-if="data_models.categories.length > 0" class="panel-body">
+                                  <ul class="list-group">
+                                      <draggable v-model="data_models.categories">
+                                          <transition-group name="list-complete">
+                                              <li class="list-group-item list-complete-item"
+                                                  v-for="(category, c_index) in data_models.categories"
+                                                  v-bind:key="category.name"
+                                                  class="list-complete-item list-group">
+                                                  <input type="text"
+                                                         v-if="category.edit"
+                                                         v-model="category.new_c_name"
+                                                         placeholder="Category Name"
+                                                         @keyup.enter="updateCategory(c_index)"
+                                                         id="updateCategory"
+                                                         class="form-control"></input>
+                                                  <template v-if="!category.edit">
+                                                      {{ category.name }}
+                                                      <div class="pull-right action-buttons">
+                                                          <div v-on:click="prepCategoryUpdateState(c_index)"
+                                                               class="edit inline">
+                                                              <span class="glyphicon glyphicon-edit"></span>
+                                                          </div>
+                                                          <div v-bind:key="category.showNewPostModal"
+                                                               @click="category.showNewPostModal = true; current_category = c_index"
+                                                               class="open_items inline">
+                                                              <span class="glyphicon glyphicon-list"></span>
+                                                          </div>
+                                                          <!-- use the modal component, pass in the prop -->
+                                                          <modal v-if="category.showNewPostModal"
+                                                                 @close="category.showNewPostModal = false">
+                                                            <!--
+                                                              you can use custom content here to overwrite
+                                                              default content
+                                                            -->
+                                                            <h3 slot="header">custom header</h3>
+                                                          </modal>
+                                                          <div v-on:click="removeCategory(c_index)" class="trash inline">
+                                                              <span class="glyphicon glyphicon-trash"></span>
+                                                          </div>
+                                                      </div>
+                                                  </template>
+                                              </li>
+                                          </transition-group>
+                                      </draggable>
+                                  </ul>
+                              </div>
+                          </div>
+                      </div>
+
                   </div>
 
                   <div v-if="currentstep == 4">
                       <h1 class="text-center">Make Money!</h1>
-                      <p>Content here 4</p>
                   </div>
 
                   <div v-show="currentstep==1" class="col-xs-10 col-sm-10 col-md-10 col-lg-10
@@ -382,6 +457,63 @@
                     <div id="store_locator_map"></div>
                     <br>
                   </div>
+
+                  <div style="display: table; margin: 0 auto;" v-if="currentstep == 4">
+                    <br><br>
+                    <h2>Accepted Forms Of Payment<h2>
+                    <br>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        <label>CC</label>
+                        <input type="checkbox" id="cc_accepted" class="cbx hidden"
+                               v-on:click="data_models.payment.cc.accepted = !data_models.payment.cc.accepted"/>
+                        <label for="cc_accepted" class="lbl"></label>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        <label>Cash</label>
+                        <input type="checkbox" id="cash_accepted" class="cbx hidden"
+                               v-on:click="data_models.payment.cash.accepted = !data_models.payment.cash.accepted"/>
+                        <label for="cash_accepted" class="lbl"></label>
+                    </div>
+                    <br><br>
+                  </div>
+                  <form v-if="currentstep == 4 && data_models.payment.cc.accepted" style="display: table; margin: 0 auto;">
+                    <div class="group">
+                      <label class="stripe_label">
+                        <span>Name</span>
+                        <input name="cardholder-name" class="field" placeholder="Jane Doe" />
+                      </label>
+                      <label class="stripe_label">
+                        <span>Phone</span>
+                        <input class="field" placeholder="(123) 456-7890" type="tel" />
+                      </label>
+                    </div>
+                    <div class="group">
+                      <label class="stripe_label">
+                        <span>Card</span>
+                        <div id="card-element" class="field"></div>
+                      </label>
+                    </div>
+                    <div class="outcome">
+                      <div class="error"></div>
+                      <div class="success">
+                        Success! Your Stripe token is <span class="token"></span>
+                      </div>
+                    </div>
+                  </form>
+                  <div v-if="currentstep == 4 && data_models.payment.cash.accepted" style="display: table; margin: 0 auto;">
+                    <label class="control-label">Cash orders must be at least:
+                      <span v-show="!data_models.payment.cash.minimum_order_amount" class="red">*</span>
+                      <span v-show="data_models.payment.cash.minimum_order_amount" class="small glyphicon glyphicon-ok green"></span>
+                    </label>
+                      <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-dollar dark green" aria-hidden="true"></i></span>
+                        <input class="form-control center" type="number" min="0" v-model="data_models.payment.cash.minimum_order_amount">
+                        <span class="input-group-addon bg-white">.00</span>
+                      </div>
+                  </div>
+
+
+
                   <step-controls
                       v-for="step in steps"
                       :step="step"
@@ -415,6 +547,8 @@
         });
     </script>
 
+    <!--stripe-->
+    <script src="https://js.stripe.com/v3/"></script>
 
     <!-- jQuery -->
     <script src="../vendors/jquery/dist/jquery.min.js"></script>

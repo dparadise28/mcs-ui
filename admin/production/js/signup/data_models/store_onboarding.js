@@ -61,10 +61,117 @@ var store = {
 };
 
 
-var product = {};
-var category = {
-    name: "",
-    products: []
+var product = {
+    title: "",
+    images: [], // leaving at top level for now (which means variants cant have imgs)
+    category: "", // ? just one or list of cats it falls in (tempted to say list)
+    keywords: [],
+    description: "",
+    dislplay_price: "", // different for variants but top level for product list view
+    rating: {
+        // not there yet, just throwing it in the code for not to not forget it in the models
+        reviews: [],
+        total_reviews: 0,
+        review_percent: null,
+    },
+    variants: [],
+    variant_product: [],
+		new_variant_name: "",
 };
-var categories = [];
-var payment = {};
+var sample_suggested_products = [{
+    title: "sample prod 1",
+    images: ['http://placehold.it/800x400', 'http://placehold.it/800x400', 'http://placehold.it/800x400'], // leaving at top level for now (which means variants cant have imgs)
+    category: "", // ? just one or list of cats it falls in (tempted to say list)
+    keywords: [],
+    add_to_category: false,
+    description: "sample product description for sample product 1 ...",
+    dislplay_price: "$xx.xx", // different for variants but top level for product list view
+}, {
+    title: "sample prod 2",
+    images: ['http://placehold.it/800x400', 'http://placehold.it/800x400', 'http://placehold.it/800x400'], // leaving at top level for now (which means variants cant have imgs)
+    category: "", // ? just one or list of cats it falls in (tempted to say list)
+    keywords: [],
+    add_to_category: false,
+    description: "sample product description for sample product 2 ...",
+    dislplay_price: "$xx.xx", // different for variants but top level for product list view
+}, {
+    title: "sample prod 3",
+    images: ['http://placehold.it/800x400', 'http://placehold.it/800x400', 'http://placehold.it/800x400'], // leaving at top level for now (which means variants cant have imgs)
+    category: "", // ? just one or list of cats it falls in (tempted to say list)
+    keywords: [],
+    add_to_category: false,
+    description: "sample product description for sample product 3 ...",
+    dislplay_price: "$xx.xx", // different for variants but top level for product list view
+},]
+var category = {
+    // flat categories for now (ie no more then one level; not sure if this will change)
+    products: [], // keep this here for orering
+};
+var categories = []; //container for all categories
+var products = [];   // container for all prods
+
+
+var payment = {
+    cash: {
+        accepted: false,
+        // not sure if we want to ask for a min amount required but this is fine for now
+    },
+    cc: {
+        accepted: false,
+        cc_number: null,
+        cc_exp: null,
+        ccv: null,
+    }
+};
+
+
+var stripe = Stripe('pk_test_6pRNASCoBOKtIshFeQd4XMUh');
+var elements = stripe.elements();
+
+var card = elements.create('card', {
+  style: {
+    base: {
+      iconColor: '#666EE8',
+      color: '#31325F',
+      lineHeight: '40px',
+      fontWeight: 300,
+      fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+      fontSize: '15px',
+
+      '::placeholder': {
+        color: '#CFD7E0',
+      },
+    },
+  }
+});
+card.mount('#card-element');
+
+function setOutcome(result) {
+  var successElement = document.querySelector('.success');
+  var errorElement = document.querySelector('.error');
+  successElement.classList.remove('visible');
+  errorElement.classList.remove('visible');
+
+  if (result.token) {
+    // Use the token to create a charge or a customer
+    // https://stripe.com/docs/charges
+    successElement.querySelector('.token').textContent = result.token.id;
+    successElement.classList.add('visible');
+  } else if (result.error) {
+    errorElement.textContent = result.error.message;
+    errorElement.classList.add('visible');
+  }
+}
+
+card.on('change', function(event) {
+  setOutcome(event);
+});
+
+document.querySelector('form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  var form = document.querySelector('form');
+  var extraDetails = {
+    name: form.querySelector('input[name=cardholder-name]').value,
+  };
+  stripe.createToken(card, extraDetails).then(setOutcome);
+});
