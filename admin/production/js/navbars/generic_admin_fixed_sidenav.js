@@ -1,11 +1,12 @@
 fixed_sidenav = `
 	<div class="col-md-3 left_col menu_fixed">
 		<div class="left_col scroll-view">
-			<div class="navbar nav_title" style="border: 0;">
-				<a href="index.html" class="site_title">
+			<br>
+			<!--div class="navbar" style="border: 0;">
+				<a href="index.html" class="site_title" style="background: rgb(10, 27, 14);">
 					<img src="images/myCornerlogo.jpg" style="width: 40%; height: 70%;">
 				</a>
-			</div>
+			</div-->
 			<div class="clearfix"></div>
 			<!-- menu profile quick info -->
 			<div class="profile clearfix">
@@ -18,7 +19,7 @@ fixed_sidenav = `
 				</div>
 			</div>
 			<!-- /menu profile quick info -->
-			<br />
+			<br /> <br />
 			<!-- sidebar menu -->
 			<div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
 				<div class="menu_section">
@@ -31,7 +32,7 @@ fixed_sidenav = `
 							</a>
 							<ul class="nav child_menu">
 								<li>
-									<a href="admin_landing_page.html">Dashboards</a>
+									<a href="dashboards.html">Dashboards</a>
 								</li>
 							</ul>
 						</li>
@@ -39,15 +40,18 @@ fixed_sidenav = `
 					<ul class="nav side-menu">
 						<li>
 							<a>
-								<i class="fa fa-barcode"></i> Products
+								<i class="fa fa-barcode"></i> Store
 								<span class="fa fa-chevron-down"></span>
 							</a>
 							<ul class="nav child_menu">
 								<li>
-									<a href="product_entry.html">Add Product</a>
+									<a href="store_info.html">Store Info</a>
 								</li>
 								<li>
-									<a href="admin_landing_page.html">Edit Products</a>
+									<a href="user_info.html">User Info</a>
+								</li>
+								<li>
+									<a href="user_groups.html">User Groups</a>
 								</li>
 							</ul>
 						</li>
@@ -55,12 +59,18 @@ fixed_sidenav = `
 					<ul class="nav side-menu">
 						<li>
 							<a>
-								<i class="fa fa-list"></i> Inventory
+								<i class="fa fa-list"></i> Products
 								<span class="fa fa-chevron-down"></span>
 							</a>
 							<ul class="nav child_menu">
 								<li>
-									<a href="#">Dashboards</a>
+									<a href="categories.html">Categories</a>
+								</li>
+								<li>
+									<a href="create_product.html">Create</a>
+								</li>
+								<li>
+									<a href="update_product.html">Update</a>
 								</li>
 							</ul>
 						</li>
@@ -73,28 +83,28 @@ fixed_sidenav = `
 							</a>
 							<ul class="nav child_menu">
 								<li>
-									<a href="#">Dashboards</a>
+									<a href="order_history.html">Order History</a>
+								</li>
+								<li>
+									<a href="current_orders.html">Current Orders</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+					<ul class="nav side-menu">
+						<li>
+							<a>
+								<i class="fa fa-credit-card"></i> Payment
+								<span class="fa fa-chevron-down"></span>
+							</a>
+							<ul class="nav child_menu">
+								<li>
+									<a href="payment.html">Payment Info</a>
 								</li>
 							</ul>
 						</li>
 					</ul>
 				</div>
-			</div>
-			<!-- /sidebar menu -->
-			<!-- /menu footer buttons -->
-			<div class="sidebar-footer hidden-small">
-				<a data-toggle="tooltip" data-placement="top" title="Settings">
-					<span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-				</a>
-				<a data-toggle="tooltip" data-placement="top" title="FullScreen">
-					<span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
-				</a>
-				<a data-toggle="tooltip" data-placement="top" title="Lock">
-					<span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
-				</a>
-				<a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
-					<span class="glyphicon glyphicon-off" aria-hidden="true"></span>
-				</a>
 			</div>
 			<!-- /menu footer buttons -->
 		</div>

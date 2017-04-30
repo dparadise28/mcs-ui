@@ -253,7 +253,7 @@
 
                           <h2 class="text-center">Pickup</h2><br>
 
-                          <div class="col-md-6 col-sm-6 col-xs-6">
+                          <div class="col-md-6 col-sm-6 col-xs-12">
                             <label class="control-label">Pickup May Contain Between:
                               <span v-show="!(data_models.store.pickup.item_minimum > 0 &&
                                               data_models.store.pickup.item_minimum <= data_models.store.pickup.item_limit)"
@@ -271,7 +271,7 @@
                               </div>
                           </div>
 
-                          <div class="col-md-6 col-sm-6 col-xs-6">
+                          <div class="col-md-6 col-sm-6 col-xs-12">
                             <label class="control-label">Pickup Will be Ready in:
                               <span v-show="!(data_models.store.pickup.minimum_time_to_pickup > 0 &&
                                               data_models.store.pickup.minimum_time_to_pickup <= data_models.store.pickup.maximum_time_to_pickup)"
@@ -296,7 +296,7 @@
 
                             <h2 class="text-center">Delivery</h2><br>
 
-                            <div class="col-md-6 col-sm-6 col-xs-6">
+                            <div class="col-md-6 col-sm-6 col-xs-12">
                               <label class="control-label">Delivery may contain Between:
                                 <span v-show="!check_phone_number" class="red">*</span>
                                 <span v-show="check_phone_number" class="small glyphicon glyphicon-ok green"></span>
@@ -310,7 +310,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-6 col-sm-6 col-xs-6">
+                            <div class="col-md-6 col-sm-6 col-xs-12">
                               <label class="control-label">Delivery will be ready in:
                                 <span v-show="!check_phone_number" class="red">*</span>
                                 <span v-show="check_phone_number" class="small glyphicon glyphicon-ok green"></span>
@@ -476,7 +476,7 @@
                     </div>
                     <br><br>
                   </div>
-                  <form v-if="currentstep == 4 && data_models.payment.cc.accepted" style="display: table; margin: 0 auto;" class="stripe_form">
+                  <form v-show="currentstep == 4 && data_models.payment.cc.accepted" style="display: table; margin: 0 auto;" class="stripe_form">
                     <div class="group">
                       <label class="stripe_label">
                         <span>Name</span>
@@ -571,6 +571,7 @@
     <script src="js/signup/field_validation/store_onboarding.js"></script>
     <script src="js/signup/data_models/store_onboarding.js"></script> <!--need to split out but ok for now-->
     <script src="js/signup/signup_form.js"></script> <!--same here with split but ok for now-->
+    <script src="js/signup/stripe.js"></script> <!--same here with split but ok for now-->
 
     <!--maps-->
     <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>

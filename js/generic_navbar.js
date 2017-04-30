@@ -11,12 +11,12 @@ document.body.innerHTML += `
 			<li class="hidden"><a href="#page-top"></a></li>
 			<li><a class="page-scroll" href="../index.html">Home</a></li>
 			<li><a class="page-scroll" href="#portfolio">Trending</a></li>
-			<li><a class="page-scroll" href="#team">Are You a Local Business</a></li>
+			<li><a class="page-scroll" href="../admin/production/store_onboarding.html">Are You a Local Business</a></li>
 			<li><a class="page-scroll" href="#about">About</a></li>
 			<li><a class="page-scroll" href="#contact">Contact</a></li>
 			<li>
 				<a onclick="document.getElementById('id02').style.display='block'" style="width:auto;">
-				
+
 					<span class="glyphicon glyphicon-log-in"></span>&nbsp &nbsp Login
 				</a>
 			</li>
