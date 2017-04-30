@@ -85,9 +85,19 @@
 }
 
 
+.fh5co-property {
+  	box-shadow: rgba(0, 0, 0, 0.498039) 4px 8px 25px -14px;
+  	border-top: 1px solid rgb(240, 240, 240);
+  	background: rgb(247, 247, 247);
+  	padding: 5px 30px;
+  	font-size: 13px;
+  	margin: 10px 10px 10px 10px;
+}
 
-form {
-  width: 480px;
+
+
+.stripe_form {
+  width: 60%;
   margin: 20px auto;
 }
 

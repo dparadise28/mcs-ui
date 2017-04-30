@@ -169,8 +169,10 @@ Vue.component('modal', {
                   </button>
                   <br><br>
 
-                  <div v-for="(product, p_index) in sample_suggested_products">
-                    <div class="row">
+                  <div v-for="(product, p_index) in sample_suggested_products"
+                       class="col-lg-11 col-md-11 col-sm-11 col-xs-11
+                              col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1
+                              fh5co-property">
                       <div class="col-lg-4 col-md-4 col-sm-4 col-ms-4 product_image">
                         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                           <!-- Indicators -->
@@ -210,8 +212,6 @@ Vue.component('modal', {
                             <label :for="p_index" class="lbl"></label>
                         </div>
                       </div>
-                    </div>
-                    <br><br>
                   </div>
                 </div>
 
@@ -219,8 +219,10 @@ Vue.component('modal', {
                 <div style="height: 95%; overflow-y: scroll; border-style: outset;"
                      class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                   <h2>Products</h2><br><br>
-                  <div v-for="(product, p_index) in temp_category_prods">
-                    <div class="row">
+                  <div v-for="(product, p_index) in temp_category_prods"
+                       class="col-lg-11 col-md-11 col-sm-11 col-xs-11
+                              col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1
+                              fh5co-property">
                       <div class="col-lg-4 col-md-4 col-sm-4 product_image">
                         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                           <!-- Indicators -->
@@ -258,8 +260,6 @@ Vue.component('modal', {
                             <label :for="p_index" class="lbl"></label>
                         </div>
                       </div>
-                    </div>
-                    <br><br>
                   </div>
                 </div>
 

@@ -29,9 +29,9 @@
 <body class="nav-md">
     <div class="container">
       <div class="row">
-        <br><br><br><br>
-        <div class="col-xs-1 col-sm-1 col-md-2 col-lg-2"></div>
-        <div class="col-xs-10 col-sm-10 col-md-8 col-lg-8">
+        <br><br>
+        <div class="col-md-2 col-lg-2"></div>
+        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
           <div class="x_panel">
             <div class="x_title">
               <h2>Welcome! <small>List Your Business in 4 Simple Steps!</small></h2>
@@ -476,7 +476,7 @@
                     </div>
                     <br><br>
                   </div>
-                  <form v-if="currentstep == 4 && data_models.payment.cc.accepted" style="display: table; margin: 0 auto;">
+                  <form v-if="currentstep == 4 && data_models.payment.cc.accepted" style="display: table; margin: 0 auto;" class="stripe_form">
                     <div class="group">
                       <label class="stripe_label">
                         <span>Name</span>
@@ -525,7 +525,7 @@
             </div>
           </div>
         </div>
-        <div class="col-xs-1 col-sm-1 col-md-2 col-lg-2"></div>
+        <div class="col-md-2 col-lg-2"></div>
       </div>
     </div>
 
