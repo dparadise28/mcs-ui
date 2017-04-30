@@ -7,8 +7,11 @@ import store from './store/index'
 import { sync } from 'vuex-router-sync'
 
 import BootstrapVue from 'bootstrap-vue';
+Vue.component('header-bar', require('./components/HeaderBar.vue'));
+Vue.component('log-in', require('./components/LogInModal/LogIn.vue'));
 Vue.component('cart-page', require('./components/CartPage.vue'));
-Vue.component('log-in', require('./components/LogInModal/Login.vue'));
+Vue.component('nav-bar', require('./components/NavBar.vue'));
+
 
 sync(store, router)
 
