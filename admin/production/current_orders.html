@@ -18,6 +18,13 @@
     <link href="../vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" rel="stylesheet" />
     <!-- Custom Theme Style -->
     <link href="../build/css/custom.min.css" rel="stylesheet">
+    <link href="css/onboarding/store_image.css" rel="stylesheet">
+    <link href="css/onboarding/onboarding_login_panel.css" rel="stylesheet">
+    <link href="css/onboarding/category_creation.css" rel="stylesheet">
+    <link href="css/onboarding/store_image.css" rel="stylesheet">
+    <!-- Include Quill stylesheet -->
+    <link href="https://cdn.quilljs.com/1.0.0/quill.snow.css" rel="stylesheet">
+
 </head>
 
 <body class="nav-md">
@@ -25,6 +32,26 @@
         <div class="main_container" id="main_content_container">
             <!-- page content -->
             <div class="right_col" role="main">
+              <div class="container">
+                <div class="row">
+                  <br><br>
+                  <div class="col-md-1 col-lg-1"></div>
+                  <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
+                    <div class="x_panel">
+                      <div class="x_title">
+                        <h2>Current Orders</h2>
+                        <div class="clearfix"></div>
+                      </div>
+                      <div class="x_content">
+                        <br />
+                        <div id="storeInfo">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-1 col-lg-1"></div>
+                </div>
+              </div>
 
 
             </div>
@@ -44,6 +71,14 @@
   <script src="../vendors/nprogress/nprogress.js"></script>
   <!-- jQuery custom content scroller -->
   <script src="../vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+
+  <!-- Vue Js -->
+  <script src="https://unpkg.com/vue"></script>
+  <!--store info-->
+  <script src="js/signup/field_validation/store_onboarding.js"></script>
+  <script src="js/signup/data_models/store_onboarding.js"></script> <!--need to split out but ok for now-->
+  <script src="js/store/store_info.js"></script> <!--same here with split but ok for now-->
+
 
   <!-- Custom Theme Scripts -->
   <script src="../build/js/custom.min.js"></script>
