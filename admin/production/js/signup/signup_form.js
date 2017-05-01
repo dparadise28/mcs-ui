@@ -45,7 +45,7 @@ Vue.component('step-controls', {
         <div class="step-wrapper" :class="{ 'active': active }">
             <button class="btn btn-back-forth" @click="lastStep()" :disabled="firststep">Back</button>
             <button class="btn btn-back-forth" @click="nextStep()" :disabled="laststep || !nextstep">Next</button>
-            <button class="btn btn-back-forth" v-if="laststep">Submit</button>
+            <a class="btn btn-back-forth" href="dashboards.html" v-if="laststep">Submit</a>
         </div>`,
 
     props: ['step', 'stepcount', 'currentstep', 'allow_next_step'],
