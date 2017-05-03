@@ -1,6 +1,7 @@
 <template>
 
   <div class="cart">
+    <h1>Cart</h1>
     <p v-show="!products.length"><i>Please add some products to cart.</i></p>
     <div v-show="products.length > 0">
       <ul class ="cd-cart-items" v-for="p in products">
@@ -45,5 +46,6 @@
   }
 </script>
 
-<style>
+<style src="./side-shopping-cart/css/style.css">
+
 </style>

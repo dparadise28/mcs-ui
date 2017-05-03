@@ -7,7 +7,7 @@
     <div id="cd-shadow-layer"></div>
 
     <div id="cd-cart">
-      <h1>Cart</h1>
+
       <cart-page></cart-page>
     </div> <!-- cd-cart -->
 
@@ -17,9 +17,11 @@
 
 
 <script>
-  import CartPage from "@/components/CartPage"
-  import NavBar from "@/components/NavBar"
   import HeaderBar from "@/components/HeaderBar"
+  import NavBar from "@/components/NavBar"
+  import CartPage from "@/components/CartPage"
+
+
   export default {
     name: 'app',
     components: {
@@ -29,8 +31,7 @@
     }
 }
 </script>
-<style src="./components/side-shopping-cart/css/reset.css">
-  @import './components/side-shopping-cart/css/style.css';
+<style >
 
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
@@ -203,5 +204,4 @@
       padding: 150px 0;
     }
   }
-
 </style>

@@ -7,6 +7,8 @@ import store from './store/index'
 import { sync } from 'vuex-router-sync'
 
 import BootstrapVue from 'bootstrap-vue';
+// import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
 Vue.component('header-bar', require('./components/HeaderBar.vue'));
 Vue.component('log-in', require('./components/LogInModal/LogIn.vue'));
 Vue.component('cart-page', require('./components/CartPage.vue'));
@@ -18,8 +20,7 @@ sync(store, router)
 Vue.config.productionTip = false
 Vue.use(BootstrapVue);
 
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

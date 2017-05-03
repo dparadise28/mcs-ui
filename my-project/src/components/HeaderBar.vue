@@ -1,12 +1,8 @@
 <template>
 	<header>
-
       <div id="logo"><router-link to="/"><img src="/static/myCornerlogo.jpg" alt="Homepage" height="50" width="50"></router-link></div>
-
 		  <div id="cd-hamburger-menu"><a class="cd-img-replace" href="#0">Menu</a></div>
 		  <div id="cd-cart-trigger"><a class="cd-img-replace" href="#0">Cart</a></div>
-
-
   </header>
 </template>
 
@@ -22,8 +18,6 @@
     ])
   }
 }
-
 </script>
 
-<style src="./side-shopping-cart/css/style.css">
-</style>
+<!--<style src="./side-shopping-cart/css/reset.css"></style>-->

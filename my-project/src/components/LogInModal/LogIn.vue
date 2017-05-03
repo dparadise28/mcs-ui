@@ -31,25 +31,20 @@
   <!--</div>-->
 <!--</template>-->
 <template>
-  <transition name="modal">
-    <div class="modal" style="display: block">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title">
-              Modal title
-            </h4>
-          </div>
+  <div id="wrapper" class="container">
+    <modal v-if="showModal">
+      <h3 slot="header" class="modal-title">
+        Modal title
+      </h3>
 
-          <div class="modal-body">
-          </div>
-
-          <div class="modal-footer">
-          </div>
-        </div>
+      <div slot="footer">
+        <button type="button" class="btn btn-outline-info" @click="closeModal()"> Close </button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" @click="submitAndClose()">
+          Submit
+        </button>
       </div>
-    </div>
-  </transition>
+    </modal>
+  </div>
 </template>
 <script>
 
