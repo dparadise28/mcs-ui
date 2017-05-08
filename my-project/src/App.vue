@@ -7,7 +7,6 @@
     <div id="cd-shadow-layer"></div>
 
     <div id="cd-cart">
-
       <cart-page></cart-page>
     </div> <!-- cd-cart -->
 

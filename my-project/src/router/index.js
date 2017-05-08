@@ -4,6 +4,8 @@ import CartPage from '@/components/CartPage'
 import HomePage from '@/components/HomePage'
 import ProductPage from '@/components/ProductPage'
 import StoresListPage from '@/components/List_Of_Stores'
+import StorePage from '@/components/StorePage'
+
 Vue.use(Router)
 
 export default new Router({
@@ -12,8 +14,7 @@ export default new Router({
       path: '/',
       name: 'home',
       component: HomePage
-    },
-    {
+    }, {
       path: '/cart',
       name: 'cart',
       component: CartPage
@@ -21,12 +22,22 @@ export default new Router({
       path: '/product/:id',
       name: 'product',
       component: ProductPage
-    },{
+    }, {
       path: '/stores_result',
       name: 'stores_result',
-      component: StoresListPage
+      component: StoresListPage,
+      // children: [
+      //   {
+      //     path: 'stores_result/store/:id',
+      //     name: 'StorePage',
+      //     component: StorePage
+      //   }]
 
+
+    },{
+      path: '/store/:id',
+      name: 'store',
+      component: StorePage
     }
 
-  ]
-})
+  ]})

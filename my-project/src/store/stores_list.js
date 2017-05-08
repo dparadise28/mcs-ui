@@ -8,13 +8,13 @@ const actions = {
 
   getAllStores ({commit}) {
     shop.getStores(stores => {
-      commit('receive_stores', stores)
+      commit('recieve_stores', stores)
     })
   }
 };
 
 const mutations = {
-  receive_stores (state, stores) {
+  recieve_stores (state, stores) {
     state.all = stores
   }
 };
