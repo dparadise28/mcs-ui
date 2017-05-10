@@ -38,4 +38,8 @@
   }
 </script>
 
-<style src="./side-shopping-cart/css/reset.css"></style>
+<style src="./side-shopping-cart/css/reset.css">
+  main-nav{
+    padding-bottom: 10px;
+  }
+</style>

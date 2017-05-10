@@ -65,6 +65,12 @@ export default{
     padding: 0px;
     z-index: 0;
   }
+  .store-row {
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+  }
   .fh5co-property .fh5co-property-specification {
     border-top: 1px solid rgb(240, 240, 240);
     background: rgb(247, 247, 247);
@@ -81,9 +87,10 @@ export default{
   .fh5co-property .fh5co-property-innter>h2 strong {
     z-index: 2;
     color: #21ce99;
-    font-family: sherif;
-    background: inherit;
-    background-attachment: fixed;
+    font-weight: bold;
+    font-size: 35px;
+    font-family: Helvetica;
+
   }
   .fh5co-property .fh5co-property-innter {
     padding: 15px;

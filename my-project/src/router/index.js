@@ -26,18 +26,13 @@ export default new Router({
       path: '/stores_result',
       name: 'stores_result',
       component: StoresListPage,
-      // children: [
-      //   {
-      //     path: 'stores_result/store/:id',
-      //     name: 'StorePage',
-      //     component: StorePage
-      //   }]
-
-
     },{
       path: '/store/:id',
       name: 'store',
       component: StorePage
-    }
+    }],
 
-  ]})
+  scrollBehavior (to, from, savedPosition) {
+    return { x: 0, y: 0 }
+  }
+})

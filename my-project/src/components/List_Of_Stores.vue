@@ -63,12 +63,11 @@
     z-index: 1;
   }
 
-  .store-row {
-    /*padding: 10px, 10px, 10px, 10px;*/
-  }
+
   .fh5co-property {
-    background: rgb(255, 255, 255);
+    background: rgb(238, 239, 247);
     text-align: left;
+    padding-top: 30px;
     width: 100%;
     float: left;
     box-shadow: rgba(0, 0, 0, 0.498039) 4px 8px 25px -14px;
@@ -109,7 +108,7 @@
     height: 270px;
     background-image: linear-gradient(
       rgba(47, 49, 49, 0.8),
-      rgba(99, 136, 175, 0.6)
+      rgba(23, 25, 25, 0.6)
     ),url('../assets/img/hardware_store.jpg');
     z-index: 1;
     background-size: cover !important;

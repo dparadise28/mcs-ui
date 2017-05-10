@@ -175,14 +175,11 @@
   }
 
   h2 {
-    color: rgba(33, 206, 153, 0.82);
-    font-size: 200%;
-    font-weight: 500;
-    letter-spacing: .05em;
-    font-family: Cambria, Georgia, serif;
-    text-shadow:
-      1px 1px 0px rgba(0, 8, 0, 0),
-      2px 2px 0px rgba(10, 30, 0, 0.52);
+    z-index: 2;
+    color: #21ce99;
+    font-family: sherif;
+    background: inherit;
+    background-attachment: fixed;
   }
 
   .intro-heading {
