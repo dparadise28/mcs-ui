@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <title>MyCorner</title>
+    <!-- Bootstrap -->
+    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- jQuery custom content scroller -->
+    <link href="../vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" rel="stylesheet" />
+    <!-- Custom Theme Style -->
+    <link href="../build/css/custom.min.css" rel="stylesheet">
+    <link href="css/onboarding/store_image.css" rel="stylesheet">
+    <link href="css/onboarding/onboarding_login_panel.css" rel="stylesheet">
+    <link href="css/onboarding/category_creation.css" rel="stylesheet">
+    <link href="css/onboarding/store_image.css" rel="stylesheet">
+    <!-- Include Quill stylesheet -->
+    <link href="https://cdn.quilljs.com/1.0.0/quill.snow.css" rel="stylesheet">
+
+</head>
+
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container" id="main_content_container">
+            <!-- page content -->
+            <div class="right_col" role="main">
+              <div class="container">
+                <div class="row">
+                  <br><br>
+                  <div class="col-md-1 col-lg-1"></div>
+                  <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
+                    <div class="x_panel">
+                      <div class="x_title">
+                        <h2>User Info</h2>
+                        <div class="clearfix"></div>
+                      </div>
+                      <div class="x_content">
+                        <br />
+                        <div id="userInfo">
+
+
+                          <div class="row">
+                              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+                              <div class="col-xs-10 col-sm-10 col-md-9 col-lg-9">
+                                  <form class="form-horizontal form-label-left">
+
+                                  <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">User Name</label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12 input-group">
+                                      <span class="input-group-addon"><i class="fa fa-user dark green" aria-hidden="true"></i></span>
+                                      <input type="text" class="form-control" placeholder="Enter Your Username" v-model="data_models.user.username">
+                                      <span class="bg-white input-group-addon">
+                                        <span v-show="!username_format_check" class="red">*</span>
+                                        <span v-show="username_format_check" class="glyphicon glyphicon-ok green"></span>
+                                      </span>
+                                    </div>
+                                  </div>
+                                  <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Email</label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12 input-group">
+                                      <span class="input-group-addon"><i class="fa fa-envelope dark green" aria-hidden="true"></i></span>
+                                      <input type="text"
+                                             class="form-control"
+                                             placeholder="Enter Your Email Address"
+                                             v-model="data_models.user.email">
+                                      <span class="bg-white input-group-addon">
+                                        <span v-show="!email_format_check" class="red">*</span>
+                                        <span v-show="email_format_check" class="glyphicon glyphicon-ok green"></span>
+                                      </span>
+                                    </div>
+                                  </div>
+                                  <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Password
+                                        <span class="glyphicon glyphicon-info-sign"
+                                              data-html="true"
+                                              data-toggle="tooltip"
+                                              data-container='body'
+                                              :title="data_models.user.password_rules"
+                                              data-original-title="password info"></span>
+                                    </label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12 input-group">
+                                      <span class="input-group-addon"><i class="fa fa-lock fa-lg dark green" aria-hidden="true"></i></span>
+                                      <input type="password" class="form-control" placeholder="Enter Your Password" v-model="data_models.user.password">
+                                      <span class="bg-white input-group-addon">
+                                        <span v-show="!password_format_check" class="red">*</span>
+                                        <span v-show="password_format_check" class="small glyphicon glyphicon-ok green"></span>
+                                      </span>
+                                    </div>
+                                  </div>
+                                  <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">What Categories Apply to You?</label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12 input-group">
+                                      <span class="input-group-addon"><i class="fa fa-list dark green" aria-hidden="true"></i></span>
+                                      <select class="select2_multiple form-control" multiple="multiple" v-model="data_models.user.store_categories">
+                                        <option v-for="category in data_models.user.all_store_categories">{{category}}</option>
+                                      </select>
+                                      <span class="bg-white input-group-addon">
+                                        <span v-show="!categories_format_check" class="red">*</span>
+                                        <span v-show="categories_format_check" class="glyphicon glyphicon-ok green"></span>
+                                      </span>
+                                    </div>
+                                  </div>
+
+                                </form>
+                              </div>
+                              <div class="col-xs-1 col-sm-1 col-md-2 col-lg-2"></div>
+                          </div>
+
+
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-1 col-lg-1"></div>
+                </div>
+              </div>
+
+
+            </div>
+            <!-- /page content -->
+
+        </div>
+    </div>
+	<!--Fixed Side Navbar-->
+	<script src="js/navbars/generic_admin_fixed_sidenav.js"></script>
+  <!-- jQuery -->
+  <script src="../vendors/jquery/dist/jquery.min.js"></script>
+  <!-- Bootstrap -->
+  <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+  <!-- FastClick -->
+  <script src="../vendors/fastclick/lib/fastclick.js"></script>
+  <!-- NProgress -->
+  <script src="../vendors/nprogress/nprogress.js"></script>
+  <!-- jQuery custom content scroller -->
+  <script src="../vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+
+  <!-- Vue Js -->
+  <script src="https://unpkg.com/vue"></script>
+  <!--store info-->
+  <script src="js/signup/field_validation/store_onboarding.js"></script>
+  <script src="js/signup/data_models/store_onboarding.js"></script> <!--need to split out but ok for now-->
+  <script src="js/store/user_info.js"></script> <!--same here with split but ok for now-->
+
+
+  <!-- Custom Theme Scripts -->
+  <script src="../build/js/custom.min.js"></script>
+</body>
+
+</html>

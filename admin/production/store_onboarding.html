@@ -1,0 +1,586 @@
+<!--TODO store all external css/js in repo-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <title>MyCorner</title>
+    <!-- Bootstrap -->
+    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/onboarding/onboarding_login_panel.css" rel="stylesheet">
+    <link href="css/onboarding/category_creation.css" rel="stylesheet">
+    <link href="css/onboarding/store_image.css" rel="stylesheet">
+    <link href="css/onboarding/geo_map.css" rel="stylesheet">
+    <!-- Custom Theme Style -->
+    <link href="../build/css/custom.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+    <!-- Include Quill stylesheet -->
+    <link href="https://cdn.quilljs.com/1.0.0/quill.snow.css" rel="stylesheet">
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.0/css/bootstrap-toggle.min.css" rel="stylesheet">
+</head>
+
+<body class="nav-md">
+    <div class="container">
+      <div class="row">
+        <br><br>
+        <div class="col-md-2 col-lg-2"></div>
+        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+          <div class="x_panel">
+            <div class="x_title">
+              <h2>Welcome! <small>List Your Business in 4 Simple Steps!</small></h2>
+              <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+              <br />
+              <div id="storeCreateApp">
+                  <step-navigation
+                      :steps="steps"
+                      :currentstep="currentstep">
+                  </step-navigation>
+
+                  <div v-if="currentstep == 1">
+                      <br><h1 class="text-center">Sign Up</h1><br>
+                      <div class="row">
+                          <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+                          <div class="col-xs-10 col-sm-10 col-md-9 col-lg-9">
+                              <form class="form-horizontal form-label-left">
+
+                              <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">User Name</label>
+                                <div class="col-md-9 col-sm-9 col-xs-12 input-group">
+                                  <span class="input-group-addon"><i class="fa fa-user dark green" aria-hidden="true"></i></span>
+                                  <input type="text" class="form-control" placeholder="Enter Your Username" v-model="data_models.user.username">
+                                  <span class="bg-white input-group-addon">
+                                    <span v-show="!username_format_check" class="red">*</span>
+                                    <span v-show="username_format_check" class="glyphicon glyphicon-ok green"></span>
+                                  </span>
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Email</label>
+                                <div class="col-md-9 col-sm-9 col-xs-12 input-group">
+                                  <span class="input-group-addon"><i class="fa fa-envelope dark green" aria-hidden="true"></i></span>
+                                  <input type="text"
+                                         class="form-control"
+                                         placeholder="Enter Your Email Address"
+                                         v-model="data_models.user.email">
+                                  <span class="bg-white input-group-addon">
+                                    <span v-show="!email_format_check" class="red">*</span>
+                                    <span v-show="email_format_check" class="glyphicon glyphicon-ok green"></span>
+                                  </span>
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    Password
+                                    <span class="glyphicon glyphicon-info-sign"
+                                          data-html="true"
+                                          data-toggle="tooltip"
+                                          data-container='body'
+                                          :title="data_models.user.password_rules"
+                                          data-original-title="password info"></span>
+                                </label>
+                                <div class="col-md-9 col-sm-9 col-xs-12 input-group">
+                                  <span class="input-group-addon"><i class="fa fa-lock fa-lg dark green" aria-hidden="true"></i></span>
+                                  <input type="password" class="form-control" placeholder="Enter Your Password" v-model="data_models.user.password">
+                                  <span class="bg-white input-group-addon">
+                                    <span v-show="!password_format_check" class="red">*</span>
+                                    <span v-show="password_format_check" class="small glyphicon glyphicon-ok green"></span>
+                                  </span>
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">What Categories Apply to You?</label>
+                                <div class="col-md-9 col-sm-9 col-xs-12 input-group">
+                                  <span class="input-group-addon"><i class="fa fa-list dark green" aria-hidden="true"></i></span>
+                                  <select class="select2_multiple form-control" multiple="multiple" v-model="data_models.user.store_categories">
+                                    <option v-for="category in data_models.user.all_store_categories">{{category}}</option>
+                                  </select>
+                                  <span class="bg-white input-group-addon">
+                                    <span v-show="!categories_format_check" class="red">*</span>
+                                    <span v-show="categories_format_check" class="glyphicon glyphicon-ok green"></span>
+                                  </span>
+                                </div>
+                              </div>
+
+                            </form>
+                          </div>
+                          <div class="col-xs-1 col-sm-1 col-md-2 col-lg-2"></div>
+                      </div>
+                  </div>
+
+                  <div v-if="currentstep == 2">
+                      <br>
+                      <h1 class="text-center">Enter Store Info</h1><br><br>
+                      <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                          <div class="col-md-12 col-sm-6 col-xs-12 input-group">
+                            <br>
+                            <input class="form-control center" placeholder="Business Name" v-model="data_models.store.name">
+                            <span class="bg-white input-group-addon">
+                              <span v-show="!store_name_format_check" class="red">*</span>
+                              <span v-show="store_name_format_check" class="small glyphicon glyphicon-ok green"></span>
+                            </span>
+                          </div>
+                          <div v-if="!data_models.store.image">
+                            <div class="dropzone-area"
+                                 drag-over="handleDragOver"
+                                 @dragenter="data_models.store.hovering=true"
+                                 @dragleave="data_models.store.hovering=false"
+                                 :class="{'hovered': data_models.store.hovering}">
+                                <div class="dropzone-text">
+                                    <span class="dropzone-title">
+                                        Drop an image of your store here or click to select
+                                    </span>
+                                </div>
+                                <input type="file" @change="onFileChange">
+                            </div>
+                          </div>
+                          <div class="dropzone-preview">
+                            <img :src="data_models.store.image" /><br><br>
+                            <button @click="removeImage" v-if="data_models.store.image">Remove</button>
+                          </div>
+
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <div id="editor-container" style="height: 185px;"></div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <template id="bs-modal">
+                                  <!-- Modal -->
+                                <div class="modal fade" id="myModal"
+                                     tabindex="-1"
+                                     role="dialog"
+                                     aria-labelledby="myModalLabel"
+                                     aria-hidden="true">
+                                 <div class="modal-dialog">
+                                   <div class="modal-content">
+                                     <div class="modal-header">
+                                       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                       <h2>We're Open At These Times</h2>
+                                     </div>
+                                     <div class="modal-body">
+                                       <div v-for="day_hours in data_models.store.working_hours">
+                                           <div class="form-group dateTime">
+                                               <label class="day control-label text-center col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                                                   {{day_hours.day.substring(0, 3)}}
+                                               </label>
+                                               <div class="input-group col-lg-9 col-md-9 col-sm-10 col-xs-12">
+                                                   <input class="input-sm time form-control" type=time v-model="day_hours.from">
+                                                   <span class="input-group-addon">-</span>
+                                                   <input class="input-sm form-control" type=time v-model="day_hours.to">
+                                                   <span class="input-group-btn">
+                                                       <button class="btn btn-sm" type="button">Closed</button>
+                                                   </span>
+                                               </div>
+                                           </div>
+                                       </div>
+                                     </div>
+                                     <div class="modal-footer">
+                                       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                     </div>
+                                   </div><!-- /.modal-content -->
+                                 </div><!-- /.modal-dialog -->
+                                </div><!-- /.modal -->
+                            </template>
+                            <br>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 drop-shadow">
+                              <h2 class="text-center">Enter Your Working Hours</h2><br>
+                              <div class="dateTime" v-for="day_hours in data_models.store.working_hours">
+                                <div class="day">{{day_hours.day}}</div>
+                                <div class="time">{{day_hours.from}} - {{day_hours.to}}</div>
+                                <br>
+                              </div>
+                              <button type="button" class="viewOpen" data-toggle="modal" data-target="#myModal">
+                                Edit Hours&nbsp;&nbsp;<i class="fa fa-clock-o"></i>
+                              </button>
+                              <br>
+                            </div>
+
+                            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 drop-shadow">
+                              <h2 class="text-center">Additional Information</h2><br>
+                              <label class="control-label col-md-3 col-sm-3 col-xs-12">Sales Tax</label>
+                              <div class="col-md-9 col-sm-9 col-xs-12 input-group">
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="fa fa-percent dark green" aria-hidden="true"></i></span>
+                                  <input class="form-control center" type="number" min="0" max="100" step="0.001" v-model="data_models.store.tax_rate">
+                                  <span class="bg-white input-group-addon">
+                                    <span v-show="!(data_models.store.tax_rate > 0)" class="red">*</span>
+                                    <span v-show="data_models.store.tax_rate > 0" class="small glyphicon glyphicon-ok green"></span>
+                                  </span>
+                                </div>
+                              </div>
+
+                              <label class="control-label col-md-3 col-sm-3 col-xs-12">Phone Number</label>
+                              <div class="col-md-9 col-sm-9 col-xs-12 input-group">
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="fa fa-phone dark green" aria-hidden="true"></i></span>
+                                  <input class="form-control center"v-model="formatted_phone_number">
+                                  <span class="bg-white input-group-addon">
+                                    <span v-show="!check_phone_number" class="red">*</span>
+                                    <span v-show="check_phone_number" class="small glyphicon glyphicon-ok green"></span>
+                                  </span>
+                                </div>
+                              </div>
+
+                              <br>
+                              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                  <label>Pickup?</label>
+                                  <input type="checkbox" id="pickup" class="cbx hidden" v-on:click="pickup_offered"/>
+                                  <label for="pickup" class="lbl"></label>
+                              </div>
+                              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                  <label>Delivery?</label>
+                                  <input type="checkbox" id="delivery" class="cbx hidden" v-on:click="delivery_offered"/>
+                                  <label for="delivery" class="lbl"></label>
+                              </div>
+                            </div>
+
+
+                        </div>
+                      </div>
+                      <br>
+
+                        <div class="row drop-shadow" v-if="data_models.store.pickup.service_offered">
+
+                          <h2 class="text-center">Pickup</h2><br>
+
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                            <label class="control-label">Pickup May Contain Between:
+                              <span v-show="!(data_models.store.pickup.item_minimum > 0 &&
+                                              data_models.store.pickup.item_minimum <= data_models.store.pickup.item_limit)"
+                                    class="red">*</span>
+                              <span v-show="data_models.store.pickup.item_minimum > 0 &&
+                                            data_models.store.pickup.item_minimum <= data_models.store.pickup.item_limit"
+                                    class="small glyphicon glyphicon-ok green"></span>
+                            </label>
+                              <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-shopping-cart dark green" aria-hidden="true"></i></span>
+                                <input class="form-control center" type="number" min="0" v-model="data_models.store.pickup.item_minimum">
+                                <span class="input-group-addon">-</span>
+                                <input class="form-control center" type="number" min="0" v-model="data_models.store.pickup.item_limit">
+                                <span class="input-group-addon bg-white">items</span>
+                              </div>
+                          </div>
+
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                            <label class="control-label">Pickup Will be Ready in:
+                              <span v-show="!(data_models.store.pickup.minimum_time_to_pickup > 0 &&
+                                              data_models.store.pickup.minimum_time_to_pickup <= data_models.store.pickup.maximum_time_to_pickup)"
+                                    class="red">*</span>
+                              <span v-show="data_models.store.pickup.minimum_time_to_pickup > 0 &&
+                                            data_models.store.pickup.minimum_time_to_pickup <= data_models.store.pickup.maximum_time_to_pickup"
+                                    class="small glyphicon glyphicon-ok green"></span>
+                            </label>
+                              <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-clock-o dark green" aria-hidden="true"></i></span>
+                                <input class="form-control center" type="number" min="0" v-model="data_models.store.pickup.minimum_time_to_pickup">
+                                <span class="input-group-addon">-</span>
+                                <input class="form-control center" type="number" min="0" v-model="data_models.store.pickup.maximum_time_to_pickup">
+                                <span class="input-group-addon bg-white">mins</span>
+                              </div>
+                          </div>
+
+                        </div>
+
+                        <br><br>
+                        <div class="row drop-shadow" v-if="data_models.store.delivery.service_offered">
+
+                            <h2 class="text-center">Delivery</h2><br>
+
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                              <label class="control-label">Delivery may contain Between:
+                                <span v-show="!check_phone_number" class="red">*</span>
+                                <span v-show="check_phone_number" class="small glyphicon glyphicon-ok green"></span>
+                              </label>
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="fa fa-shopping-cart dark green" aria-hidden="true"></i></span>
+                                  <input class="form-control center" type="number" min="0" v-model="data_models.store.pickup.item_minimum">
+                                  <span class="input-group-addon">-</span>
+                                  <input class="form-control center" type="number" min="0" v-model="data_models.store.pickup.item_limit">
+                                  <span class="input-group-addon bg-white">items</span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                              <label class="control-label">Delivery will be ready in:
+                                <span v-show="!check_phone_number" class="red">*</span>
+                                <span v-show="check_phone_number" class="small glyphicon glyphicon-ok green"></span>
+                              </label>
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="fa fa-shopping-clock-o dark green" aria-hidden="true"></i></span>
+                                  <input class="form-control center" type="number" min="0" v-model="data_models.store.pickup.item_minimum">
+                                  <span class="input-group-addon">-</span>
+                                  <input class="form-control center" type="number" min="0" v-model="data_models.store.pickup.item_limit">
+                                  <span class="input-group-addon bg-white">mins</span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                              <label class="control-label">Delivery Fee
+                                <span v-show="!check_phone_number" class="red">*</span>
+                                <span v-show="check_phone_number" class="small glyphicon glyphicon-ok green"></span>
+                              </label>
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="fa fa-dollar dark green" aria-hidden="true"></i></span>
+                                  <input class="form-control center" type="number" min="0" v-model="data_models.store.pickup.item_minimum">
+                                  <span class="input-group-addon bg-white">.00</span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                              <label class="control-label">Delivery Minimum
+                                <span v-show="!check_phone_number" class="red">*</span>
+                                <span v-show="check_phone_number" class="small glyphicon glyphicon-ok green"></span>
+                              </label>
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="fa fa-dollar dark green" aria-hidden="true"></i></span>
+                                  <input class="form-control center" type="number" min="0" v-model="data_models.store.pickup.item_minimum">
+                                  <span class="input-group-addon bg-white">.00</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                              <label class="control-label">Delivery must be within
+                                <span v-show="!check_phone_number" class="red">*</span>
+                                <span v-show="check_phone_number" class="small glyphicon glyphicon-ok green"></span>
+                              </label>
+                              <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-arrows-h dark green" aria-hidden="true"></i></span>
+                                <input class="form-control center" type="number" min="0" step="0.01" v-model="data_models.store.pickup.item_minimum">
+                                <span class="input-group-addon bg-white">miles</span>
+                              </div>
+                            </div>
+
+
+                        </div>
+
+                  </div>
+
+                  <div v-if="currentstep == 3">
+                      <h1 class="text-center">Add Categories</h1>
+                      <br><br>
+
+                      <div class="col-lg-12 col-md-12 col-sm-12">
+                          <div class="panel panel-default" style="box-shadow: 6px 6px 5px grey;">
+                              <div class="panel-heading categories_header">
+                                  <div style="color: grey;">
+                                      <span class="glyphicon glyphicon-list"></span>&nbsp;Add Categories
+                                  </div>
+
+                                  <div class="input-group">
+                                      <input type="text"
+                                             v-model="new_category_name"
+                                             placeholder="Category Name"
+                                             @keyup.enter="addCategory()"
+                                             id="addCategory"
+                                             class="form-control"></input>
+                                      <div class="input-group-btn">
+                                          <button type="button"
+                                                  class="btn btn-default"
+                                                  @click="addCategory()"
+                                                  @keyup.enter="addCategory()">
+                                            <span class="glyphicon glyphicon-plus"></span>
+                                          </button>
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <div v-if="data_models.categories.length > 0" class="panel-body">
+                                  <ul class="list-group">
+                                      <draggable v-model="data_models.categories">
+                                          <transition-group name="list-complete">
+                                              <li class="list-group-item list-complete-item"
+                                                  v-for="(category, c_index) in data_models.categories"
+                                                  v-bind:key="category.name"
+                                                  class="list-complete-item list-group">
+                                                  <input type="text"
+                                                         v-if="category.edit"
+                                                         v-model="category.new_c_name"
+                                                         placeholder="Category Name"
+                                                         @keyup.enter="updateCategory(c_index)"
+                                                         id="updateCategory"
+                                                         class="form-control"></input>
+                                                  <template v-if="!category.edit">
+                                                      {{ category.name }}
+                                                      <div class="pull-right action-buttons">
+                                                          <div v-on:click="prepCategoryUpdateState(c_index)"
+                                                               class="edit inline">
+                                                              <span class="glyphicon glyphicon-edit"></span>
+                                                          </div>
+                                                          <div v-bind:key="category.showNewPostModal"
+                                                               @click="category.showNewPostModal = true; current_category = c_index"
+                                                               class="open_items inline">
+                                                              <span class="glyphicon glyphicon-list"></span>
+                                                          </div>
+                                                          <!-- use the modal component, pass in the prop -->
+                                                          <modal v-if="category.showNewPostModal"
+                                                                 @close="category.showNewPostModal = false">
+                                                            <!--
+                                                              you can use custom content here to overwrite
+                                                              default content
+                                                            -->
+                                                            <h3 slot="header">custom header</h3>
+                                                          </modal>
+                                                          <div v-on:click="removeCategory(c_index)" class="trash inline">
+                                                              <span class="glyphicon glyphicon-trash"></span>
+                                                          </div>
+                                                      </div>
+                                                  </template>
+                                              </li>
+                                          </transition-group>
+                                      </draggable>
+                                  </ul>
+                              </div>
+                          </div>
+                      </div>
+
+                  </div>
+
+                  <div v-if="currentstep == 4">
+                      <h1 class="text-center">Make Money!</h1>
+                  </div>
+
+                  <div v-show="currentstep==1" class="col-xs-10 col-sm-10 col-md-10 col-lg-10
+                             col-xs-offset-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2">
+                        <span class="bg-white input-group-addon">
+                            <span v-show="!store_address_format_check" class="red">*</span>
+                            <span v-show="store_address_format_check" class="small glyphicon glyphicon-ok green"></span>
+                        </span>
+                    <div id="store_locator_map"></div>
+                    <br>
+                  </div>
+
+                  <div style="display: table; margin: 0 auto;" v-if="currentstep == 4">
+                    <br><br>
+                    <h2>Accepted Forms Of Payment<h2>
+                    <br>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        <label>CC</label>
+                        <input type="checkbox" id="cc_accepted" class="cbx hidden"
+                               v-on:click="data_models.payment.cc.accepted = !data_models.payment.cc.accepted"/>
+                        <label for="cc_accepted" class="lbl"></label>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        <label>Cash</label>
+                        <input type="checkbox" id="cash_accepted" class="cbx hidden"
+                               v-on:click="data_models.payment.cash.accepted = !data_models.payment.cash.accepted"/>
+                        <label for="cash_accepted" class="lbl"></label>
+                    </div>
+                    <br><br>
+                  </div>
+                  <form v-show="currentstep == 4 && data_models.payment.cc.accepted" style="display: table; margin: 0 auto;" class="stripe_form">
+                    <div class="group">
+                      <label class="stripe_label">
+                        <span>Name</span>
+                        <input name="cardholder-name" class="field" placeholder="Jane Doe" />
+                      </label>
+                      <label class="stripe_label">
+                        <span>Phone</span>
+                        <input class="field" placeholder="(123) 456-7890" type="tel" />
+                      </label>
+                    </div>
+                    <div class="group">
+                      <label class="stripe_label">
+                        <span>Card</span>
+                        <div id="card-element" class="field"></div>
+                      </label>
+                    </div>
+                    <div class="outcome">
+                      <div class="error"></div>
+                      <div class="success">
+                        Success! Your Stripe token is <span class="token"></span>
+                      </div>
+                    </div>
+                  </form>
+                  <div v-if="currentstep == 4 && data_models.payment.cash.accepted" style="display: table; margin: 0 auto;">
+                    <label class="control-label">Cash orders must be at least:
+                      <span v-show="!data_models.payment.cash.minimum_order_amount" class="red">*</span>
+                      <span v-show="data_models.payment.cash.minimum_order_amount" class="small glyphicon glyphicon-ok green"></span>
+                    </label>
+                      <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-dollar dark green" aria-hidden="true"></i></span>
+                        <input class="form-control center" type="number" min="0" v-model="data_models.payment.cash.minimum_order_amount">
+                        <span class="input-group-addon bg-white">.00</span>
+                      </div>
+                  </div>
+
+
+
+                  <step-controls
+                      v-for="step in steps"
+                      :step="step"
+                      :stepcount="steps.length"
+                      :currentstep="currentstep"
+                      @step-change="stepChanged">
+                  </step-controls>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2 col-lg-2"></div>
+      </div>
+    </div>
+
+    <!-- Include the Quill library -->
+    <script src="https://cdn.quilljs.com/1.0.0/quill.js"></script>
+
+    <!-- Initialize Quill editor -->
+    <script>
+        var quill = new Quill('#editor-container', {
+            modules: {
+                toolbar: [
+                    [{ header: [1, 2, false] }],
+                    ['bold', 'italic', 'underline'],
+                    ['image', 'code-block']
+                ]
+            },
+            placeholder: 'Compose an epic...',
+            theme: 'snow'  // or 'bubble'
+        });
+    </script>
+
+    <!--stripe-->
+    <script src="https://js.stripe.com/v3/"></script>
+
+    <!-- jQuery -->
+    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+    <!-- jquery.inputmask -->
+    <!--script src="../vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- Custom Theme Scripts -->
+    <script src="../build/js/custom.min.js"></script>
+    <!-- Vue Js -->
+    <script src="https://unpkg.com/vue"></script>
+    <!-- SortableJS -->
+    <script src="https://cdn.jsdelivr.net/sortable/1.4.2/Sortable.min.js"></script>
+    <!-- vyeDraggable -->
+    <script src="https://cdn.rawgit.com/David-Desmaisons/Vue.Draggable/master/dist/vuedraggable.js"></script>
+    <!--SIGNUP-->
+    <!--store signup-->
+    <script src="js/signup/field_validation/store_onboarding.js"></script>
+    <script src="js/signup/data_models/store_onboarding.js"></script> <!--need to split out but ok for now-->
+    <script src="js/signup/signup_form.js"></script> <!--same here with split but ok for now-->
+    <script src="js/signup/stripe.js"></script> <!--same here with split but ok for now-->
+
+    <!--maps-->
+    <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+    <script src="js/maps/geo_search.js"></script>
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.0/js/bootstrap-toggle.min.js"></script>
+
+    <!--product entry-->
+    <!--script src="js/products/product_entry.js"></script-->
+
+</body>
+
+</html>
