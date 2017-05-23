@@ -1,7 +1,9 @@
 <template>
+  <div>
   <div class="cart">
-    <h2>Cart</h2>
-    <p v-show="!products.length"><i>Please add some products to cart.</i></p>
+    <p v-show="!products.length">
+      Please add some products to cart.
+    </p>
     <div v-show="products.length > 0">
       <ul class ="cd-cart-items" v-for="p in products">
         <li>
@@ -17,6 +19,7 @@
       <!--<p><button :disabled="!products.length" @click="checkout(products)" class='checkout-button'>Checkout</button></p>-->
     </div>
     <!--<p v-show="checkoutStatus">Checkout {{ checkoutStatus }}.</p>-->
+  </div>
   </div>
 </template>
 
@@ -44,6 +47,6 @@
   }
 </script>
 /*CartPage.vue css*/
-<style src="./side-shopping-cart/css/style.css">
+<style>
 
 </style>

@@ -1,37 +1,67 @@
 <template>
-  <div>
+  <q-layout>
 
-  <div class="background-image"></div>
-  <div class="background-blur"></div>
 
-  <!-----------Search box---------------------->
+    <div slot="header" class="toolbar inverted primary">
+      <button @click="$refs.leftDrawer.open()">
+        <i>menu</i>
+      </button>
 
-    <div class="search_container">
-      <div class="intro-heading">
-        <strong>
-          My Corner
-        </strong>
-      </div>
-      <h2>Step Outside</h2>
-      <hr class="green-fade">
-      <div class="search_box">
-        <div class="input-group address-box">
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="Where to?">
-            <span class="input-group-btn submit_button_container">
-              <router-link to="/stores_result"><button class="btn btn-default dropdown-toggle" type="button" a-action="Find Stores!" ua-label="" >
-                <span class="glyphicon glyphicon-map-marker"></span>
-              </button></router-link>
-							<router-link to="/stores_result"><button class="btn btn-default dropdown-toggle" type="button" a-action="Find Stores!" ua-label="">
-								Find a store!
-              </button></router-link>
-						</span>
-          </div>
-        </div>
-      </div>
+      <div id="logo"><img src="../assets/fulllogo.jpg" alt="Homepage" ></div>
+
+      <button class="big" @click="$refs.rightDrawer.open()">
+        <i>shopping_cart</i>
+      </button>
     </div>
 
-  </div>
+    <div slot="header" class="toolbar inverted secondary">
+      <q-search class="inverted secondary"></q-search>
+    </div>
+
+
+    <q-tabs class ="inverted primary mobile-only" slot="navigation">
+      <q-tab icon="home" route="/"></q-tab>
+      <q-tab icon="search" route="/stores_result" ></q-tab>
+      <q-tab icon="view_day" route="/showcase/layout/tabs" ></q-tab>
+      <q-tab icon="input" route="/showcase/layout/drawer" ></q-tab>
+    </q-tabs>
+
+    <router-view class="layout-view"></router-view>
+
+    <q-drawer class="left-side swipe-only" ref="leftDrawer">
+      <div class="toolbar light">
+        <q-toolbar-title :padding="1">
+          MyCorner
+        </q-toolbar-title>
+      </div>
+
+      <div class="list no-border platform-delimiter">
+        <q-drawer-link icon="home" to="/" exact>
+          Home
+        </q-drawer-link>
+        <hr>
+        <div class="list-label">Other Tools</div>
+        <q-drawer-link icon="business" :to="{path: '/store-sign-up', exact: true}">
+          Are you a local business?
+        </q-drawer-link>
+        <q-drawer-link icon="tab" to="/showcase/layout/tabs">
+          Tabs
+        </q-drawer-link>
+        <q-drawer-link icon="compare_arrows" to="/showcase/layout/drawer">
+          Layout Drawer
+        </q-drawer-link>
+      </div>
+    </q-drawer>
+    <q-drawer right-side swipe-only ref="rightDrawer">
+      <div class="toolbar light">
+        <q-toolbar-title :padding="1">
+          <h5 class="text-primary">Cart</h5>
+        </q-toolbar-title>
+      </div>
+      <cart-page></cart-page>
+    </q-drawer>
+
+  </q-layout>
 </template>
 
 <script>
@@ -55,7 +85,31 @@
 </script>
 
 <style>
-  /*HomePage.vue css*/
+  #logo {
+    padding-top: 2px;
+    height:3rem;
+    /* delete this property if you don't want your logo to scale down on mobile devices */
+    -webkit-transform: scale(0.8);
+    -moz-transform: scale(0.8);
+    -ms-transform: scale(0.8);
+    -o-transform: scale(0.8);
+    transform: scale(0.8);
+  }
+  @media only screen and (min-width: 1200px) {
+    #logo {
+      padding-top: 10px;
+      position: absolute;
+      /* logo left margin on Dekstop */
+      left: 2.4em;
+      height: 3rem;
+      top: 0;
+      -webkit-transform: scale(1);
+      -moz-transform: scale(1);
+      -ms-transform: scale(1);
+      -o-transform: scale(1);
+      transform: scale(1);
+    }
+  }
   .product {
     padding: 10px 0px;
     border-bottom: 1px solid #eee;
@@ -124,7 +178,7 @@
     display: flex;
     filter: blur(4px);
     -webkit-filter: blur(2px);
-    height: 100%;
+    height: 50%;
     left: 0;
     position: fixed;
     right: 0;
@@ -134,7 +188,7 @@
     background-size: cover;
     display: flex;
     background: rgba(0, 90, 20, 0.23);
-    height: 100%;
+    height: 50%;
     left: 0;
     position: fixed;
     right: 0;
@@ -168,11 +222,7 @@
     -webkit-appearance: none;
     width: 4px;
   }
-  .scrollable-menu::-webkit-scrollbar-thumb {
-    border-radius: 3px;
-    background-color: lightgray;
-    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.75);
-  }
+
 
 
 

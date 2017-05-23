@@ -4,12 +4,12 @@ const state = {
 }
 
 const actions = {
-
   getAllStores ({commit}) {
     shop.getStores(stores => {
       commit('recieve_stores', stores)
     })
   }
+
 }
 
 const mutations = {

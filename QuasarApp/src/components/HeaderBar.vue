@@ -1,18 +1,61 @@
 <template>
-	<header>
-      <div id="logo"><router-link to="/"><img src="../statics/myCornerlogo.jpg" alt="Homepage" height="50" width="50"></router-link></div>
-		  <div id="cd-hamburger-menu"><a class="cd-img-replace" href="#0">Menu</a></div>
-		  <div id="cd-cart-trigger"><a class="cd-img-replace" href="#0">Cart</a></div>
+	<div>
+    <div slot="header" class="toolbar primary">
+      <button @click="$refs.leftDrawer.open()">
+        <i>menu</i>
+      </button>
 
+      <q-toolbar-title :padding="1">
+        myCorner
+      </q-toolbar-title>
 
+      <button class="big" @click="$refs.rightDrawer.open()">
+        <i>shopping_cart</i>
+      </button>
+    </div>
 
-  </header>
+    <div slot="header" class="toolbar primary">
+      <q-search class="primary"></q-search>
+    </div>
+
+    <q-drawer class="left-side swipe-only" ref="leftDrawer">
+      <div class="toolbar light">
+        <q-toolbar-title :padding="1">
+          MyCorner
+        </q-toolbar-title>
+      </div>
+
+      <div class="list no-border platform-delimiter">
+        <q-drawer-link icon="home" to="/" exact>
+          Home
+        </q-drawer-link>
+        <hr>
+        <div class="list-label">Other Tools</div>
+        <q-drawer-link icon="business" to="/showcase/layout/toolbar">
+          Are you a local business?
+        </q-drawer-link>
+        <q-drawer-link icon="tab" to="/showcase/layout/tabs">
+          Tabs
+        </q-drawer-link>
+        <q-drawer-link icon="compare_arrows" to="/showcase/layout/drawer">
+          Layout Drawer
+        </q-drawer-link>
+      </div>
+    </q-drawer>
+
+    <q-drawer right-side swipe-only ref="rightDrawer">
+      <div class="toolbar light">
+        <q-toolbar-title :padding="1">
+          <h5 class="text-primary">Cart</h5>
+        </q-toolbar-title>
+      </div>
+      <cart-page></cart-page>
+    </q-drawer>
+  </div>
 </template>
 
 
-<script src='./side-shopping-cart/js/main.js'>
-  import './side-shopping-cart/js/modernizer.js'
-
+<script>
   import { mapGetters } from 'vuex'
   export default {
     computed: {

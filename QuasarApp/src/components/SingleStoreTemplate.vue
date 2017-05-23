@@ -95,9 +95,8 @@ export default{
   }
   .fh5co-property .fh5co-property-innter {
     padding: 15px;
-    border-top-right-radius: 5px;
-    border-top-left-radius: 5px;
-    height: 270px;
+    border-radius: 5px;
+    height: 100%;
     background-image: linear-gradient(
       rgba(47, 49, 49, 0.8),
       rgba(99, 136, 175, 0.6)

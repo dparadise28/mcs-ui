@@ -5,6 +5,7 @@ import HomePage from './components/HomePage'
 import ProductPage from './components/ProductPage'
 import StoresListPage from './components/List_Of_Stores'
 import StorePage from './components/StorePage'
+import StoreOnboard from './components/Admin/Store_Onboarding_Page.vue'
 
 Vue.use(Router)
 
@@ -13,7 +14,13 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: HomePage
+      component: HomePage,
+      children: [
+        {
+          path: '/stores_result',
+          name: 'stores_result',
+          component: StoresListPage
+        }]
     },
     {
       path: '/cart',
@@ -26,17 +33,14 @@ export default new Router({
       component: ProductPage
     },
     {
-      path: '/stores_result',
-      name: 'stores_result',
-      component: StoresListPage,
-    },
-    {
       path: '/store/:id',
       name: 'store',
       component: StorePage
-    }],
+    },
+    {
+      path: '/store-sign-up',
+      name: 'StoreOnboard',
+      component: StoreOnboard
+    }]
 
-  scrollBehavior (to, from, savedPosition) {
-    return { x: 0, y: 0 }
-  }
 })

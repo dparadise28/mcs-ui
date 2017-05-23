@@ -22,7 +22,6 @@ export default {
   getProducts (cb) {
     setTimeout(() => cb(_products), 100)
   },
-
   getStores (cb) {
     setTimeout(() => cb(_stores), 100)
   }

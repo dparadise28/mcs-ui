@@ -14,7 +14,7 @@
     <div class="layout-view">
       <div class="logo-container non-selectable no-pointer-events">
         <div class="logo" :style="position">
-          <img src="~assets/quasar-logo.png">
+          <img src="~assets/quasar-logo.png" height="3rem">
           <p class="caption text-center">
             <span v-if="orienting || rotating">Tilt your device.</span>
             <template v-else>

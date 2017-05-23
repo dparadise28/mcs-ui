@@ -1,22 +1,28 @@
 <template>
-  <!-- Don't drop "q-app" class -->
-  <div id="q-app">
-    <nav-bar></nav-bar>
-    <router-view></router-view>
-  </div>
+  <router-view></router-view>
 </template>
+
 
 <script>
 /*
  * Root component
+ * import CartPage from './components/CartPage.vue'
  */
 import NavBar from './components/NavBar.vue'
+import CartPage from './components/CartPage.vue'
+import HeaderBar from './components/HeaderBar.vue'
 export default {
   name: 'app',
   components: {
-    NavBar
+    NavBar,
+    CartPage,
+    HeaderBar
   }
 }
 </script>
 
-<style></style>
+<style>
+  img{
+    height:3rem;
+  }
+</style>

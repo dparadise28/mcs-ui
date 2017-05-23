@@ -1,7 +1,8 @@
 <template>
-  <div class="container">
-    <div class="row store-row">
-      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 item-block">
+  <div>
+  <div class="layout-padding">
+    <div class="row">
+      <div class="width-1of1">
         <div class="fh5co-property">
           <single-store>
                 <h2 slot="storeName"><strong>{{ store.name }}</strong></h2>
@@ -13,52 +14,61 @@
         </div>
       </div>
     </div>
-    <div class="panel-group" id="accordion">
-
-      <div class="panel panel-default" v-for="category in store.categories">
-        <div data-toggle="collapse" v-bind:data-target="'#' + category" class="panel-heading">
-          <br><h2 class =categoryTitle>{{category}}</h2>
-        </div>thfgh
-        <div :id="category" class="panel-collapse collapse in">
-          <ul>
-            <div >
-            <li v-for="p in allProducts" class="StoreItem" @click="open(p)">
+    <div class="list" v-for="category in store.categories">
+      <q-collapsible :label="category">
+        <div class ="row">
+          <ul v-for="p in allProducts">
+            <li class="wrap" @click="open(p)">
               <h3><b>{{p.ProductName}}</b></h3>
             </li>
-              <!--<sweet-modal v-bind:title="p.ProductName" ref="modal"></sweet-modal>-->
-            </div>
           </ul>
         </div>
-      </div>
-
-      <modal name="modal">
-        <h2 class =categoryTitle>{{ProductObject.ProductName}}</h2>
-        <!--{{ProductObject.ProductName}}-->
-
-      </modal>
+      </q-collapsible>
     </div>
+    <modal name="modal">
+    <h2 class =categoryTitle>{{ProductObject.ProductName}}</h2>
+    <!--{{ProductObject.ProductName}}-->
+
+    </modal>
+    <!--<div class="panel-group" id="accordion">-->
+      <!--<div class="panel panel-default" v-for="category in store.categories">-->
+        <!--<div data-toggle="collapse" v-bind:data-target="'#' + category" class="panel-heading">-->
+          <!--<br><h2 class =categoryTitle>{{category}}</h2>-->
+        <!--</div>-->
+        <!--<div :id="category" class="panel-collapse collapse in">-->
+          <!--<div class ="row">-->
+            <!--<ul v-for="p in allProducts">-->
+              <!--<li class="wrap" @click="open(p)">-->
+                <!--<h3><b>{{p.ProductName}}</b></h3>-->
+              <!--</li>-->
+            <!--</ul>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+
+      <!--<modal name="modal">-->
+        <!--<h2 class =categoryTitle>{{ProductObject.ProductName}}</h2>-->
+        <!--&lt;!&ndash;{{ProductObject.ProductName}}&ndash;&gt;-->
+
+      <!--</modal>-->
+    <!--</div>-->
+  </div>
   </div>
 </template>
 
 <script>
-  import SingleStore from "./SingleStoreTemplate.vue"
-  import ProductModal from './ProductPageModal.vue'
+  import SingleStore from './SingleStoreTemplate.vue'
   import { mapGetters, mapActions } from 'vuex'
 
   export default {
     components: {
-      SingleStore,
-      ProductModal,
+      SingleStore
     },
-    data(){
+    data () {
       return {
         showModal: false,
         ProductObject: {}
       }
-    },
-    mounted () {
-      this.getAllStores(),
-        this.getAllProducts()
     },
     computed: {
       ...mapGetters([
@@ -84,8 +94,11 @@
         this.ProductObject = Product
         this.$modal.show('modal')
       }
-    },
-
+    }
+//    mounted () {
+//      getAllStores
+//      getAllProducts
+//    }
   }
 </script>
 
@@ -150,14 +163,14 @@
      width: 50%
    }
 
-   li{
-     float: left;
-   }
-   @media (max-width: 991px){
-     .StoreItem{
-       width: 100%
-     }
-   }
+   /*li{*/
+     /*float: left;*/
+   /*}*/
+   /*@media (max-width: 991px){*/
+     /*.StoreItem{*/
+       /*width: 100%*/
+     /*}*/
+   /*}*/
   .categoryTitle{
     font-weight: bold;
     font-size: 25px;

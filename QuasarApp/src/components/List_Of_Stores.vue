@@ -1,9 +1,9 @@
 
 <template>
-  <div class="container">
-    <div class="row store-row">
-      <div v-for="s in allStores">
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 item-block">
+  <div class="layout-view">
+  <div class="layout-padding">
+     <div class="row store-row wrap">
+        <div v-for="s in allStores" class="sm-width-1of1 md-width-1of1 bg-width-1of2 lg-width-1of3">
           <router-link :to="{name: 'store', params: {id: s.id}}" class="fh5co-property" tag="div">
             <single-store>
               <h2 slot="storeName"><strong>{{ s.name }}</strong></h2>
@@ -15,7 +15,7 @@
           </router-link>
         </div>
       </div>
-    </div>
+  </div>
   </div>
 </template>
 
@@ -25,10 +25,6 @@
 
   import { mapGetters, mapActions } from 'vuex'
   export default {
-    mounted () {
-      this.getAllStores(),
-        this.getAllProducts()
-    },
     computed: {
       ...mapGetters([
         'allStores',
@@ -43,6 +39,10 @@
     },
     components: {
       SingleStore
+    },
+    mounted () {
+      this.getAllStores()
+      this.getAllProducts()
     }
   }
 </script>
@@ -66,17 +66,17 @@
 
 
   .fh5co-property {
-    background: rgb(238, 239, 247);
+    background: rgb(255, 255, 255);
     text-align: left;
-    padding-top: 30px;
     width: 100%;
     float: left;
+    padding: 10px;
     box-shadow: rgba(0, 0, 0, 0.498039) 4px 8px 25px -14px;
   }
 
   .fh5co-property .fh5co-property-specification {
     border-top: 1px solid rgb(240, 240, 240);
-    background: rgb(247, 247, 247);
+    background: rgb(255, 255, 255);
     padding: 15px 30px;
     font-size: 13px;
     margin-bottom: 0px;
