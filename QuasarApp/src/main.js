@@ -15,6 +15,8 @@ import BootstrapVue from 'bootstrap-vue'
 import vmodal from 'vue-js-modal'
 import Vuelidate from 'vuelidate'
 import moment from 'moment'
+import Cleave from 'vue-cleave'
+import VuexForm from 'vuex-form'
 
 Vue.use(Quasar) // Install Quasar Framework
 Vue.component('nav-bar', require('./components/NavBar.vue'))
@@ -24,7 +26,8 @@ Vue.component('header-bar', require('./components/HeaderBar.vue'))
 Vue.use(vmodal)
 Vue.use(BootstrapVue)
 Vue.use(Vuelidate)
-
+Vue.use(Cleave)
+Vue.use(VuexForm, {store})
 moment().format()
 
 sync(store, router)

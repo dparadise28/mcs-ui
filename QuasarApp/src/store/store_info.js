@@ -16,8 +16,16 @@ const state = {
   },
   store: {
     name: '',
-    phone_number: '',
-    address: '',
+    phoneNumber: '',
+    address: {
+      administrative_area_level_1: '',
+      country: '',
+      latitude: '',
+      longitude: '',
+      postal_code: '',
+      route: '',
+      street_number: ''
+    },
     image: '',
     hovering: false,
     working_hours: [
@@ -33,6 +41,10 @@ const state = {
     description: '',
     pickup: {
       service_offered: false,
+      pickUpItems: {
+        min: 0,
+        max: 100
+      },
       minimum_time_to_pickup: 30,
       maximum_time_to_pickup: 90
     },
@@ -84,6 +96,12 @@ const actions = {
   },
   removeImage ({commit}) {
     commit('removeimage')
+  },
+  setName ({commit}, name) {
+    commit('setname', name)
+  },
+  updateUser ({commit}, field) {
+    commit('update_user', field)
   }
 }
 
@@ -98,6 +116,17 @@ const mutations = {
   },
   removeimage (state) {
     state.store.image = ''
+  },
+  update_user (state, field) {
+    let keys = Object.keys(field),
+      key
+    for (let index = keys.length - 1; index > -1; index--) {
+      key = keys[index]
+
+      if (state.store.hasOwnProperty(key)) {
+        state.store[key] = field[key]
+      }
+    }
   }
 }
 

@@ -1,59 +1,47 @@
 <template>
-  <div>
-  <div class="layout-padding">
-    <div class="row">
-      <div class="width-1of1">
-        <div class="fh5co-property">
-          <single-store>
-                <h2 slot="storeName"><strong>{{ store.name }}</strong></h2>
-                <p slot="storeAddress">
-                  {{ store.address2 }} <br>
-                  {{ store.address1 }} <br>
-                </p>
-          </single-store>
+	<q-layout>
+		<div slot="header" class="toolbar inverted primary">
+			<button v-go-back="'/stores_result'" class="within-iframe-hide">
+				<i>arrow_back</i>
+			</button>
+
+			<q-toolbar-title :padding="1" class="text-secondary" >
+				Sign Up
+			</q-toolbar-title>
+		</div>
+		<div class="layout-view">
+      <div class="layout-padding">
+        <div class="row">
+          <div class="width-1of1">
+          <div class="fh5co-property">
+            <single-store>
+              <h2 slot="storeName"><strong>{{ store.name }}</strong></h2>
+              <p slot="storeAddress">
+                {{ store.address2 }} <br>
+                {{ store.address1 }} <br>
+              </p>
+            </single-store>
+          </div>
+          </div>
         </div>
-      </div>
-    </div>
-    <div class="list" v-for="category in store.categories">
-      <q-collapsible :label="category">
-        <div class ="row">
-          <ul v-for="p in allProducts">
+        <div class="list" v-for="category in store.categories">
+          <q-collapsible :label="category">
+          <div class ="row">
+            <ul v-for="p in allProducts">
             <li class="wrap" @click="open(p)">
               <h3><b>{{p.ProductName}}</b></h3>
             </li>
-          </ul>
+            </ul>
+          </div>
+          </q-collapsible>
         </div>
-      </q-collapsible>
+        <modal name="modal">
+          <h2 class =categoryTitle>{{ProductObject.ProductName}}</h2>
+          <!--{{ProductObject.ProductName}}-->
+        </modal>
+      </div>
     </div>
-    <modal name="modal">
-    <h2 class =categoryTitle>{{ProductObject.ProductName}}</h2>
-    <!--{{ProductObject.ProductName}}-->
-
-    </modal>
-    <!--<div class="panel-group" id="accordion">-->
-      <!--<div class="panel panel-default" v-for="category in store.categories">-->
-        <!--<div data-toggle="collapse" v-bind:data-target="'#' + category" class="panel-heading">-->
-          <!--<br><h2 class =categoryTitle>{{category}}</h2>-->
-        <!--</div>-->
-        <!--<div :id="category" class="panel-collapse collapse in">-->
-          <!--<div class ="row">-->
-            <!--<ul v-for="p in allProducts">-->
-              <!--<li class="wrap" @click="open(p)">-->
-                <!--<h3><b>{{p.ProductName}}</b></h3>-->
-              <!--</li>-->
-            <!--</ul>-->
-          <!--</div>-->
-        <!--</div>-->
-      <!--</div>-->
-
-      <!--<modal name="modal">-->
-        <!--<h2 class =categoryTitle>{{ProductObject.ProductName}}</h2>-->
-        <!--&lt;!&ndash;{{ProductObject.ProductName}}&ndash;&gt;-->
-
-      <!--</modal>-->
-    <!--</div>-->
-  </div>
-  </div>
+	</q-layout>
 </template>
 
 <script>

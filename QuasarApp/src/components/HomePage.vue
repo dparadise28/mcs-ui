@@ -22,7 +22,7 @@
     <q-tabs class ="inverted primary mobile-only" slot="navigation">
       <q-tab icon="home" route="/"></q-tab>
       <q-tab icon="search" route="/stores_result" ></q-tab>
-      <q-tab icon="view_day" route="/showcase/layout/tabs" ></q-tab>
+      <q-tab icon="view_day" route="/test" ></q-tab>
       <q-tab icon="input" route="/showcase/layout/drawer" ></q-tab>
     </q-tabs>
 

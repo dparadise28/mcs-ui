@@ -5,18 +5,36 @@
       <div class="item multiple-lines" >
         <i class="item-primary text-secondary">business</i>
         <div class="item-content">
-          <div class="floating-label">
+           <label class ="text-primary">Enter Your Business Name</label>
             <input
               type="text"
-              v-model="StepTwoForm.businessname"
-              @input="$v.StepTwoForm.businessname.$touch()"
+              v-model ="name"
               required class="full-width"
+              placeholder="Enter Business Name"
+              :value = "name"
             >
-            <label>Enter Your Business Name</label>
-          </div>
         </div>
-        <i v-show="!$v.StepTwoForm.businessname.$invalid" class="item-secondary text-green">check</i>
       </div>
+      <div class="item multiple-lines" >
+        <i class="item-primary text-secondary">location_on</i>
+        <div class="item-content">
+           <label class ="text-primary">Enter Your Business Address</label>
+            <vue-google-autocomplete
+              id="map"
+              classname="form-control"
+              placeholder="Please type your address"
+              v-on:placechanged="getAddressData"
+              country="usa">
+            </vue-google-autocomplete>  
+        </div>
+      </div>
+      <div class="item multiple-lines" >
+        <i class="item-primary text-secondary">phone</i>
+        <div class="item-content">
+          <label class="text-primary">Enter Your Phone Number</label>        
+          <cleave :options='cleaveOptions' v-model.lazy='phoneNumber' placeholder="Enter Your Phone Number" class="full-width"></cleave>
+        </div>
+      </div> 
       <div class="item multiple-lines" >
         <i class="item-primary text-secondary">image</i>
         <div class="item-content">
@@ -43,19 +61,103 @@
       <div class="item multiple-lines" >
         <i class="item-primary text-secondary">description</i>
         <div class="item-content">
-          <div class="floating-label">
-            <textarea v-model.lazy="StepTwoForm.description" required class="full-width"></textarea>
-            <label>Enter Store Description</label>
+           <label class="text-primary">Enter Store Description</label>
+            <textarea v-model.lazy="description" required class="full-width" placeholder="Store Description"></textarea>
+        </div>
+      </div>
+      <div class="item multiple-lines" >
+        <i class="item-primary text-secondary">access_time</i>
+        <div class="item-content row items-baseline">
+          <div v-for="day_hours in StepTwoForm.working_hours" class="width-1of1">
+            <span class="text-primary">{{ day_hours.day }}:</span> <br>
+            <q-datetime-range class="full-width" type="time" v-model="day_hours.range" :min="min" :max="max"></q-datetime-range>
+            <!--<q-datetime type="time" v-model="day_hours.range.from" :min="min" :max="max"></q-datetime>-->
           </div>
         </div>
       </div>
       <div class="item multiple-lines" >
-        <i class="item-primary text-secondary">description</i>
-        <div class="item-content row items-baseline">
-          <div v-for="day_hours in StepTwoForm.working_hours" class="width-1of1">
-            {{ day_hours.day }}: <br>
-            <q-datetime-range type="time" v-model="day_hours.range" :min="min" :max="max"></q-datetime-range>
-            <!--<q-datetime type="time" v-model="day_hours.range.from" :min="min" :max="max"></q-datetime>-->
+        <i class="item-primary text-secondary">info</i>
+        <div class="item-content">
+          <span class="text-bold">Additional Information </span><br><br>
+          <label class="item text-primary">        
+            <div class="item-content has-secondary">
+             Pickup Offered?
+            </div>
+            <div class="item-secondary">
+              <q-toggle v-model="StepTwoForm.pickup.service_offered"></q-toggle>
+            </div>
+          </label>
+           <label class="item text-primary">        
+            <div class="item-content has-secondary">
+             Delivery Offered?
+            </div>
+            <div class="item-secondary">
+              <q-toggle v-model="StepTwoForm.delivery.service_offered"></q-toggle>
+            </div>
+          </label>
+        </div>
+      </div>   
+    </div><br>
+    <div class="list bg-inverted-light" v-if="StepTwoForm.pickup.service_offered">
+      <div class="item multiple-lines" >
+        <i class="item-primary text-secondary">business</i>
+        <div class="item-content">
+          <label class ="text-secondary text-bold">Pick Up Details</label>
+             <div class="item-content">
+                <label class ="text-primary">Pick Up May Contain Up To: </label>
+                <span class="label bg-secondary text-white">{{StepTwoForm.pickup.items}} items</span>
+                <q-range v-model="StepTwoForm.pickup.items" :min="1" :max="50"></q-range>
+            </div>
+            <div class="item-content">
+                <label class ="text-primary">Minimum Time for Pickup: </label>
+                <span class="label bg-secondary text-white">{{StepTwoForm.pickup.minimum_time_to_pickup}} minutes</span>
+                <q-range v-model="StepTwoForm.pickup.minimum_time_to_pickup" :min="0" :max="120"></q-range>
+            </div>
+        </div>
+      </div>
+    </div><br>
+    <div class="list bg-inverted-light" v-if="StepTwoForm.delivery.service_offered">
+      <div class="item multiple-lines" >
+        <i class="item-primary text-secondary">business</i>
+        <div class="item-content">
+          <label class ="text-secondary text-bold">Delivery Details</label>
+          <div class="item-content">
+            <label class ="text-primary">Delivery May Contain Up To: </label>
+            <span class="label bg-secondary text-white">{{StepTwoForm.delivery.items}} items</span>
+            <q-range v-model="StepTwoForm.delivery.items" :min="1" :max="50"></q-range>
+          </div>
+          <div class="item-content">
+            <label class ="text-primary">Minimum Time for Delivery: </label>
+            <span class="label bg-secondary text-white">{{StepTwoForm.delivery.minimum_time_to_delivery}} minutes</span>
+            <q-range v-model="StepTwoForm.delivery.minimum_time_to_delivery" :min="0" :max="120"></q-range>
+          </div>
+          <div class="item-content">
+           <label class ="text-primary">Delivery Fee</label>
+            <input
+              type="number"
+              v-model ="StepTwoForm.delivery.delivery_fee"
+              required class="full-width"
+              placeholder="Enter Delivery Fee"
+            >
+          </div>
+          <div class="item-content">
+           <label class ="text-primary">Delivery Minimum</label>
+            <input
+              type="number"
+              prefix="$"
+              v-model ="StepTwoForm.delivery.delivery_minimum"
+              required class="full-width"
+              placeholder="Enter Delivery Minimum"
+            >
+          </div>
+          <div class="item-content">
+           <label class ="text-primary">Delivery Distance Within: (Miles)</label>
+            <input
+              type="number"
+              v-model ="StepTwoForm.delivery.delivery_distance"
+              required class="full-width"
+              placeholder="Enter Delivery Distance"
+            >
           </div>
         </div>
       </div>
@@ -65,9 +167,11 @@
 
 
 <script>
-  import {required} from 'vuelidate/lib/validators'
+//  import {required} from 'vuelidate/lib/validators'
+  import Cleave from 'vue-cleave'
   import moment from 'moment'
-  import { mapActions, mapGetters } from 'vuex'
+  import VueGoogleAutocomplete from 'vue-google-autocomplete'
+  import { mapActions, mapGetters, mapMutations } from 'vuex'
   export default {
     data () {
       return {
@@ -81,28 +185,90 @@
             {day: 'Wednesday', range: {from: moment().hour(9).minute(0).format(), to: moment().hour(17).minute(0).format()}},
             {day: 'Thursday', range: {from: moment().hour(9).minute(0).format(), to: moment().hour(17).minute(0).format()}},
             {day: 'Friday', range: {from: moment().hour(9).minute(0).format(), to: moment().hour(17).minute(0).format()}},
-            {day: 'Saturday', range: {from: moment().hour(9).minute(0).format(), to: moment().hour(17).minute(0).format()}}]
+            {day: 'Saturday', range: {from: moment().hour(9).minute(0).format(), to: moment().hour(17).minute(0).format()}}],
+          phone: '',
+          address: '',
+          pickup: {
+            service_offered: false,
+            items: 25,
+            minimum_time_to_pickup: 90
+          },
+          delivery: {
+            service_offered: false,
+            items: 25,
+            delivery_fee: '$0.00',
+            delivery_minimum: '$10.00',
+            delivery_distance: 2,
+            minimum_time_to_delivery: 60
+          }
         },
         hovering: false,
+        pickUpChecked: false,
+        deliveryChecked: false,
         min: moment().hour(0).minute(0).format(),
-        max: moment().hour(24).minute(0).format()
+        max: moment().hour(24).minute(0).format(),
+        cleaveOptions: {
+          phone: true,
+          phoneRegionCode: 'US'
+        }
       }
     },
-    validations: {
-      StepTwoForm: {
-        businessname: {required}
-      }
+//    validations: {
+//      StepTwoForm: {
+//        businessname: {required}
+//      }
+//    },
+    components: {
+      Cleave,
+      VueGoogleAutocomplete
     },
     methods: {
       ...mapActions([
         'onFileChange',
-        'removeImage'
-      ])
+        'removeImage',
+        'setName'
+      ]),
+      ...mapMutations([
+        'update_user'
+      ]),
+      /**
+      * When the location found
+      * @param {Object} addressData Data of the found location
+      * @param {Object} placeResultData PlaceResult object
+      */
+      getAddressData: function (addressData, placeResultData) {
+        this.address = addressData
+      }
+//      getItem: function (item) {
+//        var state = this.$store.state.storeInfo.store
+//        console.log('state is ', state[item])
+//        return state[item]
+//      }
     },
     computed: {
       ...mapGetters({
         storeImage: 'storeImage'
-      })
+      }),
+      name: {
+        get () { return this.$store.state.storeInfo.store.name },
+        set (value) { this.$store.commit('update_user', {name: value}) }
+      },
+      address: {
+        get () { return this.$store.state.storeInfo.store.address },
+        set (value) { this.$store.commit('update_user', {address: value}) }
+      },
+      description: {
+        get () { return this.$store.state.storeInfo.store.description },
+        set (value) { this.$store.commit('update_user', {description: value}) }
+      },
+      phoneNumber: {
+        get () { return this.$store.state.storeInfo.store.phoneNumber },
+        set (value) { this.$store.commit('update_user', {phoneNumber: value}) }
+      },
+      pickUpItems: {
+        get () { return this.$store.state.storeInfo.store.pickup.pickUpItems },
+        set (value) { this.$store.commit('update_user', {pickUpItems: value}) }
+      }
     }
   }
 </script>
@@ -176,6 +342,10 @@
     height: auto;
     max-width: 100%;
   }
+  }
+  
+  div.timeline-content{
+    margin-left: 0px;
   }
 
 
