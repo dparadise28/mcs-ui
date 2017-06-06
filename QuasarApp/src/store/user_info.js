@@ -15,9 +15,9 @@ const state = {
     store: store,
     categories: categories,
     payment: payment
-  },
+  }
 }
-
+-
 const actions = {
 }
 

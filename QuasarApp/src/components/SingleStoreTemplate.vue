@@ -1,21 +1,17 @@
 <template>
   <div class="fh5co-property-innter">
-    <slot name="storeName">store name</slot>
-    <br><br><br><br>
-      <div class="price-status">
+    <slot name="storeName">store name</slot><br><br>
         <div class="row">
-          <div class="col-md-6 col-sm-6 col-xs-6">
-            <div class="star-ratings-css">
-              <div class="star-ratings-css-top" style="width: 84%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-              <div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <div class="width-1of2">
+            <div >
+              <div ><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+              <div ><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
               <p class="ratings-count">291 ratings</p>
             </div>
           </div>
-          <div class="store-address col-md-6 col-sm-6 col-xs-6">
             <slot name="storeAddress">put store address 1 and store address 2 here</slot>
-          </div>
         </div>
-      </div>
+      
   </div>
 </template>
 
@@ -48,7 +44,6 @@ export default{
     font-size: 25px;
     height: 25px;
     width: 100px;
-    position: relative;
     padding: 0px;
     text-shadow: rgb(162, 162, 162) 0px 1px 0px;
   }
@@ -90,6 +85,7 @@ export default{
     color: #21ce99;
     font-weight: bold;
     font-size: 35px;
+    position: relative;
     font-family: Helvetica;
 
   }

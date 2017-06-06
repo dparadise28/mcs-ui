@@ -6,7 +6,6 @@ import ProductPage from './components/ProductPage'
 import StoresListPage from './components/List_Of_Stores'
 import StorePage from './components/StorePage'
 import StoreOnboard from './components/Admin/Store_Onboarding_Page.vue'
-import Test from './components/Admin/test.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -41,10 +40,5 @@ export default new Router({
       path: '/store-sign-up',
       name: 'StoreOnboard',
       component: StoreOnboard
-    },
-    {
-      path: '/test',
-      name: 'Test',
-      component: Test
     }]
 })

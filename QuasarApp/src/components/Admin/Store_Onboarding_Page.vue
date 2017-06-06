@@ -1,6 +1,6 @@
 <template>
   <q-layout>
-    <div slot="header" class="toolbar primary">
+    <div slot="header" class="toolbar inverted tertiary bg-light">
       <button v-go-back="'/'" class="within-iframe-hide">
         <i>arrow_back</i>
       </button>
@@ -12,17 +12,17 @@
     <div class="layout-view">
       <div class ="layout-padding">
         <q-stepper @finish="finish()" ref="stepper" v-show="!finished">
-          <q-step title="Sign Up" class="text-secondary">
+          <q-step title="Sign Up" class="text-tertiary">
             <!--:ready="!this.$v.form.$invalid"-->
             <step-one></step-one>
                 <!--sm md bg lg sm-width-1of3-->
                 <!--<div class="sm-width-5of5 md-width-5of5 bg-width-5of5 lg-width-5of5">-->
           </q-step>
-          <q-step title="Enter Store Info" :ready="ready">
+          <q-step title="Enter Store Info" class="text-tertiary">
             <step-two></step-two>
           </q-step>
-          <q-step title="Create an ad">
-            Try out different ad text to see what brings in the most customers, and learn how to enhance your ads using features like ad extensions. If you run into any problems with your ads, find out how to tell if they're running and how to resolve approval issues.
+          <q-step title="Create Categories and Add Products" class="text-tertiary">
+            <step-three></step-three>
           </q-step>
         </q-stepper>
       </div>
@@ -30,10 +30,12 @@
   </q-layout>
 </template>
 
+
 <script>
   import {required, email, minLength, sameAs} from 'vuelidate/lib/validators'
   import StepOne from '../Admin/StepOne.vue'
   import StepTwo from '../Admin/StepTwo.vue'
+  import StepThree from '../Admin/StepThree.vue'
   export default {
     data () {
       return {
@@ -49,7 +51,8 @@
     },
     components: {
       StepOne,
-      StepTwo
+      StepTwo,
+      StepThree
     },
     validations: {
       form: {

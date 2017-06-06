@@ -6,7 +6,7 @@
 			</button>
 
 			<q-toolbar-title :padding="1" class="text-secondary" >
-				Sign Up
+				{{ store.name }}
 			</q-toolbar-title>
 		</div>
 		<div class="layout-view">
@@ -27,11 +27,11 @@
         <div class="list" v-for="category in store.categories">
           <q-collapsible :label="category">
           <div class ="row">
-            <ul v-for="p in allProducts">
-            <li class="wrap" @click="open(p)">
-              <h3><b>{{p.ProductName}}</b></h3>
-            </li>
-            </ul>
+            <div class ="item width-1of2" v-for="p in allProducts">
+              <div class="item-content" @click="open(p)">
+                <b>{{p.ProductName}}</b>
+              </div>
+            </div>
           </div>
           </q-collapsible>
         </div>
