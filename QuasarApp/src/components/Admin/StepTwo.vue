@@ -11,9 +11,11 @@
               v-model ="name"
               required class="full-width"
               placeholder="Enter Business Name"
+              @input="$v.StepTwoForm.businessname.$touch()"
               :value = "name"
             >
         </div>
+        <i v-show="!$v.StepTwoForm.businessname.$invalid" class="item-secondary text-green">check</i>
       </div>
       <div class="item multiple-lines" >
         <i class="item-primary text-secondary">location_on</i>
@@ -24,17 +26,25 @@
               classname="form-control"
               placeholder="Please type your address"
               v-on:placechanged="getAddressData"
-              country="usa">
-            </vue-google-autocomplete>  
+              country="usa"
+              @input="$v.StepTwoForm.address.$touch()"
+            >
+            </vue-google-autocomplete>
         </div>
+        <i v-show="!$v.StepTwoForm.address.$invalid" class="item-secondary text-green">check</i>
       </div>
       <div class="item multiple-lines" >
         <i class="item-primary text-secondary">phone</i>
         <div class="item-content">
-          <label class="text-primary">Enter Your Phone Number</label>        
-          <cleave :options='cleaveOptions' v-model.lazy='phoneNumber' placeholder="Enter Your Phone Number" class="full-width"></cleave>
+          <label class="text-primary">Enter Your Phone Number</label>
+          <cleave :options='cleaveOptions' v-model.lazy='phoneNumber'
+            placeholder="Enter Your Phone Number"
+            class="full-width"
+            @input="$v.StepTwoForm.phone.$touch()"
+          ></cleave>
         </div>
-      </div> 
+        <i v-show="!$v.StepTwoForm.phone.$invalid" class="item-secondary text-green">check</i>
+      </div>
       <div class="item multiple-lines" >
         <i class="item-primary text-secondary">image</i>
         <div class="item-content">
@@ -54,7 +64,7 @@
           </div>
           <div class="dropzone-preview" v-if="storeImage">
             <img :src="storeImage">
-            <button @click="removeImage">Remove</button>
+            <button @click="removeImage" class="outline tertiary small">Remove</button>
           </div>
         </div>
       </div>
@@ -79,7 +89,7 @@
         <i class="item-primary text-secondary">info</i>
         <div class="item-content">
           <span class="text-bold">Additional Information </span><br><br>
-          <label class="item text-primary">        
+          <label class="item text-primary">
             <div class="item-content has-secondary">
              Pickup Offered?
             </div>
@@ -87,7 +97,7 @@
               <q-toggle v-model="StepTwoForm.pickup.service_offered"></q-toggle>
             </div>
           </label>
-           <label class="item text-primary">        
+           <label class="item text-primary">
             <div class="item-content has-secondary">
              Delivery Offered?
             </div>
@@ -96,7 +106,7 @@
             </div>
           </label>
         </div>
-      </div>   
+      </div>
     </div><br>
     <div class="list bg-inverted-light" v-if="StepTwoForm.pickup.service_offered">
       <div class="item multiple-lines" >
@@ -167,7 +177,7 @@
 
 
 <script>
-//  import {required} from 'vuelidate/lib/validators'
+  import {required, minLength} from 'vuelidate/lib/validators'
   import Cleave from 'vue-cleave'
   import moment from 'moment'
   import VueGoogleAutocomplete from 'vue-google-autocomplete'
@@ -213,11 +223,13 @@
         }
       }
     },
-//    validations: {
-//      StepTwoForm: {
-//        businessname: {required}
-//      }
-//    },
+    validations: {
+      StepTwoForm: {
+        businessname: {required},
+        address: {required},
+        phone: {required, minLength: minLength(10)}
+      }
+    },
     components: {
       Cleave,
       VueGoogleAutocomplete
@@ -251,23 +263,32 @@
       }),
       name: {
         get () { return this.$store.state.storeInfo.store.name },
-        set (value) { this.$store.commit('update_user', {name: value}) }
+        set (value) {
+          this.$store.commit('update_store', {name: value})
+          this.StepTwoForm.businessname = value
+        }
       },
       address: {
         get () { return this.$store.state.storeInfo.store.address },
-        set (value) { this.$store.commit('update_user', {address: value}) }
+        set (value) {
+          this.$store.commit('update_store', {address: value})
+          this.StepTwoForm.address = value
+        }
       },
       description: {
         get () { return this.$store.state.storeInfo.store.description },
-        set (value) { this.$store.commit('update_user', {description: value}) }
+        set (value) { this.$store.commit('update_store', {description: value}) }
       },
       phoneNumber: {
         get () { return this.$store.state.storeInfo.store.phoneNumber },
-        set (value) { this.$store.commit('update_user', {phoneNumber: value}) }
+        set (value) {
+          this.$store.commit('update_store', {phoneNumber: value.trim()})
+          this.StepTwoForm.phone = value
+        }
       },
       pickUpItems: {
         get () { return this.$store.state.storeInfo.store.pickup.pickUpItems },
-        set (value) { this.$store.commit('update_user', {pickUpItems: value}) }
+        set (value) { this.$store.commit('update_store', {pickUpItems: value}) }
       }
     }
   }
@@ -343,7 +364,7 @@
     max-width: 100%;
   }
   }
-  
+
   div.timeline-content{
     margin-left: 0px;
   }

@@ -12,17 +12,20 @@
     <div class="layout-view">
       <div class ="layout-padding">
         <q-stepper @finish="finish()" ref="stepper" v-show="!finished">
-          <q-step title="Sign Up" class="text-tertiary">
+          <q-step title="Sign Up">
             <!--:ready="!this.$v.form.$invalid"-->
             <step-one></step-one>
                 <!--sm md bg lg sm-width-1of3-->
                 <!--<div class="sm-width-5of5 md-width-5of5 bg-width-5of5 lg-width-5of5">-->
           </q-step>
-          <q-step title="Enter Store Info" class="text-tertiary">
+          <q-step title="Enter Store Info">
             <step-two></step-two>
           </q-step>
-          <q-step title="Create Categories and Add Products" class="text-tertiary">
+          <q-step title="Create Categories and Add Products">
             <step-three></step-three>
+          </q-step>
+          <q-step title="Enter Payment Information">
+            <step-four></step-four>
           </q-step>
         </q-stepper>
       </div>
@@ -36,6 +39,8 @@
   import StepOne from '../Admin/StepOne.vue'
   import StepTwo from '../Admin/StepTwo.vue'
   import StepThree from '../Admin/StepThree.vue'
+  import StepFour from '../Admin/StepFour.vue'
+//  import StepFour from '../Admin/StripeTest.vue'
   export default {
     data () {
       return {
@@ -52,7 +57,8 @@
     components: {
       StepOne,
       StepTwo,
-      StepThree
+      StepThree,
+      StepFour
     },
     validations: {
       form: {

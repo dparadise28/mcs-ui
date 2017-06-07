@@ -81,6 +81,7 @@ const state = {
     },
     cc: {
       accepted: false,
+      cardName: '',
       cc_number: null,
       cc_exp: null,
       ccv: null
@@ -123,8 +124,41 @@ const mutations = {
     for (let index = keys.length - 1; index > -1; index--) {
       key = keys[index]
 
+      if (state.user.hasOwnProperty(key)) {
+        state.user[key] = field[key]
+      }
+    }
+  },
+  update_store (state, field) {
+    let keys = Object.keys(field),
+      key
+    for (let index = keys.length - 1; index > -1; index--) {
+      key = keys[index]
+
       if (state.store.hasOwnProperty(key)) {
         state.store[key] = field[key]
+      }
+    }
+  },
+  update_cash (state, field) {
+    let keys = Object.keys(field),
+      key
+    for (let index = keys.length - 1; index > -1; index--) {
+      key = keys[index]
+
+      if (state.payment.cash.hasOwnProperty(key)) {
+        state.payment.cash[key] = field[key]
+      }
+    }
+  },
+  update_cc (state, field) {
+    let keys = Object.keys(field),
+      key
+    for (let index = keys.length - 1; index > -1; index--) {
+      key = keys[index]
+
+      if (state.payment.cc.hasOwnProperty(key)) {
+        state.payment.cc[key] = field[key]
       }
     }
   }

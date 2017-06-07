@@ -7,7 +7,7 @@
          <label class="text-primary">Enter Your Username</label>
             <input
               type="text"
-              v-model="form.username"
+              v-model="username"
               @input="$v.form.username.$touch()"
               required class="full-width"
               placeholder="Enter Username"
@@ -21,7 +21,7 @@
            <label class="text-primary">Enter Your email</label>
             <input
               type="text"
-              v-model="form.email"
+              v-model="email"
               @input="$v.form.email.$touch()"
               required class="full-width"
               placeholder="Enter Email"
@@ -35,7 +35,7 @@
          <label class="text-primary">Enter Your Password</label>
             <input
               type="password"
-              v-model="form.password"
+              v-model="password"
               @input="$v.form.password.$touch()"
               required class="full-width"
               placeholder="Enter Password"
@@ -83,6 +83,29 @@
         password: {required, minLength: minLength(6)},
         repeatPassword: {required, minLength: minLength(6), sameAsPassword: sameAs('password')},
         email: {required, email}
+      }
+    },
+    computed: {
+      username: {
+        get () { return this.$store.state.storeInfo.user.username },
+        set (value) {
+          this.$store.commit('update_user', {username: value})
+          this.form.username = value
+        }
+      },
+      email: {
+        get () { return this.$store.state.storeInfo.user.email },
+        set (value) {
+          this.$store.commit('update_user', {email: value})
+          this.form.email = value
+        }
+      },
+      password: {
+        get () { return this.$store.state.storeInfo.user.password },
+        set (value) {
+          this.$store.commit('update_user', {password: value})
+          this.form.password = value
+        }
       }
     }
   }
