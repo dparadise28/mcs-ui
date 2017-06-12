@@ -40,6 +40,11 @@ export default new Router({
       path: '/store-sign-up',
       name: 'StoreOnboard',
       component: StoreOnboard
+    },
+    {
+      path: '/api',
+      name: 'test',
+      component: HomePage
     }],
   redirect: ({
     '*': '/home'

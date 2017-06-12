@@ -19,8 +19,8 @@ const actions = {
       params: {
         // email: creds.email,
         // password: creds.password
-        email: 'danielsiryakov@gmail.com',
-        password: 'daniel12'
+        email: 'aaa@aaa.comsss',
+        password: '123444'
       }
     }).then(function (response) {
       // LocalStorage.set('id_token', response.data.user_id)
