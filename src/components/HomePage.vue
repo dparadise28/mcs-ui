@@ -41,7 +41,7 @@
       </div>
     </q-drawer>
 
-    <q-modal ref="logInSignUp" :content-css="{minWidth: '60vw', minHeight: '80vh'}">
+    <q-modal ref="logInSignUp" :content-css="{minWidth: '60vw', minHeight: '80vh'}" @close="$refs.leftDrawer.close()">
       <h4><i class="text-primary float-left" style="padding-left: 20px" @click="$refs.logInSignUp.close()">close</i></h4>
 
 

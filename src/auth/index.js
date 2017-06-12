@@ -1,8 +1,8 @@
 import axios from 'axios'
 import Router from '../router'
-const API_URL = 'http://mycorner.store:8001/api/'
-const LOGIN_URL = API_URL + 'user/create/'
-const SIGNUP_URL = API_URL + 'user/create/'
+const API_URL = 'http://localhost:3001/'
+const LOGIN_URL = API_URL + 'sessions/create/'
+const SIGNUP_URL = API_URL + 'users/'
 
 export default {
 

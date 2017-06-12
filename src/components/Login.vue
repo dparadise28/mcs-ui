@@ -20,6 +20,7 @@
       >
     </div>
     <button class="btn btn-primary" @click="submitLogIn">Access</button>
+    <button class="btn btn-primary" @click="retrieve">retrieve</button>
   </div>
 </template>
 
@@ -45,6 +46,7 @@
           })
 //        this.retrieve()
         this.$emit('submitLogIn')
+        this.$router.go('/')
       }
     }
   }
