@@ -119,9 +119,9 @@
                 <q-range v-model="StepTwoForm.pickup.items" :min="1" :max="50"></q-range>
             </div>
             <div class="item-content">
-                <label class ="text-primary">Minimum Time for Pickup: </label>
-                <span class="label bg-secondary text-white">{{StepTwoForm.pickup.minimum_time_to_pickup}} minutes</span>
-                <q-range v-model="StepTwoForm.pickup.minimum_time_to_pickup" :min="0" :max="120"></q-range>
+              <label class ="text-primary">Minimum Time for Pickup: </label>
+              <span class="label bg-secondary text-white">{{StepTwoForm.pickup.minimum_time_to_pickup}} minutes</span>
+              <q-range v-model="StepTwoForm.pickup.minimum_time_to_pickup" :min="0" :max="120"></q-range>
             </div>
         </div>
       </div>

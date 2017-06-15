@@ -45,8 +45,6 @@
             'email': this.email
           })
 //        this.retrieve()
-        this.$emit('submitLogIn')
-        this.$router.go('/')
       }
     }
   }

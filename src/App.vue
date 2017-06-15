@@ -1,28 +1,25 @@
 <template>
-  <router-view></router-view>
+  <div id="q-app">
+    <router-view></router-view>
+    <q-ajax-bar></q-ajax-bar>
+  </div>
 </template>
 
 
 <script>
-/*
- * Root component
- * import CartPage from './components/CartPage.vue'
- */
-import NavBar from './components/NavBar.vue'
-import CartPage from './components/CartPage.vue'
-import HeaderBar from './components/HeaderBar.vue'
-export default {
-  name: 'app',
-  components: {
-    NavBar,
-    CartPage,
-    HeaderBar
+//  import { mapActions } from 'vuex'
+  export default {
+    name: 'q-app'
+//    methods: {
+//      ...mapActions([
+//        'checkAuth'
+//      ])
+//    },
+//    created: function () {
+//      this.checkAuth()
+//    }
   }
-}
 </script>
 
-<style>
-  img{
-    height:3rem;
-  }
+<style lang="stylus">
 </style>

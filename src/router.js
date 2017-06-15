@@ -1,24 +1,22 @@
 import Vue from 'vue'
-import Router from 'vue-router'
+import VueRouter from 'vue-router'
 import CartPage from './components/CartPage'
-import IntoPage from './components/IntroPage.vue'
+import IntroPage from './components/IntroPage.vue'
 import HomePage from './components/HomePage'
 import ProductPage from './components/ProductPage'
 import StoresListPage from './components/List_Of_Stores'
 import StorePage from './components/StorePage'
 import StoreOnboard from './components/Admin/Store_Onboarding_Page.vue'
-Vue.use(Router)
+// import { Cookies } from 'quasar'
+import store from './store/index'
+Vue.use(VueRouter)
 
-export default new Router({
+const Router = new VueRouter({
   routes: [
     {
       path: '/',
-      name: 'intro',
-      component: IntoPage
-    },
-    {
-      path: '/user/:id',
       name: 'home',
+      meta: { Auth: true },
       component: HomePage,
       children: [
         {
@@ -51,8 +49,26 @@ export default new Router({
       path: '/api',
       name: 'test',
       component: HomePage
-    }],
-  redirect: ({
-    '*': '/home'
-  })
+    },
+    {
+      path: '/login',
+      name: 'intro',
+      meta: { Auth: false },
+      component: IntroPage
+    }]
 })
+// var jwt = Cookies.get('authtoken')
+//
+Router.beforeEach((to, from, next) => {
+  console.log('commiting check auth')
+  store.commit('checkAuth')
+  if (to.meta.Auth && !store.state.auth.authenticated) {
+    next({path: '/login', replace: true})
+  }
+  else {
+    console.log('the user has an auth token')
+    next()
+  }
+})
+
+export default Router

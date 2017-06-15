@@ -1,11 +1,15 @@
 import axios from 'axios'
-// axios.defaults.withCredentials = true
+import router from '../router'
 // import Router from '../router'
-import { Cookies } from 'quasar'
-const API_URL = 'http://mycorner.store:8080/api/'
+import { Cookies, LocalStorage } from 'quasar'
+
+const API_URL = 'http://mycorner.store:8001/api/'
 const LOGIN_URL = API_URL + 'user/login'
 const SIGNUP_URL = API_URL + 'user/create'
 const USER_RETRIEVE = API_URL + 'user/retrieve'
+
+// var authtokenValue = Cookies.get('authtoken')
+// var uidValue = Cookies.get('userID')
 
 const state = {
   authenticated: false
@@ -19,14 +23,13 @@ const actions = {
         password: creds.password
       }
     }).then(function (response) {
-      console.log(response)
-      console.log(response.data.login.userID)
-      console.log(response.data.login.authtoken)
-
       Cookies.set('userID', response.data.login.userID, {path: '/api', expire: '10'})
       Cookies.set('authtoken', response.data.login.authtoken, {path: '/api', expire: '10'})
-
+      axios.defaults.headers.common['authtoken'] = response.data.login.authtoken
+      axios.defaults.headers.common['userID'] = response.data.login.userID
+      LocalStorage.set('authtoken', response.data.login.authtoken)
       commit('authenticationTrue')
+      router.push('/')
       // Router.push('/')
     }).catch(function (error) {
       console.log(error)
@@ -46,6 +49,7 @@ const actions = {
       Cookies.set('authtoken', response.data.login.authtoken, {path: '/api', expire: '10'})
 
       commit('authenticationTrue')
+      router.push('/')
     }).catch(function (error) {
       console.log(error)
     })
@@ -54,28 +58,17 @@ const actions = {
   logout ({ commit }) {
     Cookies.remove('userID')
     Cookies.remove('authtoken')
-    commit('changeAuthentication')
-  },
-  checkAuth ({ commit }) {
-    var jwt = Cookies.get('authtoken')
-    var cookies = Cookies.all()
-    console.log(cookies)
-    console.log(jwt)
-    if (jwt) {
-      commit('authenticationTrue')
-    }
-    else {
-      commit('authenticationFalse')
-    }
-  },
-  authBasedRoute ({ dispatch }) {
-    console.log('hello')
-    dispatch('checkAuth')
-
-    if (state.authenticated) {
-      this.$router.push('/user/1')
-    }
+    LocalStorage.remove('authtoken')
+    commit('authenticationFalse')
+    router.replace('/login')
   }
+  // authBasedRoute ({ dispatch }) {
+  //   dispatch('checkAuth')
+  //
+  //   if (state.authenticated) {
+  //     router.push('/user/1')
+  //   }
+  // }
 }
 
 const mutations = {
@@ -84,6 +77,14 @@ const mutations = {
   },
   authenticationFalse (state) {
     state.authenticated = false
+  },
+  checkAuth (state) {
+    if (Cookies.has('authtoken') || LocalStorage.has('authtoken')) {
+      state.authenticated = true
+    }
+    else {
+      state.authenticated = false
+    }
   }
 }
 
