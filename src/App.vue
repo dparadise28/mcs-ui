@@ -1,7 +1,7 @@
 <template>
   <div id="q-app">
     <router-view></router-view>
-    <q-ajax-bar :color="'#2ab982'"></q-ajax-bar>
+    <q-ajax-bar></q-ajax-bar>
   </div>
 </template>
 
@@ -21,6 +21,5 @@
   }
 </script>
 
-<style>
-
+<style lang="stylus">
 </style>

@@ -25,8 +25,6 @@
     "vue-cleave": "^1.2.0",
     "vue-google-autocomplete": "^1.0.8",
     "vue-router": "^2.0.0",
-    "vue-time-picker": "^0.2.6",
-    "vue2-timepicker": "^0.1.4",
     "vuelidate": "^0.4.3",
     "vuex": "^2.3.1",
     "vuex-router-sync": "^4.1.2"

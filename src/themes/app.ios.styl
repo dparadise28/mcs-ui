@@ -12,14 +12,15 @@
 // iOS Design only Stylus variables can go here
 // http://quasar-framework.org/api/css-stylus-variables.html
 $primary = #2ab982
-$tertiary  = #0f1f38
+$tertiary  = #3540E8
 //$typography-font-family     ?= '-apple-system', 'Helvetica Neue', Helvetica, Arial, sans-serif
 $typography-font-family        ?= 'Roboto'
 
 $toolbar-color              ?= $primary
 $toolbar-background         ?= $light
 $toolbar-active-color       ?= $light
-$toolbar-faded-color        ?= co v mposite-color($toolbar-color)
+$toolbar-faded-color        ?= composite-color($toolbar-color)
+
 
 if $typography-font-family == 'Roboto' && $quasar-dont-import-fonts != true && $quasar-dont-import-roboto != true
   @font-face

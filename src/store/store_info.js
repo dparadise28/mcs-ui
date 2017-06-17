@@ -1,9 +1,3 @@
-import axios from 'axios'
-import router from '../router'
-import { Cookies } from 'quasar'
-const API_URL = 'http://mycorner.store:8001/api/'
-const CREATE_STORE = API_URL + 'store/create'
-
 const state = {
   user: {
     user_id: '',
@@ -27,65 +21,14 @@ const state = {
       street_number: ''
     },
     hovering: false,
-    working_hours: {
-      monday: {
-        hours: {
-          to: '',
-          from: ''
-        },
-        open: true
-      },
-      tuesday: {
-        hours: {
-          to: '',
-          from: ''
-        },
-        open: true
-      },
-      wednesday: {
-        hours: {
-          to: '',
-          from: ''
-        },
-        open: true
-      },
-      thursday: {
-        hours: {
-          to: '',
-          from: ''
-        },
-        open: true
-      },
-      friday: {
-        hours: {
-          to: '',
-          from: ''
-        },
-        open: true
-      },
-      saturday: {
-        hours: {
-          to: '',
-          from: ''
-        },
-        open: true
-      },
-      sunday: {
-        hours: {
-          to: '',
-          from: ''
-        },
-        open: true
-      }
-    },
-    // working_hours: [
-    //   {day: 'Sunday', from: '09:00', to: '17:00'},
-    //   {day: 'Monday', from: '09:00', to: '17:00'},
-    //   {day: 'Tuesday', from: '09:00', to: '17:00'},
-    //   {day: 'Wednesday', from: '09:00', to: '17:00'},
-    //   {day: 'Thursday', from: '09:00', to: '17:00'},
-    //   {day: 'Friday', from: '09:00', to: '17:00'},
-    //   {day: 'Saturday', from: '09:00', to: '17:00'}],
+    working_hours: [
+      {day: 'Sunday', from: '09:00', to: '17:00'},
+      {day: 'Monday', from: '09:00', to: '17:00'},
+      {day: 'Tuesday', from: '09:00', to: '17:00'},
+      {day: 'Wednesday', from: '09:00', to: '17:00'},
+      {day: 'Thursday', from: '09:00', to: '17:00'},
+      {day: 'Friday', from: '09:00', to: '17:00'},
+      {day: 'Saturday', from: '09:00', to: '17:00'}],
     tax_rate: '',
     keywords: [],
     description: '',
@@ -139,103 +82,6 @@ const state = {
   }
 }
 
-let test = {
-  'platform_categories': ['Restaurants', 'Some Other Food Category'],
-  'working_hours': {
-    'tursday': {
-      'hours': {
-        'to': 1200,
-        'from': 900
-      },
-      'open': true
-    },
-    'monday': {
-      'hours': {
-        'to': 1200,
-        'from': 900
-      },
-      'open': true
-    },
-    'tuesday': {
-      'hours': {
-        'to': 1200,
-        'from': 900
-      },
-      'open': true
-    },
-    'friday': {
-      'hours': {
-        'to': 1200,
-        'from': 900
-      },
-      'open': true
-    },
-    'wednesday': {
-      'hours': {
-        'to': 1200,
-        'from': 900
-      },
-      'open': true
-    },
-    'sunday': {
-      'hours': {
-        'to': 1200,
-        'from': 900
-      },
-      'open': true
-    },
-    'saturday': {
-      'hours': {
-        'to': 1200,
-        'from': 900
-      },
-      'open': true
-    }
-  },
-  'name': 'store name5',
-  'image': 'https://...',
-  'delivery': {
-    'delivery_distance': 2,
-    'delivery_fee': 500,
-    'delivery_minimum': 500,
-    'minimum_time_to_delivery': 45,
-    'maximum_time_to_delivery': 100,
-    'service_offered': true
-  },
-  'phone': '(212) - 123 - 4567',
-  'pickup': {
-    'offered': true,
-    'maximum_time_to_pickup': 30,
-    'minimum_time_to_pickup': 90,
-    'pickup_items': {
-      'max': 100,
-      'min': 1
-    }
-  },
-  'tax_rate': 4.5,
-  'address': {
-    'street_number': '',
-    'country': 'USA',
-    'route': '',
-    'postal_code': '11235',
-    'location': {
-      'coordinates': [-73.9505241, 40.5863985]
-    },
-    'administrative_area_level_1': 'NY'
-  },
-  'short_description': 'some short description with words',
-  'long_description': 'some long description with lots of words describing the store. more words',
-
-  'category_names': ['Breakfast', 'Lunch', 'Dinner'],
-  'category_tree': [{
-    'name': 'c_123',
-    'products': [{
-      'title': 'p1',
-      'description': 'asdadf',
-      'display_price': '$2.00'
-    }]
-  }]
-}
 const actions = {
   onFileChange ({commit}, e) {
     var files = e.target.files || e.dataTransfer.files
@@ -250,20 +96,6 @@ const actions = {
   },
   updateUser ({commit}, field) {
     commit('update_user', field)
-  },
-  createStore ({ commit }) {
-    let userID = Cookies.get('userID')
-    let authtoken = Cookies.get('authtoken')
-    // let authtoken = LocalStorage.get.item('authtoken')
-    axios.defaults.headers.common['authtoken'] = authtoken
-    axios.defaults.headers.common['userID'] = userID
-    console.log(authtoken)
-    axios.post(CREATE_STORE, JSON.stringify(test)).then(function (response) {
-      router.push('/')
-      console.log(response)
-    }).catch(function (error) {
-      console.log(error)
-    })
   }
 }
 
@@ -322,14 +154,6 @@ const mutations = {
         state.payment.cc[key] = field[key]
       }
     }
-  },
-  update_working_hours (state, hours) {
-    // var temp = hours
-    // for (var key in temp) {
-    //   temp[key]['hours']['to'] = hours[key]['hours']['to']['HH'] + hours[key]['hours']['to']['mm']
-    //   te[key]['hours']['from'] = hours[key]['hours']['from']['HH'] + hours[key]['hours']['from']['mm']
-    // }
-    state.store.working_hours = hours
   }
 }
 

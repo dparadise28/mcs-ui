@@ -1,6 +1,7 @@
 <template>
-  <div class="layout-padding">
-    <h3>{{ product.title }}</h3>
+  <div class="product-item">
+    <router-link to="/" class="back-link">BACK</router-link>
+    <div class="product-title">{{ product.title }}</div>
     <div class="product-details">
       <div class="inventory">In Stock: {{ product.inventory }}</div>
       <button class="add-button" :disabled="!product.inventory"
@@ -9,24 +10,13 @@
   </div>
 </template>
 
-<!--this.new_product = {-->
-<!--title: '',-->
-<!--images: [], // leaving at top level for now (which means variants cant have imgs)-->
-<!--category: '', // ? just one or list of cats it falls in (tempted to say list)-->
-<!--keywords: [],-->
-<!--add_to_category: false,-->
-<!--checked: false,-->
-<!--long_description: '',-->
-<!--short_description: '',-->
-<!--dislplay_price: '' // different for variants but top level for product list-->
-<!--}-->
+
 <script>
   import { mapActions, mapGetters } from 'vuex'
   export default {
     mounted () {
       this.getAllProducts()
     },
-    props: ['product'],
     computed: {
       ...mapGetters([
         'allProducts'

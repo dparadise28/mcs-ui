@@ -34,6 +34,9 @@ moment().format()
 
 sync(store, router)
 
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+
 Quasar.start(() => {
   /* eslint-disable no-new */
   new Vue({
