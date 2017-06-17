@@ -1,56 +1,60 @@
 <template>
 	<q-layout>
-		<div slot="header" class="toolbar inverted primary">
+		<div slot="header" class="toolbar primary text-tertiary">
 			<button v-go-back="'/stores_result'" class="within-iframe-hide">
 				<i>arrow_back</i>
 			</button>
 
-			<q-toolbar-title :padding="1" class="text-secondary" >
+			<q-toolbar-title :padding="1" class="text-tertiary" >
 				{{ store.name }}
 			</q-toolbar-title>
 		</div>
+
 		<div class="layout-view">
       <div class="layout-padding">
         <div class="row">
-          <div class="width-1of1">
-          <div class="fh5co-property">
-            <single-store>
-              <h2 slot="storeName"><strong>{{ store.name }}</strong></h2>
-              <p slot="storeAddress">
-                {{ store.address2 }} <br>
-                {{ store.address1 }} <br>
-              </p>
-            </single-store>
-          </div>
-          </div>
+          <single-store>
+            <h2 slot="storeName"><strong>{{ store.name }}</strong></h2>
+            <p slot="storeAddress">
+              {{ store.address2 }} <br>
+              {{ store.address1 }} <br>
+            </p>
+          </single-store>
         </div>
         <div class="list" v-for="category in store.categories">
           <q-collapsible :label="category">
-          <div class ="row">
+          <div class ="row wrap">
             <div class ="item width-1of2" v-for="p in allProducts">
               <div class="item-content" @click="open(p)">
-                <b>{{p.ProductName}}</b>
+                <b>{{p.title}}</b>
               </div>
             </div>
           </div>
           </q-collapsible>
         </div>
-        <modal name="modal">
-          <h2 class =categoryTitle>{{ProductObject.ProductName}}</h2>
-          <!--{{ProductObject.ProductName}}-->
-        </modal>
       </div>
+
+      <q-modal ref="productModal">
+        <product-page :product="ProductObject"></product-page>
+        <br><br>
+        <button class="primary" @click="$refs.productModal.close()">Close</button>
+      </q-modal>
+      <!--<modal name="modal">-->
+        <!--<h2 class =categoryTitle>{{ProductObject.ProductName}}</h2>-->
+        <!--&lt;!&ndash;{{ProductObject.ProductName}}&ndash;&gt;-->
+      <!--</modal>-->
     </div>
 	</q-layout>
 </template>
 
 <script>
   import SingleStore from './SingleStoreTemplate.vue'
+  import ProductPage from './ProductPage.vue'
   import { mapGetters, mapActions } from 'vuex'
-
   export default {
     components: {
-      SingleStore
+      SingleStore,
+      ProductPage
     },
     data () {
       return {
@@ -80,7 +84,7 @@
       },
       open: function (Product) {
         this.ProductObject = Product
-        this.$modal.show('modal')
+        this.$refs.productModal.open()
       }
     }
 //    mounted () {

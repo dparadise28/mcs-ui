@@ -60,13 +60,11 @@ const Router = new VueRouter({
 // var jwt = Cookies.get('authtoken')
 //
 Router.beforeEach((to, from, next) => {
-  console.log('commiting check auth')
   store.commit('checkAuth')
   if (to.meta.Auth && !store.state.auth.authenticated) {
     next({path: '/login', replace: true})
   }
   else {
-    console.log('the user has an auth token')
     next()
   }
 })

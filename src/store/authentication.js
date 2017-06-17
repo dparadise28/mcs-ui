@@ -23,8 +23,14 @@ const actions = {
         password: creds.password
       }
     }).then(function (response) {
-      Cookies.set('userID', response.data.login.userID, {path: '/api', expire: '10'})
-      Cookies.set('authtoken', response.data.login.authtoken, {path: '/api', expire: '10'})
+      Cookies.set('userID', response.data.login.userID, {
+        path: '/',
+        expires: 10
+      })
+      Cookies.set('authtoken', response.data.login.authtoken, {
+        path: '/',
+        expires: 10
+      })
       axios.defaults.headers.common['authtoken'] = response.data.login.authtoken
       axios.defaults.headers.common['userID'] = response.data.login.userID
       LocalStorage.set('authtoken', response.data.login.authtoken)
@@ -45,9 +51,14 @@ const actions = {
 
   signup ({ commit }, creds) {
     axios.post(SIGNUP_URL, JSON.stringify(creds)).then(function (response) {
-      Cookies.set('userID', response.data.login.userID, {path: '/api', expire: '10'})
-      Cookies.set('authtoken', response.data.login.authtoken, {path: '/api', expire: '10'})
-
+      Cookies.set('userID', response.data.login.userID, {
+        path: '/',
+        expires: 10
+      })
+      Cookies.set('authtoken', response.data.login.authtoken, {
+        path: '/',
+        expires: 10
+      })
       commit('authenticationTrue')
       router.push('/')
     }).catch(function (error) {
@@ -62,13 +73,6 @@ const actions = {
     commit('authenticationFalse')
     router.replace('/login')
   }
-  // authBasedRoute ({ dispatch }) {
-  //   dispatch('checkAuth')
-  //
-  //   if (state.authenticated) {
-  //     router.push('/user/1')
-  //   }
-  // }
 }
 
 const mutations = {

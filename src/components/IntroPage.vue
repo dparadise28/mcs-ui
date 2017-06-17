@@ -1,10 +1,9 @@
 <template>
-    <div class="layout-view">
-      <div class="flex">
+    <div class="layout-view" id="corner">
+      <div class="flex window-height" id="corner">
         <!--<img src="../assets/img/TheCornerShop.jpg" alt="" style="width: 125%">-->
 
         <div class="sm-width-1of1 md-width-1of1 bg-width-5of5 lg-width-3of5 lg-offset-1of5">
-          <div id="cornerImage" class="window-height">
             <img src="../assets/fulllogo.png" style="max-height: 8%; max-width: 80%">
 
 
@@ -81,9 +80,7 @@
 </script>
 
 <style lang="scss">
-  @import "compass/css3";
-  
-  #cornerImage {
+  #corner {
     background-image: url("../assets/CornerShop.png");
     background-repeat: no-repeat;
     background-size: cover;

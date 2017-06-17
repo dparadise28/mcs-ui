@@ -1,5 +1,6 @@
 <template>
   <q-layout>
+
     <div slot="header" class="toolbar inverted tertiary bg-light">
       <button v-go-back="'/'" class="within-iframe-hide">
         <i>arrow_back</i>
@@ -11,13 +12,13 @@
     </div>
     <div class="layout-view">
       <div class ="layout-padding">
-        <q-stepper @finish="finish()" ref="stepper" v-show="!finished">
-          <q-step title="Sign Up">
-            <!--:ready="!this.$v.form.$invalid"-->
-            <step-one></step-one>
-                <!--sm md bg lg sm-width-1of3-->
-                <!--<div class="sm-width-5of5 md-width-5of5 bg-width-5of5 lg-width-5of5">-->
-          </q-step>
+        <q-stepper @finish="createStore" ref="stepper" v-show="!finished">
+          <!--<q-step title="Sign Up">-->
+            <!--&lt;!&ndash;:ready="!this.$v.form.$invalid"&ndash;&gt;-->
+            <!--<step-one></step-one>-->
+                <!--&lt;!&ndash;sm md bg lg sm-width-1of3&ndash;&gt;-->
+                <!--&lt;!&ndash;<div class="sm-width-5of5 md-width-5of5 bg-width-5of5 lg-width-5of5">&ndash;&gt;-->
+          <!--</q-step>-->
           <q-step title="Enter Store Info">
             <step-two></step-two>
           </q-step>
@@ -40,7 +41,9 @@
   import StepTwo from '../Admin/StepTwo.vue'
   import StepThree from '../Admin/StepThree.vue'
   import StepFour from '../Admin/StepFour.vue'
-//  import StepFour from '../Admin/StripeTest.vue'
+  import { mapActions } from 'vuex'
+
+  //  import StepFour from '../Admin/StripeTest.vue'
   export default {
     data () {
       return {
@@ -80,7 +83,10 @@
       reset () {
         this.$refs.stepper.reset()
         this.finished = false
-      }
+      },
+      ...mapActions([
+        'createStore'
+      ])
     }
   }
 </script>

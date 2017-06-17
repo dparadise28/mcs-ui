@@ -52,8 +52,8 @@
           </draggable>
         </div>
       </div>
-      <q-modal ref="basicModal" :content-css="{padding: '20px', minWidth: '50vw'}">
-        <modal></modal>
+      <q-modal ref="basicModal" v-if="categories.length > 0" :content-css="{padding: '20px', minWidth: '50vw'}">
+        <modal :current_category="categories[current_category]"></modal>
         <br><br>
         <button class="primary" @click="$refs.basicModal.close()">Close</button>
       </q-modal>
@@ -69,7 +69,7 @@ export default {
   data () {
     return {
       categories: [],
-      urrent_category: null,
+      current_category: 0,
       step: 1,
       active: 1,
       firststep: true,

@@ -75,12 +75,17 @@
             <textarea v-model.lazy="description" required class="full-width" placeholder="Store Description"></textarea>
         </div>
       </div>
+
       <div class="item multiple-lines" >
         <i class="item-primary text-secondary">access_time</i>
-        <div class="item-content row items-baseline">
-          <div v-for="day_hours in StepTwoForm.working_hours" class="width-1of1">
-            <span class="text-primary">{{ day_hours.day }}:</span> <br>
-            <q-datetime-range class="full-width" type="time" v-model="day_hours.range" :min="min" :max="max"></q-datetime-range>
+        <div class="item-content items-baseline">
+          <div v-for="(day_hours,day) in StepTwoForm.working_hours" >
+            <span class="text-primary">{{ day }}:</span><br>
+            <vue-timepicker @change="update_working_hours(StepTwoForm.working_hours)" v-model="day_hours.hours.from"></vue-timepicker>
+            to
+            <vue-timepicker @change="update_working_hours(StepTwoForm.working_hours)" v-model="day_hours.hours.to"></vue-timepicker>
+
+            <!--<q-datetime-range class="full-width" type="time" v-model="day_hours.range" :min="min" :max="max"></q-datetime-range>-->
             <!--<q-datetime type="time" v-model="day_hours.range.from" :min="min" :max="max"></q-datetime>-->
           </div>
         </div>
@@ -180,6 +185,7 @@
   import {required, minLength} from 'vuelidate/lib/validators'
   import Cleave from 'vue-cleave'
   import moment from 'moment'
+  import VueTimepicker from 'vue2-timepicker'
   import VueGoogleAutocomplete from 'vue-google-autocomplete'
   import { mapActions, mapGetters, mapMutations } from 'vuex'
   export default {
@@ -188,14 +194,57 @@
         StepTwoForm: {
           businessname: '',
           description: '',
-          working_hours: [
-            {day: 'Sunday', range: {from: moment().hour(9).minute(0).format(), to: moment().hour(17).minute(0).format()}},
-            {day: 'Monday', range: {from: moment().hour(9).minute(0).format(), to: moment().hour(17).minute(0).format()}},
-            {day: 'Tuesday', range: {from: moment().hour(9).minute(0).format(), to: moment().hour(17).minute(0).format()}},
-            {day: 'Wednesday', range: {from: moment().hour(9).minute(0).format(), to: moment().hour(17).minute(0).format()}},
-            {day: 'Thursday', range: {from: moment().hour(9).minute(0).format(), to: moment().hour(17).minute(0).format()}},
-            {day: 'Friday', range: {from: moment().hour(9).minute(0).format(), to: moment().hour(17).minute(0).format()}},
-            {day: 'Saturday', range: {from: moment().hour(9).minute(0).format(), to: moment().hour(17).minute(0).format()}}],
+          working_hours: {
+            monday: {
+              hours: {
+                to: {HH: '17', mm: '00'},
+                from: {HH: '09', mm: '00'}
+              },
+              open: true
+            },
+            tuesday: {
+              hours: {
+                to: {HH: '17', mm: '00'},
+                from: {HH: '09', mm: '00'}
+              },
+              open: true
+            },
+            wednesday: {
+              hours: {
+                to: {HH: '17', mm: '00'},
+                from: {HH: '09', mm: '00'}
+              },
+              open: true
+            },
+            thursday: {
+              hours: {
+                to: {HH: '17', mm: '00'},
+                from: {HH: '09', mm: '00'}
+              },
+              open: true
+            },
+            friday: {
+              hours: {
+                to: {HH: '17', mm: '00'},
+                from: {HH: '09', mm: '00'}
+              },
+              open: true
+            },
+            saturday: {
+              hours: {
+                to: {HH: '17', mm: '00'},
+                from: {HH: '09', mm: '00'}
+              },
+              open: true
+            },
+            sunday: {
+              hours: {
+                to: {HH: '17', mm: '00'},
+                from: {HH: '09', mm: '00'}
+              },
+              open: true
+            }
+          },
           phone: '',
           address: '',
           pickup: {
@@ -232,7 +281,8 @@
     },
     components: {
       Cleave,
-      VueGoogleAutocomplete
+      VueGoogleAutocomplete,
+      VueTimepicker
     },
     methods: {
       ...mapActions([
@@ -241,7 +291,8 @@
         'setName'
       ]),
       ...mapMutations([
-        'update_user'
+        'update_user',
+        'update_working_hours'
       ]),
       /**
       * When the location found
