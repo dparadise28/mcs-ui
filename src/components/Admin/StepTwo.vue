@@ -27,6 +27,7 @@
               placeholder="Please type your address"
               v-on:placechanged="getAddressData"
               country="usa"
+              :enableGeolocation="true"
               @input="$v.StepTwoForm.address.$touch()"
             >
             </vue-google-autocomplete>
@@ -294,11 +295,6 @@
         'update_user',
         'update_working_hours'
       ]),
-      /**
-      * When the location found
-      * @param {Object} addressData Data of the found location
-      * @param {Object} placeResultData PlaceResult object
-      */
       getAddressData: function (addressData, placeResultData) {
         this.address = addressData
       }
@@ -346,6 +342,9 @@
 </script>
 
 <style>
+  .time-picker {
+    font-family: Roboto !important;
+  }
   .dropzone-area {
     width: 100% !important;
     height: 100px !important;

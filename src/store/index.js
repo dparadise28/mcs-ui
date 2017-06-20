@@ -1,20 +1,18 @@
 import Vuex from 'vuex'
 import Vue from 'vue'
-import cart from './cart'
-import products from './products'
-import stores from './stores_list'
-import storeInfo from './store_info'
-import auth from './authentication'
-import search from './search'
+import cart from './VuexModules/cart'
+import products from './VuexModules/products'
+import storeSearch from './VuexModules/store_search'
+import storeInfo from './VuexModules/store_info'
+import auth from './VuexModules/authentication'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   modules: {
     cart,
     products,
-    stores,
+    storeSearch,
     storeInfo,
-    auth,
-    search
+    auth
   }
 })

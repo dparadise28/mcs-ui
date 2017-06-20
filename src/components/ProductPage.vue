@@ -1,10 +1,24 @@
 <template>
-  <div class="layout-padding">
-    <h3>{{ product.title }}</h3>
-    <div class="product-details">
-      <div class="inventory">In Stock: {{ product.inventory }}</div>
-      <button class="add-button" :disabled="!product.inventory"
-        @click="addToCart(product)">{{ product.inventory > 0 ? "Add to cart" : "Out Of Stock" }}</button>
+  <div class="">
+    <!--<h4 class="text-bold text-tertiary">{{ product.title }}</h4>-->
+    <h4 class="text-bold text-tertiary">{{ product.fields.gtin_nm }}</h4>
+    <img :src="product.fields.gtin_img" style="width: 150px; height: 150px">
+    <br><br>
+    <div class="row">
+      <h6>{{number}}x &nbsp</h6>
+      <h6 class="text-primary">${{ product.display_price }} &nbsp</h6><h6>= ${{ total }}</h6>
+    </div>
+    <div class="product-details group">
+      <q-numeric
+        v-model="number"
+        :min="0"
+        :max="20"
+        class="full-width text-primary bg-tertiary"
+      ></q-numeric>
+      <br>
+      <div class="row group">
+        <button class="primary full-width" @click="addToCart(product)">Add</button>
+      </div>
     </div>
   </div>
 </template>
@@ -31,9 +45,12 @@
       ...mapGetters([
         'allProducts'
       ]),
-      product () {
-        let id = parseInt(this.$route.params.id)
-        return this.allProducts.find((p) => p.id === id) || {}
+//      product () {
+//        let id = parseInt(this.$route.params.id)
+//        return this.allProducts.find((p) => p.id === id) || {}
+//      },
+      total: function () {
+        return (this.number * this.product.display_price)
       }
     },
     methods: {
@@ -41,6 +58,11 @@
         'getAllProducts',
         'addToCart'
       ])
+    },
+    data () {
+      return {
+        number: 0
+      }
     }
   }
 </script>
@@ -62,7 +84,7 @@
   font-size: 26px;
 }
 .product-details {
-  margin-top: 120px;
+  margin-top: 60px;
 }
 .inventory {
   float: left;
@@ -73,5 +95,8 @@
   float: right;
   width: 140px;
   height: 50px;
+}
+.q-numeric input {
+  color: #2ab982;
 }
 </style>

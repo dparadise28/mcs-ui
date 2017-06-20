@@ -1,5 +1,4 @@
 <template>
-  <div>
   <div class="cart">
     <p v-show="!products.length">
       Please add some products to cart.
@@ -19,7 +18,6 @@
       <!--<p><button :disabled="!products.length" @click="checkout(products)" class='checkout-button'>Checkout</button></p>-->
     </div>
     <!--<p v-show="checkoutStatus">Checkout {{ checkoutStatus }}.</p>-->
-  </div>
   </div>
 </template>
 
@@ -43,10 +41,13 @@
       ...mapActions([
         'checkout'
       ])
+    },
+    data () {
+      return {
+      }
     }
   }
 </script>
-/*CartPage.vue css*/
-<style>
 
+<style>
 </style>

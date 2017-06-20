@@ -20,8 +20,8 @@ const Router = new VueRouter({
       component: HomePage,
       children: [
         {
-          path: '/stores_result',
-          name: 'stores_result',
+          path: '/store_search',
+          name: 'store_search',
           component: StoresListPage
         }]
     },
@@ -38,7 +38,8 @@ const Router = new VueRouter({
     {
       path: '/store/:id',
       name: 'store',
-      component: StorePage
+      component: StorePage,
+      props: true
     },
     {
       path: '/store-sign-up',

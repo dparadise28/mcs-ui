@@ -1,43 +1,47 @@
 <template>
 	<q-layout>
-		<div slot="header" class="toolbar primary text-tertiary">
-			<button v-go-back="'/stores_result'" class="within-iframe-hide">
+		<div slot="header" class="toolbar tertiary text-white">
+			<button v-go-back="'/store_search'" class="within-iframe-hide">
 				<i>arrow_back</i>
 			</button>
 
-			<q-toolbar-title :padding="1" class="text-tertiary" >
-				{{ store.name }}
+			<q-toolbar-title :padding="1" class="" >
+				<span class="page_title">{{ store.name }}</span>
 			</q-toolbar-title>
 		</div>
 
-		<div class="layout-view">
+		<div class="layout-view bg-light">
       <div class="layout-padding">
         <div class="row">
-          <single-store>
-            <h2 slot="storeName"><strong>{{ store.name }}</strong></h2>
-            <p slot="storeAddress">
-              {{ store.address2 }} <br>
-              {{ store.address1 }} <br>
-            </p>
-          </single-store>
-        </div>
-        <div class="list" v-for="category in store.categories">
-          <q-collapsible :label="category">
-          <div class ="row wrap">
-            <div class ="item width-1of2" v-for="p in allProducts">
-              <div class="item-content" @click="open(p)">
-                <b>{{p.title}}</b>
-              </div>
+          <div class="card layout-padding bg-white">
+            <div class="sm-width-1of1 md-width-1of1 bg-width-1of1 lg-width-1of1">
+              <h4 slot="storeName"><strong>{{ store.name }}</strong></h4>
+              <p class="float-left">
+                {{ store.address2 }} <br>
+                {{ store.address1 }} <br>
+              </p>
             </div>
           </div>
+        </div>
+        <br>
+        <div class="list card bg-white text-bold" v-for="category in store.c_names">
+          <q-collapsible :label="category" class="primary">
+            <div class ="row wrap">
+              <div class ="card product" v-for="p in allProducts">
+                <div class="column layout-padding" @click="open(p)">
+                  {{p.fields.gtin_nm}} <br>
+                  <img :src="p.fields.gtin_img" style="width: 150px; height: 150px">
+                </div>
+              </div>
+            </div>
           </q-collapsible>
         </div>
       </div>
 
-      <q-modal ref="productModal">
+      <q-modal ref="productModal" class="minimized" :content-css="{padding: '40px'}">
+        <h4><i class="text-negative absolute-top-right" @click="$refs.productModal.close()">close</i></h4>
+        <!--<i class="text-negative" @click="$refs.productModal.close()">close</i>-->
         <product-page :product="ProductObject"></product-page>
-        <br><br>
-        <button class="primary" @click="$refs.productModal.close()">Close</button>
       </q-modal>
       <!--<modal name="modal">-->
         <!--<h2 class =categoryTitle>{{ProductObject.ProductName}}</h2>-->
@@ -48,19 +52,17 @@
 </template>
 
 <script>
-  import SingleStore from './SingleStoreTemplate.vue'
   import ProductPage from './ProductPage.vue'
   import { mapGetters, mapActions } from 'vuex'
   export default {
-    components: {
-      SingleStore,
-      ProductPage
-    },
+    props: ['id'],
     data () {
       return {
-        showModal: false,
         ProductObject: {}
       }
+    },
+    components: {
+      ProductPage
     },
     computed: {
       ...mapGetters([
@@ -68,8 +70,7 @@
         'allProducts'
       ]),
       store () {
-        let id = parseInt(this.$route.params.id)
-        return this.allStores.find((s) => s.id === id) || {}
+        return this.allStores.find((s) => s._id === this.id) || {}
       }
     },
     methods: {
@@ -78,10 +79,10 @@
         'getAllProducts'
       ]),
 
-      showProductModal: function (Product) {
-        this.ProductObject = Product
-        this.showModal = true
-      },
+//      showProductModal: function (Product) {
+//        this.ProductObject = Product
+//        this.showModal = true
+//      },
       open: function (Product) {
         this.ProductObject = Product
         this.$refs.productModal.open()
@@ -96,6 +97,9 @@
 
 <style scoped>
   /*StorePage.vue css*/
+  .item:not(.two-lines):not(.three-lines):not(.multiple-lines) > .item-content > div:not(.stacked-label):not(.floating-label):not([class^='q-']) {
+    font-size: 35px !important;
+  }
 
   container{
     padding-top: 10px;
@@ -169,5 +173,9 @@
     color: #1b9872;
     font-family: Helvetica;
 
+  }
+  .product {
+    height: 250px;
+    width: 250px;
   }
 </style>

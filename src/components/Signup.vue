@@ -1,34 +1,27 @@
 <template>
-  <div class="" style="padding-left: 20px; padding-right: 20px">
+  <div class="group" style="padding: 30px">
     <h3>Sign Up</h3>
     <p>Signup to your account to get some great quotes.</p>
-    <div class="form-group">
+
+    <div class="floating-label">
       <input
         type="text"
-        class="form-control"
-        placeholder="Enter your username"
-        v-model="username"
-      >
-    </div>
-    <div class="form-group">
-      <input
-        type="email"
-        class="form-control"
-        placeholder="Enter your email"
+        required class="full-width"
         v-model="email"
       >
+      <label class="text-primary">Enter Your email</label>
     </div>
-    <div class="form-group">
+    <div class="floating-label">
       <input
         type="password"
-        class="form-control"
-        placeholder="Enter your password"
         v-model="password"
+        required class="full-width"
         @keyup.enter="submit"
       >
+      <label class="text-primary">Enter Your email</label>
     </div>
 
-    <button class="btn btn-primary" @click="submit">Access</button>
+    <button class="tertiary" @click="submit">Sign Up</button>
   </div>
 </template>
 

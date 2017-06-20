@@ -1,6 +1,6 @@
 <template>
     <div class="layout-view" id="corner">
-      <div class="flex window-height" id="corner">
+      <div class="flex window-height">
         <!--<img src="../assets/img/TheCornerShop.jpg" alt="" style="width: 125%">-->
 
         <div class="sm-width-1of1 md-width-1of1 bg-width-5of5 lg-width-3of5 lg-offset-1of5">
@@ -8,17 +8,18 @@
 
 
             <q-modal ref="logInSignUp" transition="fade" :content-css="{minWidth: '60vw', minHeight: '80vh'}">
-              <div class="glass up window-height">
-                <h4><i class="text-primary float-left" style="padding-left: 20px" @click="$refs.logInSignUp.close()">close</i></h4>
+              <div class="">
+                <h4><i class
+                         ="text-primary float-left" style="padding-left: 20px" @click="$refs.logInSignUp.close()">close</i></h4>
                 <div class="layout-padding">
                   <br>
                   <q-tabs
-                    class="justified"
+                    class="justified tertiary"
                     :refs="$refs"
                     v-model="formTab"
                   >
-                    <q-tab name="login">Log In</q-tab>
-                    <q-tab name="signup">Sign Up</q-tab>
+                    <q-tab name="login" >Log In</q-tab>
+                    <q-tab name="signup" >Sign Up</q-tab>
                   </q-tabs>
                   <!-- Targets -->
                   <div ref="signup"><sign-up class=""></sign-up></div>
@@ -35,7 +36,6 @@
         </div>
         <div class="lg-width-1of5"></div>
       </div>
-    </div>
 </template>
 
 <script>

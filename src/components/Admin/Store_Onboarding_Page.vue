@@ -1,7 +1,7 @@
 <template>
   <q-layout>
 
-    <div slot="header" class="toolbar inverted tertiary bg-light">
+    <div slot="header" class="toolbar tertiary text-white">
       <button v-go-back="'/'" class="within-iframe-hide">
         <i>arrow_back</i>
       </button>

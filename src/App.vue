@@ -1,5 +1,5 @@
 <template>
-  <div id="q-app">
+  <div id="q-app" @load="hideLoader()">
     <router-view></router-view>
     <q-ajax-bar :color="'#2ab982'"></q-ajax-bar>
   </div>
@@ -7,20 +7,25 @@
 
 
 <script>
-//  import { mapActions } from 'vuex'
+  import Loader from './store/otherJS/Loader'
   export default {
-    name: 'q-app'
-//    methods: {
-//      ...mapActions([
-//        'checkAuth'
-//      ])
-//    },
-//    created: function () {
-//      this.checkAuth()
-//    }
+    name: 'q-app',
+    methods: {
+      hideLoader () {
+        Loader.hide()
+      },
+      showLoader () {
+        Loader.show()
+      }
+    },
+    created () {
+      this.showLoader()
+    },
+    beforeMount () {
+      this.hideLoader()
+    }
   }
 </script>
 
 <style>
-
 </style>

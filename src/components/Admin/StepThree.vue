@@ -77,19 +77,7 @@ export default {
       lastStep: '',
       laststep: false,
       new_category_name: '',
-      new_category_i_name: '',
-      treeModel: [
-        {
-          title: 'Item 1',
-          expanded: true,
-          children: [
-            {
-              title: 'Item 1.2',
-              expanded: false,
-              children: []
-            }
-          ]
-        }]
+      new_category_i_name: ''
     }
   },
   components: {
@@ -112,11 +100,7 @@ export default {
         showNewPostModal: false,
         products: []
       })
-      this.treeModel.push({
-        title: this.new_category_name,
-        edit: false
-      })
-
+      this.$store.commit('update_store', {category_tree: this.categories})
       this.new_category_name = ''
     },
     prepCategoryUpdateState: function (cindex) {
@@ -125,6 +109,7 @@ export default {
     updateCategory: function (cindex) {
       this.categories[cindex].name = this.categories[cindex].new_c_name
       this.categories[cindex].edit = false
+      this.$store.commit('update_store', {category_tree: this.categories})
     }
   }
 }

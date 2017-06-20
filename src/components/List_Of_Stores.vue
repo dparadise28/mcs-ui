@@ -1,11 +1,11 @@
 
 <template>
-  <div class="layout-view">
-    <div class="">
-       <div class="row group wrap big-gutter">
+  <div class="layout-view bg-light">
+    <div class="layout-padding">
+       <div class="row wrap">
           <div v-for="s in allStores" class="sm-width-1of1 md-width-1of1 bg-width-1of1 lg-width-1of1">
-            <router-link :to="{name: 'store', params: {id: s.id}}" class="" tag="div">
-              <div class="card layout-padding">
+            <router-link :to="{name: 'store', params: {id: s._id}}" class="" tag="div">
+              <div class="card layout-padding bg-white">
                 <h4 class="text-bold text-tertiary">{{ s.name }}</h4>
                   <p class="float-left">
                     {{ s.address2 }} <br>
@@ -21,33 +21,24 @@
 </template>
 
 <script>
-  import SingleStore from './SingleStoreTemplate.vue'
-//  Vue.component('header-bar', require('./components/HeaderBar.vue'));
-
   import { mapGetters, mapActions } from 'vuex'
   export default {
     computed: {
       ...mapGetters([
-        'allStores',
-        'allProducts'
+        'allStores'
       ])
     },
     methods: {
       ...mapActions([
-        'getAllStores',
-        'getAllProducts'
+        'getAllStores'
       ])
-    },
-    components: {
-      SingleStore
     },
     mounted () {
       this.getAllStores()
-      this.getAllProducts()
     },
     data () {
       return {
-        stars: 5
+        stars: 4
       }
     }
   }
