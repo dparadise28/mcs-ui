@@ -2,11 +2,12 @@
 <template>
   <div class="layout-view bg-light">
     <div class="layout-padding">
-       <div class="row wrap">
-          <div v-for="s in allStores" class="sm-width-1of1 md-width-1of1 bg-width-1of1 lg-width-1of1">
-            <router-link :to="{name: 'store', params: {id: s._id}}" class="" tag="div">
-              <div class="card layout-padding bg-white">
-                <h4 class="text-bold text-tertiary">{{ s.name }}</h4>
+       <div class="row wrap group large-gutter">
+         <!--<div class="lg-width-1of3"></div>-->
+          <div v-for="s in allStores" class="sm-width-1of1 md-width-1of1 bg-width-1of1 lg-width-1of4 offset-1of3">
+            <router-link :to="{name: 'store', params: {id: s._id}}" tag="div" v-bind:style="{ background: 'url(' + s.image + ') !important', backgroundSize: 'cover'}">
+              <div class="card layout-padding" >
+                <h4 class="text-bold text-white">{{ s.name }}</h4>
                   <p class="float-left">
                     {{ s.address2 }} <br>
                     {{ s.address1 }} <br>
