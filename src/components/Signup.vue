@@ -18,7 +18,7 @@
         required class="full-width"
         @keyup.enter="submit"
       >
-      <label class="text-primary">Enter Your email</label>
+      <label class="text-primary">Enter Your Password</label>
     </div>
 
     <button class="tertiary" @click="submit">Sign Up</button>
@@ -42,9 +42,9 @@
       submit () {
         this.signup(
           {
-            'username': this.username,
             'password': this.password,
-            'email': this.email
+            'email': this.email,
+            'username': 'test1'
           })
         this.$emit('submit')
       }

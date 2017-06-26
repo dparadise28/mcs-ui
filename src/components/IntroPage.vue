@@ -8,9 +8,8 @@
 
 
             <q-modal ref="logInSignUp" transition="fade" :content-css="{minWidth: '60vw', minHeight: '80vh'}">
-              <div class="">
-                <h4><i class
-                         ="text-primary float-left" style="padding-left: 20px" @click="$refs.logInSignUp.close()">close</i></h4>
+              <div>
+                <h4><i class="text-primary float-left" style="padding-left: 20px" @click="$refs.logInSignUp.close()">close</i></h4>
                 <div class="layout-padding">
                   <br>
                   <q-tabs
@@ -22,8 +21,16 @@
                     <q-tab name="signup" >Sign Up</q-tab>
                   </q-tabs>
                   <!-- Targets -->
-                  <div ref="signup"><sign-up class=""></sign-up></div>
-                  <div ref="login"><login class=""></login></div>
+                  <div v-if="!signedup" ref="signup"><sign-up v-on:submit="signedup = true"></sign-up></div>
+                  <div v-if="!signedup" ref="login"><login class=""></login></div>
+                  <div v-if="signedup">
+                    <div class="layout-padding" style="padding: 30px">
+                      <h4 class="text-primary">we sent you a confirmation email!</h4><br>
+                      <big class="text-tertiary">
+                        Confirm your email address and start shopping for everything you love!
+                      </big>
+                      </div>
+                  </div>
                 </div>
               </div>
             </q-modal>
@@ -45,7 +52,8 @@
   export default {
     data () {
       return {
-        formTab: 'login'
+        formTab: 'login',
+        signedup: false
       }
     },
     components: {

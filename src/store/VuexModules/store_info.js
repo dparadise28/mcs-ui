@@ -65,7 +65,7 @@ const state = {
         open: true
       }
     },
-    name: 'test test test5',
+    name: 'test test test76',
     image: '',
     delivery: {
       delivery_distance: 2,
@@ -75,7 +75,7 @@ const state = {
       maximum_time_to_delivery: 100,
       service_offered: true
     },
-    phone: '(212) - 123 - 4567',
+    phone: 6666666666,
     pickup: {
       offered: true,
       maximum_time_to_pickup: 90,
@@ -91,14 +91,14 @@ const state = {
       country: 'USA',
       route: '',
       postal_code: '11235',
-      longitude: -73.9505241,
-      latitude: 40.6805029,
+      longitude: -73.950,
+      latitude: 40.680,
       administrative_area_level_1: 'NY'
     },
     short_description: 'some short description with words',
     long_description: 'some long description with lots of words describing the store. more words',
     category_names: ['Grocery', 'Corner Store'],
-    category_tree: [{
+    categories: [{
       name: 'c_123',
       products: [{
         title: 'p1',
@@ -193,7 +193,7 @@ const state = {
         open: true
       }
     },
-    name: 'test test test4',
+    name: 'test test test98',
     image: '',
     delivery: {
       delivery_distance: 2,

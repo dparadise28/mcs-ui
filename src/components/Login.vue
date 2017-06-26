@@ -17,7 +17,7 @@
           required class="full-width"
           @keyup.enter="submitLogIn"
         >
-        <label class="text-primary">Enter Your email</label>
+        <label class="text-primary">Enter Your Password</label>
       </div>
     <br>
     <button class="tertiary" @click="submitLogIn">Log In</button>

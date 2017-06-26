@@ -10,11 +10,11 @@
       </button>
     </div>
 
-    <!--<div v-if="$store.state.route.path=='/store_search'" slot="header" class="toolbar">-->
-        <!--<button class="text-tertiary text-bold group"><i>location_on</i><br>location</button>-->
-        <!--<button class="text-tertiary text-bold group"><i>dashboard</i><br>filter</button>-->
-        <!--<q-search :debounce="0" class="inverted primary width-3of4" v-model="searchValue" @enter="searchForStores"></q-search>-->
-    <!--</div>-->
+    <div v-if="$store.state.route.path=='/store_search'" slot="header" class="toolbar">
+        <button class="text-tertiary text-bold group"><i>location_on</i><br>location</button>
+        <button class="text-tertiary text-bold group"><i>dashboard</i><br>filter</button>
+        <q-search :debounce="0" class="inverted primary width-3of4" v-model="searchValue" @enter="searchForStores"></q-search>
+    </div>
     <div v-if="$store.state.route.path!='/store_search'" slot="header" class="toolbar">
       <q-search :debounce="0" class="inverted primary" v-model="searchValue" @enter="searchForStores"></q-search>
     </div>

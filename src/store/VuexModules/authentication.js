@@ -3,7 +3,7 @@ import router from '../../router'
 // import Router from '../router'
 import { Cookies, LocalStorage } from 'quasar'
 
-const API_URL = 'http://mycorner.store:8001/api/'
+const API_URL = 'http://mycorner.store:8080/api/'
 const LOGIN_URL = API_URL + 'user/login'
 const SIGNUP_URL = API_URL + 'user/create'
 const USER_RETRIEVE = API_URL + 'user/retrieve'
@@ -60,7 +60,7 @@ const actions = {
         expires: 10
       })
       commit('authenticationTrue')
-      router.push('/')
+      // router.push('/')
     }).catch(function (error) {
       console.log(error)
     })
