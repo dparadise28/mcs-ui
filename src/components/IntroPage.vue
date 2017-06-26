@@ -3,7 +3,7 @@
       <div class="flex window-height">
         <!--<img src="../assets/img/TheCornerShop.jpg" alt="" style="width: 125%">-->
 
-        <div class="sm-width-1of1 md-width-1of1 bg-width-5of5 lg-width-3of5 lg-offset-1of5">
+        <div class="sm-width-1of1 md-width-1of1 bg-width-5of5 lg-width-3of5">
             <img src="../assets/fulllogo.png" style="max-height: 8%; max-width: 80%">
 
 
@@ -24,8 +24,8 @@
                   <div v-if="!signedup" ref="signup"><sign-up v-on:submit="signedup = true"></sign-up></div>
                   <div v-if="!signedup" ref="login"><login class=""></login></div>
                   <div v-if="signedup">
-                    <div class="layout-padding" style="padding: 30px">
-                      <h4 class="text-primary">we sent you a confirmation email!</h4><br>
+                    <div class="layout-padding">
+                      <h4>we sent you a confirmation email!</h4><br>
                       <big class="text-tertiary">
                         Confirm your email address and start shopping for everything you love!
                       </big>
